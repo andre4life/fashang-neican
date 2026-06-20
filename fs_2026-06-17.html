@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>法商小知识 - 2026-06-17</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .card {
+            width: 375px;
+            background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+        }
+        .header {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            padding: 24px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .tag {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 4px;
+            margin-bottom: 4px;
+        }
+        .subtitle {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 1px;
+        }
+        .content {
+            padding: 24px 20px;
+        }
+        .topic {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e8e8e8;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .section-title::before {
+            content: "";
+            width: 4px;
+            height: 16px;
+            background: linear-gradient(180deg, #c9a96e 0%, #8b7355 100%);
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            padding-left: 14px;
+        }
+        .highlight {
+            color: #c9a96e;
+            font-weight: 500;
+        }
+        .summary {
+            background: rgba(201, 169, 110, 0.1);
+            border-left: 3px solid #c9a96e;
+            padding: 16px;
+            margin-top: 24px;
+            border-radius: 0 8px 8px 0;
+        }
+        .summary-title {
+            font-size: 12px;
+            color: #c9a96e;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .summary-content {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+        .archive-banner {
+            display: flex; align-items: center; gap: 8px;
+            background: rgba(201,169,110,0.15);
+            border-left: 4px solid #c9a96e;
+            padding: 10px 20px; margin: 0 20px; border-radius: 0 8px 8px 0;
+        }
+        .archive-banner .ab-icon { font-size: 18px; }
+        .archive-banner .ab-text { font-size: 12px; color: #c9a96e; font-weight: 600; }
+        .archive-banner .ab-link { font-size: 12px; color: #c9a96e; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+        .archive-banner .ab-link:hover { color: #fff; }
+        .disclaimer {
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.3);
+            padding: 12px 20px;
+            line-height: 1.5;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        @media print {
+            body {
+                background: #0a0a0a;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <div class="tag">JUST INTERNAL INFORMATION</div>
+            <div class="title">每日一条法商小知识</div>
+        </div>
+        
+        <div class="content">
+            <div class="archive-banner">
+                <span class="ab-icon">📋</span>
+                <span class="ab-text">往期回顾</span>
+                <a class="ab-link" href="archive.html">点击查看全部历史 →</a>
+            </div>
+            <div class="topic">企业债务隔离——家企混同，老板的个人财产到底安不安全？</div>
+            
+            <div class="section">
+                <div class="section-title">法条要点</div>
+                <div class="section-content">
+                    <span class="highlight">《公司法》第23条</span>：股东滥用公司法人独立地位和股东有限责任，逃避债务，严重损害债权人利益的，应当对公司债务承担连带责任。<br>
+                    → 大白话：公司是公司，你是你。但你拿公司当提款机，公司出事你个人财产也得搭进去。<br><br>
+                    <span class="highlight">《民法典》第1064条</span>：夫妻一方以个人名义为共同经营所负的债务，属于夫妻共同债务。<br>
+                    → 大白话：公司债务如果被认定为用于家庭经营，老板娘也跑不掉，家里的房产车子都可能被查封。
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">实务场景</div>
+                <div class="section-content">
+                    张总开了一家建材公司，为了图方便，公司账户和个人账户混着用——客户打款直接进他私账，公司要付钱也从他卡里直接转。他还用公司账上的钱给自己买了套房、买了200万理财。<br><br>
+                    后来公司一笔工程出了质量问题，被客户索赔800万。公司账上只剩50万，不够赔。债权人起诉后，法院查账发现张总「人格混同」，判他对公司债务承担连带责任。房子被查封拍卖，理财产品被冻结——一个企业主的家底，就这么赔光了。
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">风险提示</div>
+                <div class="section-content">
+                    • 公司账户和个人账户混用，是人格混同的最硬证据——不需要你欠钱不还，只要混了就能穿透<br>
+                    • 用公司资产为个人债务提供担保，公司出事你个人照样承担连带责任<br>
+                    • 夫妻共同经营的公司，债务穿透到家庭，婚后财产（包括房子）都可能被执行<br>
+                    • 企业主一旦去世，未还的公司债务会进入遗产——继承人想继承先还债<br>
+                    • 人身保险受益人写「法定」的，保险金可能被债权人追索，债务隔离功能全白费
+                </div>
+            </div>
+            
+            <div class="summary">
+                <div class="summary-title">核心要点</div>
+                <div class="summary-content">公司是有限责任，但家企混同直接把「有限责任」变成了「无限连带」——管住账户独立性，搭配好保险的指定受益人架构，才是管住了自己的家底。</div>
+            </div>
+        </div>
+        
+        <div class="disclaimer">
+            声明：本资讯内容仅供内部学习交流参考，不构成任何法律建议或投资建议。所涉观点或点评如非事实陈述，均为知识分享，不代表任何机构立场。任何决策请基于个人独立判断，并谨慎考虑自身实际情况。
+            <br><br><a href="archive.html" style="color:rgba(255,255,255,0.2);text-decoration:none;font-size:10px;">历史回顾 →</a>
+        </div>
+    </div>
+</body>
+</html>
