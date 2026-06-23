@@ -6,94 +6,21 @@
     <title>法商小知识 · 历史回顾</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: #0a0a0a;
-            min-height: 100vh;
-            padding: 20px;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            color: #fff;
-        }
+        body { background: #0a0a0a; min-height: 100vh; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #fff; }
         .container { max-width: 420px; margin: 0 auto; }
-        .header {
-            text-align: center;
-            padding: 32px 0 24px;
-        }
-        .header-title {
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            background: linear-gradient(180deg, #c9a96e 0%, #8b7355 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .header-sub {
-            font-size: 11px;
-            color: rgba(255,255,255,0.4);
-            margin-top: 8px;
-            letter-spacing: 1px;
-        }
-        .stats {
-            text-align: center;
-            padding: 12px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 10px;
-            margin-bottom: 24px;
-            font-size: 12px;
-            color: rgba(255,255,255,0.5);
-        }
-        .stats span {
-            color: #c9a96e;
-            font-weight: 600;
-            font-size: 18px;
-        }
+        .header { text-align: center; padding: 32px 0 24px; }
+        .header-title { font-size: 28px; font-weight: 700; letter-spacing: 2px; background: linear-gradient(180deg, #c9a96e 0%, #8b7355 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .header-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 8px; }
+        .stats { text-align: center; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 10px; margin-bottom: 24px; font-size: 12px; color: rgba(255,255,255,0.5); }
+        .stats span { color: #c9a96e; font-weight: 600; font-size: 18px; }
         .entry-list { display: flex; flex-direction: column; gap: 10px; }
-        .entry {
-            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
-            border-radius: 12px;
-            padding: 16px;
-            text-decoration: none;
-            display: block;
-            transition: all 0.2s;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .entry:hover {
-            border-color: rgba(201,169,110,0.3);
-            background: linear-gradient(135deg, #222 0%, #111 100%);
-        }
-        .entry-date {
-            font-size: 11px;
-            color: #c9a96e;
-            margin-bottom: 6px;
-            letter-spacing: 1px;
-        }
-        .entry-topic {
-            font-size: 15px;
-            font-weight: 600;
-            color: #e8e8e8;
-            line-height: 1.5;
-        }
-        .entry-summary {
-            font-size: 12px;
-            color: rgba(255,255,255,0.45);
-            margin-top: 8px;
-            line-height: 1.6;
-        }
-        .back-link {
-            display: block;
-            text-align: center;
-            padding: 20px;
-            color: rgba(255,255,255,0.4);
-            font-size: 13px;
-            text-decoration: none;
-        }
+        .entry { background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%); border-radius: 12px; padding: 16px; text-decoration: none; display: block; border: 1px solid rgba(255,255,255,0.05); transition: all 0.2s; }
+        .entry:hover { border-color: rgba(232,160,191,0.3); background: linear-gradient(135deg, #222 0%, #111 100%); }
+        .entry-date { font-size: 11px; color: #c9a96e; margin-bottom: 6px; letter-spacing: 1px; }
+        .entry-topic { font-size: 15px; font-weight: 600; color: #e8e8e8; line-height: 1.5; }
+        .entry-summary { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 8px; line-height: 1.6; }
+        .back-link { display: block; text-align: center; padding: 20px; color: rgba(255,255,255,0.4); font-size: 13px; text-decoration: none; }
         .back-link:hover { color: #c9a96e; }
-        .empty {
-            text-align: center;
-            padding: 60px 0;
-            color: rgba(255,255,255,0.3);
-            font-size: 14px;
-        }
     </style>
 </head>
 <body>
@@ -102,34 +29,80 @@
             <div class="header-title">法商小知识</div>
             <div class="header-sub">历史回顾</div>
         </div>
-        <div class="stats">已推送 <span id="count">0</span> 篇法商知识</div>
-        <div class="entry-list" id="entry-list">
-            <div class="empty">加载中……</div>
+        <div class="stats">已推送 <span>14</span> 篇法商知识</div>
+        <div class="entry-list">
+            <a class="entry" href="fs_2026-06-24.html">
+                <div class="entry-date">2026-06-24</div>
+                <div class="entry-topic">保单的强制执行——法院能划走你的保单现金价值吗？</div>
+                <div class="entry-summary">保单现金价值不是绝对防执行的护身符。投保人=债务人→法院可强制解除合同划走现金价值；投保人≠债务人→一般安全；身故保险金+指定受益人→受益权优先于债权。先把投保人摆对位置，是资产保护的第一步。</div>
+            </a>
+            <a class="entry" href="fs_2026-06-23.html">
+                <div class="entry-date">2026-06-23</div>
+                <div class="entry-topic">保险合同的「铁三角」——投保人、被保险人、受益人，各管各的谁也替不了谁</div>
+                <div class="entry-summary">投保人→退保权+交费义务；被保险人→指定/变更受益人决定权；受益人→保险金请求权。三者各管一摊，谁也替不了谁。保单架构设计第一步就是摆对这三个角色的位置。</div>
+            </a>
+            <a class="entry" href="fs_2026-06-22.html">
+                <div class="entry-date">2026-06-22</div>
+                <div class="entry-topic">离婚时保险怎么分——婚内买的保单，算不算共同财产？</div>
+                <div class="entry-summary">婚内用共同财产缴费的保单，现金价值可分割；人身属性的保险金（重疾理赔金等）属个人财产。离婚分保单，核心看两问：钱谁出的？保的是谁？</div>
+            </a>
+            <a class="entry" href="fs_2026-06-21.html">
+                <div class="entry-date">2026-06-21</div>
+                <div class="entry-topic">如实告知义务——投保时没说实话，保险公司到底赔不赔？</div>
+                <div class="entry-summary">如实告知是法定义务：问什么答什么，问多少答多少——不问的不说，问了的全说。两年不可抗辩不是万能护身符，故意欺诈不怕过两年。帮客户隐瞒＝给自己埋雷。</div>
+            </a>
+            <a class="entry" href="fs_2026-06-20.html">
+                <div class="entry-date">2026-06-20</div>
+                <div class="entry-topic">夫妻财产约定——婚前协议到底有多大的法律效力？</div>
+                <div class="entry-summary">民法典第1065条：夫妻可以书面约定财产归属。三要件：书面、自愿、内容合法。不是「不信任」的象征，是把模糊地带变清晰规则的工具——先小人后君子，反而减少纠纷。</div>
+            </a>
+            <a class="entry" href="fs_2026-06-19.html">
+                <div class="entry-date">2026-06-19</div>
+                <div class="entry-topic">保险金信托——当保险遇上信托，1+1&gt;2的法商架构</div>
+                <div class="entry-summary">保险金信托就是「保险兜底＋信托分钱」的组合拳——保险保证「一定有钱赔」，信托保证「赔来的钱怎么花你说了算」。它解决了传统保险的三座大山：一次性给钱怕孩子乱花、一次性给钱怕离婚被分、一次给完就再也管不到了。保险金信托让你做到——人走了，爱还在，规则不变。</div>
+            </a>
+            <a class="entry" href="fs_2026-06-18.html">
+                <div class="entry-date">2026-06-18</div>
+                <div class="entry-topic">家族信托的资产隔离功能——信托财产到底能不能被强制执行？</div>
+                <div class="entry-summary">家族信托的资产隔离功能有法律依据，但不是「今日设信托、明日避债务」的工具——真正有效的隔离：①设立时无债务危机 ②放弃过多控制权 ③受益人不只是自己。提前安排才是真隔离，临时突击是假保护。</div>
+            </a>
+            <a class="entry" href="fs_2026-06-17.html">
+                <div class="entry-date">2026-06-17</div>
+                <div class="entry-topic">企业债务隔离——家企混同，老板的个人财产到底安不安全？</div>
+                <div class="entry-summary">公司是有限责任，但家企混同直接把「有限责任」变成「无限连带」——管住账户独立性，搭配指定受益人架构，才是管住自己的家底。</div>
+            </a>
+            <a class="entry" href="fs_2026-06-16.html">
+                <div class="entry-date">2026-06-16</div>
+                <div class="entry-topic">继承纠纷三权博弈——遗赠扶养协议、遗嘱、法定继承，到底谁说了算？</div>
+                <div class="entry-summary">继承的「铁三角」顺序：遗赠扶养协议&gt;遗嘱&gt;法定继承。协议优先于遗嘱，遗嘱优先于法律默认。很多纠纷的根源不是分不公，而是顺序搞错了——协议才是老大。</div>
+            </a>
+            <a class="entry" href="fs_2026-06-15.html">
+                <div class="entry-date">2026-06-15</div>
+                <div class="entry-topic">遗嘱的6种法定形式——写对了是遗嘱，写错了是废纸</div>
+                <div class="entry-summary">遗嘱的核心不是「有没有写」，而是「写得对不对」——6种法定形式各有严格要件，缺一项就是废纸。民法典后最大变化：公证遗嘱不再高人一等，以最后一份有效遗嘱为准。</div>
+            </a>
+            <a class="entry" href="fs_2026-06-14.html">
+                <div class="entry-date">2026-06-14</div>
+                <div class="entry-topic">保险受益人写「法定」还是写名字？差别大了</div>
+                <div class="entry-summary">受益人写名字还是写「法定」，差别就是「直接到账」还是「先还债再分钱」——指定受益人是保险最核心的债务隔离功能，别浪费了。</div>
+            </a>
+            <a class="entry" href="fs_2026-06-13.html">
+                <div class="entry-date">2026-06-13</div>
+                <div class="entry-topic">意定监护——你的晚年谁做主？</div>
+                <div class="entry-summary">意定监护就是「我的晚年我做主」——趁清醒时选好自己信得过的人，比让法律默认排序来决定谁管你靠谱得多。公证+设监督人，双保险。</div>
+            </a>
+            <a class="entry" href="fs_2026-06-12.html">
+                <div class="entry-date">2026-06-12</div>
+                <div class="entry-topic">夫妻共同债务认定——欠了钱要不要一起还？</div>
+                <div class="entry-summary">没签字≠不用还，不借钱≠没义务——判断夫妻共同债务的核心是两问：她知情吗？钱花哪了？只要没用于共同生活/共同经营，就不是共同债务。</div>
+            </a>
+            <a class="entry" href="fs_2026-06-11.html">
+                <div class="entry-date">2026-06-11</div>
+                <div class="entry-topic">离婚时房产怎么分？婚前买的房子，婚后一起还贷，算谁的？</div>
+                <div class="entry-summary">婚前买房的人，让配偶一起还贷——配偶就获得了还贷部分+增值部分的权益。想避免纠纷：①婚前公证 ②婚前协议明确产权 ③婚后还贷用个人账户而非共同账户。</div>
+            </a>
         </div>
         <a href="index.html" class="back-link">← 返回今日推送</a>
     </div>
-
-    <script>
-    fetch('data.json')
-        .then(r => r.json())
-        .then(data => {
-            document.getElementById('count').textContent = data.length;
-            const list = document.getElementById('entry-list');
-            if(data.length === 0) {
-                list.innerHTML = '<div class="empty">暂无历史记录</div>';
-                return;
-            }
-            list.innerHTML = data.reverse().map(item => `
-                <a class="entry" href="${item.file}">
-                    <div class="entry-date">${item.date}</div>
-                    <div class="entry-topic">${item.topic}</div>
-                    <div class="entry-summary">${item.summary}</div>
-                </a>
-            `).join('');
-        })
-        .catch(() => {
-            document.getElementById('entry-list').innerHTML = '<div class="empty">暂无历史记录</div>';
-        });
-    </script>
 </body>
 </html>
