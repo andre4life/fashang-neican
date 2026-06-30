@@ -9,13 +9,13 @@
         body { background: #0a0a0a; min-height: 100vh; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #fff; }
         .container { max-width: 420px; margin: 0 auto; }
         .header { text-align: center; padding: 32px 0 24px; }
-        .header-title { font-size: 28px; font-weight: 700; letter-spacing: 2px; background: linear-gradient(180deg, #c9a96e 0%, #8b7355 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .header-title { font-size: 28px; font-weight: 700; letter-spacing: 2px; color: #c9a96e; }
         .header-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 8px; }
         .stats { text-align: center; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 10px; margin-bottom: 24px; font-size: 12px; color: rgba(255,255,255,0.5); }
         .stats span { color: #c9a96e; font-weight: 600; font-size: 18px; }
         .entry-list { display: flex; flex-direction: column; gap: 10px; }
-        .entry { background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%); border-radius: 12px; padding: 16px; text-decoration: none; display: block; border: 1px solid rgba(255,255,255,0.05); transition: all 0.2s; }
-        .entry:hover { border-color: rgba(232,160,191,0.3); background: linear-gradient(135deg, #222 0%, #111 100%); }
+        .entry { background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%); border-radius: 12px; padding: 16px; text-decoration: none; display: block; border: 1px solid rgba(255,255,255,0.05); }
+        .entry:hover { border-color: rgba(201,169,110,0.3); background: linear-gradient(135deg, #222 0%, #111 100%); }
         .entry-date { font-size: 11px; color: #c9a96e; margin-bottom: 6px; letter-spacing: 1px; }
         .entry-topic { font-size: 15px; font-weight: 600; color: #e8e8e8; line-height: 1.5; }
         .entry-summary { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 8px; line-height: 1.6; }
@@ -29,8 +29,38 @@
             <div class="header-title">法商小知识</div>
             <div class="header-sub">历史回顾</div>
         </div>
-        <div class="stats">已推送 <span>14</span> 篇法商知识</div>
+        <div class="stats">已推送 <span>20</span> 篇法商知识</div>
         <div class="entry-list">
+            <a class="entry" href="fs_2026-06-30.html">
+                <div class="entry-date">2026-06-30</div>
+                <div class="entry-topic">保险法第34条——以死亡为给付条件的保险：被保险人必须书面同意并认可保险金额</div>
+                <div class="entry-summary">以死亡为给付条件的保险，必须被保险人本人书面同意并认可保险金额，否则合同无效。不是保险公司不想赔，是法律不给它赔。投保时多花一分钟确认被保险人亲笔签字，理赔时少花一万分钟打官司。</div>
+            </a>
+            <a class="entry" href="fs_2026-06-29.html">
+                <div class="entry-date">2026-06-29</div>
+                <div class="entry-topic">赠与的撤销权——送出去的钱，还能要回来吗？</div>
+                <div class="entry-summary">658条转移前可反悔，663条事后撤销但条件严格。钱一旦出手主动权就变了。高净值家庭用保单+信托替代一次性赠与，给出去的同时权利还在手里。</div>
+            </a>
+            <a class="entry" href="fs_2026-06-28.html">
+                <div class="entry-date">2026-06-28</div>
+                <div class="entry-topic">保险法第15条——投保人的任意解除权到底有多任意？</div>
+                <div class="entry-summary">投保人想退保就能退——法律赋予的绝对权力，被保险人/受益人无法阻止。保单架构中谁当投保人比选什么产品更值得花时间想清楚。</div>
+            </a>
+            <a class="entry" href="fs_2026-06-27.html">
+                <div class="entry-date">2026-06-27</div>
+                <div class="entry-topic">代位继承vs转继承——都是接力，区别大了</div>
+                <div class="entry-summary">代位继承是替父/母继承（子先于父死，孙替子）；转继承是接了再传（父死了，子还没拿到遗产也死了，子的继承人接着继承）。保险指定受益人直接拿钱走人，不走继承程序。</div>
+            </a>
+            <a class="entry" href="fs_2026-06-26.html">
+                <div class="entry-date">2026-06-26</div>
+                <div class="entry-topic">非婚生子女的法律地位与保险受益人安排——民法典第1071条+保险法第39条</div>
+                <div class="entry-summary">非婚生子女与婚生子女在法律上权利完全平等——能继承、能做保险受益人。保险是解决非婚生子女保障问题的最佳工具：指定受益人→绕过继承纠纷→保险公司直接赔付→私密、确定、高效。受益人一定要写名字，别写法定的。</div>
+            </a>
+            <a class="entry" href="fs_2026-06-25.html">
+                <div class="entry-date">2026-06-25</div>
+                <div class="entry-topic">遗产管理人制度——人走了，谁来管这一摊事？</div>
+                <div class="entry-summary">遗产管理人是民法典继承编最大的制度创新——生前在遗嘱里指定遗产管理人，等于给家人留了一个总管家。更聪明的是：把保单+信托架设好，让大部分钱不经过遗产程序直达受益人——遗产管理人管得越少，家人麻烦越少。</div>
+            </a>
             <a class="entry" href="fs_2026-06-24.html">
                 <div class="entry-date">2026-06-24</div>
                 <div class="entry-topic">保单的强制执行——法院能划走你的保单现金价值吗？</div>
@@ -58,7 +88,7 @@
             </a>
             <a class="entry" href="fs_2026-06-19.html">
                 <div class="entry-date">2026-06-19</div>
-                <div class="entry-topic">保险金信托——当保险遇上信托，1+1&gt;2的法商架构</div>
+                <div class="entry-topic">保险金信托——当保险遇上信托，1+1>2的法商架构</div>
                 <div class="entry-summary">保险金信托就是「保险兜底＋信托分钱」的组合拳——保险保证「一定有钱赔」，信托保证「赔来的钱怎么花你说了算」。它解决了传统保险的三座大山：一次性给钱怕孩子乱花、一次性给钱怕离婚被分、一次给完就再也管不到了。保险金信托让你做到——人走了，爱还在，规则不变。</div>
             </a>
             <a class="entry" href="fs_2026-06-18.html">
@@ -74,7 +104,7 @@
             <a class="entry" href="fs_2026-06-16.html">
                 <div class="entry-date">2026-06-16</div>
                 <div class="entry-topic">继承纠纷三权博弈——遗赠扶养协议、遗嘱、法定继承，到底谁说了算？</div>
-                <div class="entry-summary">继承的「铁三角」顺序：遗赠扶养协议&gt;遗嘱&gt;法定继承。协议优先于遗嘱，遗嘱优先于法律默认。很多纠纷的根源不是分不公，而是顺序搞错了——协议才是老大。</div>
+                <div class="entry-summary">继承的「铁三角」顺序：遗赠扶养协议>遗嘱>法定继承。协议优先于遗嘱，遗嘱优先于法律默认。很多纠纷的根源不是分不公，而是顺序搞错了——协议才是老大。</div>
             </a>
             <a class="entry" href="fs_2026-06-15.html">
                 <div class="entry-date">2026-06-15</div>
