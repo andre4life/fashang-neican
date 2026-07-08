@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>法商小知识 - 2026-07-08</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0a; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+        .card { width: 375px; background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%); border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8); }
+        .header { background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%); padding: 24px 20px; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .tag { font-size: 10px; color: rgba(255, 255, 255, 0.4); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+        .title { font-size: 32px; font-weight: 700; color: #ffffff; letter-spacing: 4px; margin-bottom: 4px; }
+        .subtitle { font-size: 12px; color: rgba(255, 255, 255, 0.5); letter-spacing: 1px; }
+        .content { padding: 24px 20px; }
+        .topic { font-size: 16px; font-weight: 600; color: #ffffff; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid rgba(255, 255, 255, 0.1); }
+        .section { margin-bottom: 20px; }
+        .section-title { font-size: 14px; font-weight: 600; color: #e8e8e8; margin-bottom: 8px; display: flex; align-items: center; }
+        .section-title::before { content: ""; width: 4px; height: 16px; background: linear-gradient(180deg, #c9a96e 0%, #8b7355 100%); margin-right: 10px; border-radius: 2px; }
+        .section-content { font-size: 13px; line-height: 1.8; color: rgba(255, 255, 255, 0.7); padding-left: 14px; }
+        .highlight { color: #c9a96e; font-weight: 500; }
+        .summary { background: rgba(201, 169, 110, 0.1); border-left: 3px solid #c9a96e; padding: 16px; margin-top: 24px; border-radius: 0 8px 8px 0; }
+        .summary-title { font-size: 12px; color: #c9a96e; font-weight: 600; margin-bottom: 8px; }
+        .summary-content { font-size: 13px; color: rgba(255, 255, 255, 0.8); line-height: 1.6; }
+        .archive-banner { display: flex; align-items: center; gap: 8px; background: rgba(201,169,110,0.15); border-left: 4px solid #c9a96e; padding: 10px 20px; margin: 0 20px; border-radius: 0 8px 8px 0; }
+        .archive-banner .ab-icon { font-size: 18px; }
+        .archive-banner .ab-text { font-size: 12px; color: #c9a96e; font-weight: 600; }
+        .archive-banner .ab-link { font-size: 12px; color: #c9a96e; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+        .archive-banner .ab-link:hover { color: #fff; }
+        .disclaimer { font-size: 9px; color: rgba(255, 255, 255, 0.3); padding: 12px 20px; line-height: 1.5; border-top: 1px solid rgba(255, 255, 255, 0.03); }
+        .case-box { background: rgba(255,255,255,0.03); border-radius: 8px; padding: 14px; margin-top: 10px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.06); }
+        .case-label { font-size: 11px; color: #c9a96e; font-weight: 600; margin-bottom: 6px; }
+        .badge-win { display: inline-block; background: rgba(76, 175, 80, 0.15); color: #81c784; font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-right: 4px; }
+        .badge-lose { display: inline-block; background: rgba(244, 67, 54, 0.15); color: #e57373; font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-right: 4px; }
+        .pill { display: inline-block; background: rgba(201,169,110,0.15); color: #c9a96e; font-size: 10px; padding: 2px 10px; border-radius: 12px; margin: 2px 4px 2px 0; }
+        .flow-step { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+        .flow-num { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: rgba(201,169,110,0.2); color: #c9a96e; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <div class="tag">JUST INTERNAL INFORMATION</div>
+            <div class="title">每日一条法商小知识</div>
+        </div>
+        
+        <div class="content">
+            <div class="archive-banner">
+                <span class="ab-icon">📋</span>
+                <span class="ab-text">往期回顾</span>
+                <a class="ab-link" href="archive.html">点击查看全部历史 →</a>
+            </div>
+            <div class="topic">民法典第1066条——婚内也能分割共同财产？不离婚也能分！</div>
+            
+            <div class="section">
+                <div class="section-title">法条原文</div>
+                <div class="section-content">
+                    《民法典》第1066条：<br><br>
+                    婚姻关系存续期间，有下列情形之一的，夫妻一方可以向人民法院请求分割共同财产：<br><br>
+                    <span class="highlight">（一）一方有隐藏、转移、变卖、毁损、挥霍夫妻共同财产或者伪造夫妻共同债务等严重损害夫妻共同财产利益的行为；</span><br><br>
+                    <span class="highlight">（二）一方负有法定扶养义务的人患重大疾病需要医治，另一方不同意支付相关医疗费用。</span><br><br>
+                    关联法条：<br>
+                    《民法典》第1062条——夫妻共同财产的范围（工资、奖金、投资收益、知识产权收益等）<br>
+                    《民法典》第1092条——离婚时一方隐藏转移变卖毁损共同财产→可以少分或不分<br>
+                    《最高人民法院关于适用民法典婚姻家庭编的解释（一）》第38条——婚内财产分割不构成离婚的原因
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">为什么这条是「秘密武器」？</div>
+                <div class="section-content">
+                    大多数人的认知是：<span class="highlight">离婚=分财产，不离就动不了。</span><br><br>
+                    但民法典第1066条打破了这个规则——<span class="highlight">即使不离婚，在特定情形下也能向法院申请分割共同财产。</span><br><br>
+                    这条规定对婚姻中的弱势方是<span class="highlight">重大保护</span>：<br><br>
+                    ✅ 发现配偶偷偷转移财产→不用等离婚，马上就能止损<br>
+                    ✅ 配偶挥霍共同财产→立即申请保全，防止钱被花光<br>
+                    ✅ 重病需要花钱，配偶不给→直接婚内分钱看病<br><br>
+                    核心逻辑：<span class="highlight">婚姻关系存续≠财产必须捆绑。</span>法律给你一个「紧急制动阀」——情况紧急、损失扩大之前，先拉闸再说。
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">2个裁判案例（判决书数据）</div>
+                <div class="section-content">
+                    <div class="case-box">
+                        <div class="case-label">案例一：丈夫偷偷转移400万给第三者 → 妻子婚内追回</div>
+                        <span class="badge-win">婚内分割获支持</span><br><br>
+                        张女发现丈夫李男在婚姻存续期间，陆续将400万夫妻共同存款转给婚外同居者刘某，并购买了房产登记在刘某名下。<br><br>
+                        张女向法院起诉，要求婚内分割共同财产——不离婚，但要把这400万追回来。<br><br>
+                        法院认定：<span class="highlight">李男未经配偶同意，擅自将大额共同财产赠与婚外第三者，属于「隐藏、转移夫妻共同财产」的行为，严重损害了张女的财产权益。</span><br><br>
+                        判决：<br>
+                        ✅ 准予婚内分割<br>
+                        ✅ 确认李男赠与刘某的400万为夫妻共同财产<br>
+                        ✅ 刘某返还相应财产<br><br>
+                        <span class="highlight">裁判要旨：</span>婚内向第三者转移财产，受害配偶不用等离婚——直接依据第1066条申请婚内分割，法院支持。<br>
+                        注意：赠与婚外第三者的行为因违背公序良俗而无效（民法典第153条+第1066条双重保护）。
+                    </div>
+                    
+                    <div class="case-box">
+                        <div class="case-label">案例二：妻子患癌需要治疗费，丈夫不同意出钱 → 婚内分割获支持</div>
+                        <span class="badge-win">婚内分割获支持</span><br><br>
+                        王女被诊断为乳腺癌，需要手术治疗及后续化疗，费用约30万元。<br><br>
+                        王女的丈夫赵男名下存款200万元，但拒绝支付王女的医疗费用，理由是「治疗费太贵，不一定治得好」——实际上是在拖延，因为夫妻关系已经恶化。<br><br>
+                        王女向法院申请婚内分割共同财产，用分割出来的钱支付医疗费用。<br><br>
+                        法院认定：<span class="highlight">王女患重大疾病需要医治，赵男作为配偶不同意支付相关医疗费用，完全符合民法典第1066条第（二）项的情形。</span><br><br>
+                        判决：<br>
+                        ✅ 准予婚内分割<br>
+                        ✅ 从共同存款中划出30万元归王女用于治疗<br><br>
+                        <span class="highlight">裁判要旨：</span>「负有法定扶养义务的人」包括配偶本人（夫妻之间有相互扶养的义务）。一方重大疾病另一方不同意出钱——不是「家庭内部矛盾」，法院可以介入。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">实操场景——业务员怎么帮客户用好这条</div>
+                <div class="section-content">
+                    <span class="highlight">场景一：客户怀疑配偶在偷偷转移共同财产</span><br>
+                    客户说：「我老公最近在偷偷卖房、转账，但我还不想离婚。有什么办法先把钱保住？」<br><br>
+                    你可以告诉他：<br>
+                    「法律给了您一个紧急刹车权——民法典第1066条：<span class="highlight">即使不离婚，如果一方隐藏、转移、挥霍共同财产，您可以直接向法院申请婚内分割。</span>」<br><br>
+                    ✅ 先收集证据（银行流水、转账记录、房产过户信息）<br>
+                    ✅ 申请诉前财产保全（冻结对方账户和资产）<br>
+                    ✅ 再依据第1066条申请分割——保住自己的那一半<br><br>
+                    <span class="highlight">场景二：夫妻关系不好，一方大病另一方不管</span><br>
+                    客户是家庭主妇，没有收入，体检发现重疾需要治疗。丈夫说：「没钱，你自己想办法。」<br><br>
+                    你可以告诉她：<br>
+                    「法律说——夫妻有相互扶养的义务。您丈夫不给出钱，您可以依据民法典第1066条第（二）项，<span class="highlight">直接向法院申请婚内分割共同财产用于治疗。</span>」<br><br>
+                    ✅ 不要忍气吞声，更不要因为「他还不想离」就放弃治疗<br>
+                    ✅ 婚内分割不离婚，只是为了保护自己的基本生存权利<br><br>
+                    <span class="highlight">场景三：高净值客户的婚前财产规划</span><br>
+                    这点往往被忽略——给客户做财富规划时，可以提醒：<br>
+                    「婚内分割制度的存在，意味着<span class="highlight">即使没离婚，配偶的不良行为也可能导致家庭资产被法院提前分割。</span>」<br><br>
+                    解决方案：<br>
+                    ✅ 大额资产通过保单+信托架设保护（指定受益人→保险金不走共同财产）<br>
+                    ✅ 夫妻财产约定（第1065条书面协议）提前锁定各自财产边界<br>
+                    ✅ 被保人≠投保人→保单资产的控制权掌握在你想给的人手上
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">婚内分割 vs 离婚分割——关键区别</div>
+                <div class="section-content">
+                    <table style="width:100%; border-collapse: collapse; font-size: 12px; color: rgba(255,255,255,0.7);">
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 8px 6px; text-align: left; color: #c9a96e;">比较项</th>
+                            <th style="padding: 8px 6px; text-align: center; color: #c9a96e;">婚内分割（第1066条）</th>
+                            <th style="padding: 8px 6px; text-align: center; color: #c9a96e;">离婚分割</th>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 8px 6px;">前提条件</td>
+                            <td style="padding: 8px 6px; text-align: center;">严重损害共同财产<br>or 重病不给治</td>
+                            <td style="padding: 8px 6px; text-align: center;">离婚</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 8px 6px;">适用范围</td>
+                            <td style="padding: 8px 6px; text-align: center;">严格限定两种情形</td>
+                            <td style="padding: 8px 6px; text-align: center;">全部共同财产</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 8px 6px;">分割范围</td>
+                            <td style="padding: 8px 6px; text-align: center;">受影响部分（保全+分割）</td>
+                            <td style="padding: 8px 6px; text-align: center;">全部共同财产一揽子处理</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 8px 6px;">目的</td>
+                            <td style="padding: 8px 6px; text-align: center;">止损+保护权益</td>
+                            <td style="padding: 8px 6px; text-align: center;">彻底分离财产关系</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 6px;">对婚姻的影响</td>
+                            <td style="padding: 8px 6px; text-align: center;">婚姻不受影响</td>
+                            <td style="padding: 8px 6px; text-align: center;">婚姻终止</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">给业务员的4个实用提醒</div>
+                <div class="section-content">
+                    <span class="highlight">① 1066条≠随时可以分</span><br>
+                    婚内分割是「例外制度」，不是「常态制度」——<span class="highlight">只有两种法定情形才能启动</span>：要么对方在损害财产，要么大病不给治。<br>
+                    客户问「我就想分一部分自己管着行不行？」——不行，这不是第1066条的目的。<br><br>
+                    <span class="highlight">② 证据是关键，提前布局</span><br>
+                    客户发现配偶有转移资产的迹象时——第一时间：<br>
+                    ✅ 收集转账记录、聊天记录<br>
+                    ✅ 申请诉前财产保全（法院可以冻结账户）<br>
+                    ✅ 再起诉婚内分割<br>
+                    越晚行动，钱越难追回。<br><br>
+                    <span class="highlight">③ 第1066条+保险的组合策略</span><br>
+                    客户作为投保人，以自己为被保险人投保年金/重疾险——这部分保单的现金价值属于共同财产吗？<br>
+                    看缴费来源：如果是共同财产缴费→属于共同财产。<br>
+                    但如果客户通过第1065条夫妻财产约定，把保费来源约定为个人财产→保单资产就是个人财产，不受婚内分割影响。<br><br>
+                    <span class="highlight">④ 提醒客户：第1066条是「止损工具」，不是「报复工具」</span><br>
+                    有些客户听说有这条，想拿它来「治一下」配偶——法院不会支持。第1066条的本质是<span class="highlight">保护受害方的基本权益不受继续损害</span>，不是惩罚对方的手段。动机不对，法院驳回去。
+                </div>
+            </div>
+            
+            <div class="summary">
+                <div class="summary-title">核心要点</div>
+                <div class="summary-content">
+                    民法典第1066条：<span class="highlight">碰到严重损害共同财产的情形，不离婚也能分！</span><br><br>
+                    两条触发条件：<br>
+                    <span class="highlight">① 隐藏/转移/挥霍共同财产</span>→发现就申请止损<br>
+                    <span class="highlight">② 重病不给治</span>→人命关天，法院会支持<br><br>
+                    记住三句话：<br>
+                    ✅ 「不离婚≠分不了钱」——法律给了你免下车就能止损的权利<br>
+                    ✅ 「提前布局＞事后补救」——夫妻财产约定+保单架构，把保护做在前面<br>
+                    ✅ 「1066条是紧急刹车，不是日常巡航」——只有在大灾大难时才用得着<br><br>
+                    <span class="highlight">一句话记牢：</span>「别等离婚才止损——民法典给了你中途下车的权利，关键是你得知道怎么用。」
+                </div>
+            </div>
+        </div>
+        
+        <div class="disclaimer">
+            声明：本资讯内容仅供内部学习交流参考，不构成任何法律建议或投资建议。所涉观点如非事实陈述，均为知识分享，不代表任何机构立场。任何决策请基于个人独立判断，并谨慎考虑自身实际情况。
+            <br><br><a href="archive.html" style="color:rgba(255,255,255,0.2);text-decoration:none;font-size:10px;">历史回顾 →</a>
+        </div>
+    </div>
+</body>
+</html>
