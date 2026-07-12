@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>法商小知识 - 2026-07-12</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0a; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+        .card { width: 375px; background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%); border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8); }
+        .header { background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%); padding: 24px 20px; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .tag { font-size: 10px; color: rgba(255, 255, 255, 0.4); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+        .title { font-size: 32px; font-weight: 700; color: #ffffff; letter-spacing: 4px; margin-bottom: 4px; }
+        .subtitle { font-size: 12px; color: rgba(255, 255, 255, 0.5); letter-spacing: 1px; }
+        .content { padding: 24px 20px; }
+        .topic { font-size: 16px; font-weight: 600; color: #ffffff; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid rgba(255, 255, 255, 0.1); }
+        .section { margin-bottom: 20px; }
+        .section-title { font-size: 14px; font-weight: 600; color: #e8e8e8; margin-bottom: 8px; display: flex; align-items: center; }
+        .section-title::before { content: ""; width: 4px; height: 16px; background: linear-gradient(180deg, #c9a96e 0%, #8b7355 100%); margin-right: 10px; border-radius: 2px; }
+        .section-content { font-size: 13px; line-height: 1.8; color: rgba(255, 255, 255, 0.7); padding-left: 14px; }
+        .highlight { color: #c9a96e; font-weight: 500; }
+        .summary { background: rgba(201, 169, 110, 0.1); border-left: 3px solid #c9a96e; padding: 16px; margin-top: 24px; border-radius: 0 8px 8px 0; }
+        .summary-title { font-size: 12px; color: #c9a96e; font-weight: 600; margin-bottom: 8px; }
+        .summary-content { font-size: 13px; color: rgba(255, 255, 255, 0.8); line-height: 1.6; }
+        .archive-banner { display: flex; align-items: center; gap: 8px; background: rgba(201,169,110,0.15); border-left: 4px solid #c9a96e; padding: 10px 20px; margin: 0 20px; border-radius: 0 8px 8px 0; }
+        .archive-banner .ab-icon { font-size: 18px; }
+        .archive-banner .ab-text { font-size: 12px; color: #c9a96e; font-weight: 600; }
+        .archive-banner .ab-link { font-size: 12px; color: #c9a96e; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+        .archive-banner .ab-link:hover { color: #fff; }
+        .disclaimer { font-size: 9px; color: rgba(255, 255, 255, 0.3); padding: 12px 20px; line-height: 1.5; border-top: 1px solid rgba(255, 255, 255, 0.03); }
+        .case-box { background: rgba(255,255,255,0.03); border-radius: 8px; padding: 14px; margin-top: 10px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.06); }
+        .case-label { font-size: 11px; color: #c9a96e; font-weight: 600; margin-bottom: 6px; }
+        .badge-win { display: inline-block; background: rgba(76, 175, 80, 0.15); color: #81c784; font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-right: 4px; }
+        .badge-lose { display: inline-block; background: rgba(244, 67, 54, 0.15); color: #e57373; font-size: 10px; padding: 2px 8px; border-radius: 4px; margin-right: 4px; }
+        .pill { display: inline-block; background: rgba(201,169,110,0.15); color: #c9a96e; font-size: 10px; padding: 2px 10px; border-radius: 12px; margin: 2px 4px 2px 0; }
+        .flow-step { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+        .flow-num { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: rgba(201,169,110,0.2); color: #c9a96e; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <div class="tag">JUST INTERNAL INFORMATION</div>
+            <div class="title">每日一条法商小知识</div>
+        </div>
+        
+        <div class="content">
+            <div class="archive-banner">
+                <span class="ab-icon">📋</span>
+                <span class="ab-text">往期回顾</span>
+                <a class="ab-link" href="archive.html">点击查看全部历史 →</a>
+            </div>
+            <div class="topic">保险法第89-92条——保险公司会倒闭吗？倒闭了我的保单怎么办？</div>
+            
+            <div class="section">
+                <div class="section-title">法条原文</div>
+                <div class="section-content">
+                    这是保险法对「保险公司安全性」最核心的几道防线——<br><br>
+                    
+                    <span class="highlight">第一道防线：保险公司不能随便说散就散</span><br><br>
+                    《保险法》第89条：<br>
+                    <span class="highlight">「保险公司因分立、合并需要解散，或者股东会、股东大会决议解散，或者公司章程规定的解散事由出现，经国务院保险监督管理机构批准后解散。经营有人寿保险业务的保险公司，除因分立、合并或者被依法撤销外，不得解散。」</span><br><br>
+                    大白话：一般公司股东开会就能解散——保险公司不行。<span class="highlight">做人寿保险的保险公司，只有三种情况可以解散：①被别的公司合并 ②公司拆分成两个 ③监管依法撤销牌照。股东自己说「不干了」？法律不允许。</span><br><br>
+                    
+                    <span class="highlight">第二道防线：真要破产了，保单必须「有人接盘」</span><br><br>
+                    《保险法》第92条：<br>
+                    <span class="highlight">「经营有人寿保险业务的保险公司被依法撤销或者被依法宣告破产的，其持有的人寿保险合同及责任准备金，必须转让给其他经营有人寿保险业务的保险公司；不能同其他保险公司达成转让协议的，由国务院保险监督管理机构指定经营有人寿保险业务的保险公司接受转让。转让或者由国务院保险监督管理机构指定接受转让前款规定的人寿保险合同及责任准备金的，应当维护被保险人、受益人的合法权益。」</span><br><br>
+                    大白话：保险公司破产了——<span class="highlight">你的人寿保险合同不能作废，必须由另一家保险公司接手继续履行。如果找不到自愿接手的公司，国家指定一家来接管。而且法律明确说了：必须维护被保险人和受益人的合法权益，不能因为换了东家就让你的保障打折扣。</span><br><br>
+                    
+                    <span class="highlight">第三道防线：保险保障基金——全行业互保</span><br><br>
+                    《保险法》第100条：<br>
+                    <span class="highlight">「保险公司应当缴纳保险保障基金。保险保障基金应当集中管理，并在下列情形下统筹使用：（一）在保险公司被撤销或者被宣告破产时，向投保人、被保险人或者受益人提供救济；（二）在保险公司被撤销或者被宣告破产时，向依法接受其人寿保险合同的保险公司提供救济；（三）国务院规定的其他情形。」</span><br><br>
+                    大白话：每一家保险公司都交「保护费」到一个公共基金池——<span class="highlight">不管哪家公司出事，保险保障基金都可以拿出来兜底。截止2025年底，保险保障基金规模已超过3000亿元，是中国金融安全网的重要组成部分。</span>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">保险公司破产了，保单到底安不安全？</div>
+                <div class="section-content">
+                    这个问题，99%的客户都问过——<br><br>
+                    「你让我把几十万、几百万放到保险里，万一保险公司倒闭了怎么办？」<br><br>
+                    答案是：<span class="highlight">从中国保险业恢复运营以来，没有一张人寿保单因为保险公司破产而失效过。</span><br><br>
+                    不是保险公司不会破产，而是法律机制保证了保单不会失效——<br><br>
+                    
+                    让我们拆解一下保险公司的安全体系，从外到内四层：<br><br>
+                    
+                    <span class="highlight">🛡️ 第一层：门槛极高——开保险公司比开银行还难</span><br>
+                    保险法第68条：注册资本最低2亿元——且必须是实缴货币资本。实际上中国寿险公司的注册资本普遍在10亿以上。<br>
+                    保险法第97条：注册资本的20%必须存到指定银行做保证金，不能动用。<br>
+                    保险法第99条：每年提取利润的10%做「公积金」，直到公积金总额达到注册资本50%以上。<br><br>
+                    
+                    <span class="highlight">🛡️ 第二层：偿付能力监管——随时盯着</span><br>
+                    银保监会（现国家金融监督管理总局）对保险公司实行严格的偿付能力监管——<br>
+                    ✅ 综合偿付能力充足率 > 100%（核心指标）<br>
+                    ✅ 核心偿付能力充足率 > 50%<br>
+                    ✅ 风险综合评级 B 类以上<br>
+                    一旦踩线，监管立即采取限制措施：限制新业务、限制分红、限制股东分红、限制高管薪酬——直到改善为止。<br><br>
+                    
+                    <span class="highlight">🛡️ 第三层：破产了保单有人接——法律强制</span><br>
+                    保险法第92条是人寿保单的「免死金牌」——<br>
+                    别的公司破产了，你的债权只能按比例受偿，能拿回来多少算多少。<br>
+                    但人寿保单不一样：<span class="highlight">第92条强制要求接盘公司继续履行合同，而且必须在维护被保险人权益的前提下接。</span><br><br>
+                    
+                    <span class="highlight">🛡️ 第四层：保险保障基金——最后的兜底</span><br>
+                    万一接盘公司也需要资金支持怎么办？<br>
+                    保险保障基金就出手了——目前超过3000亿元的规模，专门应对极端情况。<br>
+                    历史上已经用过三次：新华人寿（2007）、中华联合财险（2011）、安邦集团（2018）——全都有惊无险。<br><br>
+                    
+                    <span class="highlight">结论很简单：</span><br>
+                    「保险公司可以破产，但你的保单不会被破产——<span class="highlight">法律要求必须有人接盘，国家指定也要有人接盘，保险保障基金兜底。</span>」<br><br>
+                    「而且中国保险业40年了，还没有任何人寿保单因为公司破产而失效过——这句话可以告诉每一位客户。」
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">三个真实案例——保险公司「出事」后发生了什么</div>
+                <div class="section-content">
+                    <div class="case-box">
+                        <div class="case-label">案例一：新华人寿（2007年）——偿付能力不足，改制焕新</div>
+                        <span class="badge-win">保单零影响</span><br><br>
+                        2006年，新华人寿因原董事长违规挪用资金，导致公司偿付能力大幅下降。<br><br>
+                        2007年，保险保障基金首次出手——<span class="highlight">以16.8亿元收购新华人寿约38.8%的股权，成为第一大股东。</span><br><br>
+                        保险保障基金控股期间，新华人寿的经营管理完全正常——<br>
+                        ✅ 所有保单继续有效，理赔正常进行<br>
+                        ✅ 新业务正常拓展<br>
+                        ✅ 客户没有感受到任何变化<br><br>
+                        2009年，保险保障基金将持有的新华人寿股权溢价转让，获利约12.5亿元退出。<br>
+                        新华人寿后来于2011年在A+H股同步上市。<br><br>
+                        <span class="highlight">关键启示：</span>保险保障基金不是「亏了再补」——它可以直接控股问题公司，先稳住经营，再找合适买家退出。保单持有人全程不受影响。
+                    </div>
+                    
+                    <div class="case-box">
+                        <div class="case-label">案例二：安邦保险（2018年）——因违法经营被接管，保单全额兑付</div>
+                        <span class="badge-win">保单全额兑付</span><br><br>
+                        2018年2月，安邦集团因原董事长涉嫌经济犯罪，被原保监会依法接管。<br><br>
+                        安邦集团当时的资产规模近2万亿——是中国保险业有史以来最大的问题机构。<br><br>
+                        但保单持有人的权益完全不受影响——<br>
+                        ✅ 保险保障基金注资608亿元<br>
+                        ✅ 2020年新设「大家保险集团」承接安邦全部合规保单<br>
+                        ✅ 所有已售保单继续有效，理赔不受任何影响<br>
+                        ✅ 到期的保单按合同约定全额兑付<br><br>
+                        <span class="highlight">关键启示：</span>近2万亿规模的保险公司出问题，处理方案仍然是「保单全额兑付、客户零损失」——因为法律（第92条）和国家机制决定了这一点。安邦的处理是中国保险保障制度能力的一次实战检验。<br><br>
+                        <span class="highlight">一句话总结：</span>「安邦那么大，都撑住了——你还担心什么？」
+                    </div>
+                    
+                    <div class="case-box">
+                        <div class="case-label">案例三：华夏人寿/天安人寿（2020年）——被接管后平稳过渡</div>
+                        <span class="badge-win">保单零影响</span><br><br>
+                        2020年7月，华夏人寿、天安人寿等四家保险机构因触发了保险法规定的接管条件，被银保监会依法接管。<br><br>
+                        接管后：<br>
+                        ✅ 所有保单继续有效，理赔正常<br>
+                        ✅ 新业务照常开展<br>
+                        ✅ 客户服务和保单权益完全不受影响<br><br>
+                        2021年，保险保障基金和多家机构联合出资，分别设立新的保险公司承接以上几家公司的保单业务：华夏人寿→瑞众人寿，天安人寿→中汇人寿。<br><br>
+                        <span class="highlight">关键启示：</span>被接管的三家寿险公司，总保费规模在行业内排名都不低——但处理方案在接管时就已明确：客户的保单权益不受影响。而且整个接管过程中，没有一张保单因此失效或打折。<br><br>
+                        <span class="highlight">一句话总结：</span>「监管出手不是保险公司要倒——而是国家要确保它倒不了。」
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">「保险公司不会倒」vs「保险公司倒了保单也不怕」</div>
+                <div class="section-content">
+                    很多人对客户讲「我们公司是大公司，不会倒闭的」——<br><br>
+                    <span class="highlight">这种说法有风险，而且不专业。</span><br><br>
+                    风险在哪？<br><br>
+                    ✅ 从法律上讲，保险公司确实可能被撤销——第89条明确说了「可以解散」的例外情况<br>
+                    ✅ 从历史上看，确实有保险公司被接管、被重组的先例<br>
+                    ✅ 你越承诺「不会倒」，客户越觉得你在忽悠他<br><br>
+                    正确的讲法应该是这样的：<br><br>
+                    <span class="highlight">「王总，中国的保险公司确实可能破产——法律没有给任何保险公司'不死金牌'。但保险法第92条规定了：哪怕保险公司破产了，你的保单也必须由另一家公司接手继续履行。而且行业还有保险保障基金兜底，3000多亿的规模。中国保险业40多年了，没有一张人寿保单因为公司经营问题失效过——这个事实比任何承诺都有说服力。」</span><br><br>
+                    四个字：<span class="highlight">「法律保障，历史验证。」</span><br><br>
+                    这样讲的好处：<br>
+                    ✅ 实事求是不忽悠——客户反而更信你<br>
+                    ✅ 把问题从「这家公司行不行」升级为「整个制度行不行」——你不用担心和同业比公司大小<br>
+                    ✅ 只要客户还买保险、还放钱到保险里，他关心的不是某一家的安全，是整个体系的安全<br><br>
+                    <span class="highlight">核心逻辑：你不需要证明这家公司不会倒——你只需要证明这个行业倒了也没事。</span>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">业务员必背——客户问「保险公司倒闭了怎么办」的标准话术</div>
+                <div class="section-content">
+                    <span class="highlight">客户问：「你把钱放保险里，万一保险公司倒闭了怎么办？」</span><br><br>
+                    
+                    <span class="highlight">第一步：点头承认问题本身合理</span><br>
+                    「这个问题问得好——保险公司也是企业，企业都有经营风险。法律也没说保险公司不能破产。但您需要了解的是：<span class="highlight">中国的保险法给保单上了一道其他金融机构都没有的'保险'。</span>」<br><br>
+                    
+                    <span class="highlight">第二步：用「三层保护」建立信任</span><br>
+                    「中国的保单有三层保护——<br>
+                    ✅ 第一层：<span class="highlight">门槛保护</span>——开保险公司最低2亿实缴资本，每年还要提取保证金和公积金（保险法第97条、第99条）<br>
+                    ✅ 第二层：<span class="highlight">监管保护</span>——国家金融监管局持续监控偿付能力，踩线就限制业务（偿付能力监管规则）<br>
+                    ✅ 第三层：<span class="highlight">保单保护</span>——保险法第92条强制规定：人寿保单不能因为公司破产而失效，必须由另一家公司接盘继续履行»<br><br>
+                    
+                    <span class="highlight">第三步：用历史和事实收尾</span><br>
+                    「而且中国保险业40年了——新华、安邦、华夏、天安，四家出过问题的公司、近万亿的保单——没有一张因为公司经营问题而失效过。保险保障基金3000多亿的资金，就是为了应对这种情况准备的。<br><br>
+                    <span class="highlight">结论就是：您的保单不是建立在某一家公司的经营能力上，而是建立在整个保险法律体系和国家金融安全网上。</span>」<br><br>
+                    
+                    <span class="highlight">第四步（可选）：大型保险公司 vs 小型保险公司的安全对比</span><br>
+                    如果客户追问「小公司也是安全的吗？」——<br>
+                    「不管公司大小，第92条的保护是一样的——大公司出事了也得找接盘，小公司出事了也得找接盘。法律没有'大公司保更多'或'小公司保更少'的说法。<br><br>
+                    而且您想：<span class="highlight">小公司因为体量小，反而更容易被大公司接盘——安邦那么大反而花了好几年才处理完。</span><br><br>
+                    所以不用纠结大小——产品好不好、条款对你好不好、服务好不好，这些才是您应该关注的核心问题。公司安全的问题，法律已经替您想好了。」<br><br>
+                    
+                    <span class="highlight">终极一句话：</span>「保险公司破产这件事，保险法第92条已经替您兜底了——您的关注点应该放在：这个产品能不能解决您的问题。」
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">第92条 vs 其他金融产品的破产保护——保险的独特优势</div>
+                <div class="section-content">
+                    很多人不知道——「保单不能废」这件事，是保险法特有的保护，不是所有理财产品都有：<br><br>
+                    
+                    <table style="width:100%; border-collapse: collapse; font-size: 11.5px; color: rgba(255,255,255,0.7);">
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 8px 6px; text-align: left; color: #c9a96e;">金融产品</th>
+                            <th style="padding: 8px 6px; text-align: center; color: #c9a96e;">保护机制</th>
+                            <th style="padding: 8px 6px; text-align: center; color: #c9a96e;">保护力度</th>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 8px 6px;">银行定期存款</td>
+                            <td style="padding: 8px 6px; text-align: center;">存款保险（50万以内全额保障）</td>
+                            <td style="padding: 8px 6px; text-align: center;"><span class="highlight">50万有上限</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 8px 6px;">银行理财</td>
+                            <td style="padding: 8px 6px; text-align: center;">资管新规后不保本</td>
+                            <td style="padding: 8px 6px; text-align: center;">❌ 无刚性保护</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 8px 6px;">券商/基金</td>
+                            <td style="padding: 8px 6px; text-align: center;">证券投资者保护基金（有限）</td>
+                            <td style="padding: 8px 6px; text-align: center;">有限保护</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 8px 6px;">信托产品</td>
+                            <td style="padding: 8px 6px; text-align: center;">信托赔偿准备金</td>
+                            <td style="padding: 8px 6px; text-align: center;">❌ 无兜底</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 6px;"><span class="highlight">人寿保险保单</span></td>
+                            <td style="padding: 8px 6px; text-align: center;"><span class="highlight">第92条强制接盘+保险保障基金+保证金+公积金</span></td>
+                            <td style="padding: 8px 6px; text-align: center;"><span class="highlight">✅ 无上限、全兜底</span></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <span class="highlight">结论很清晰：</span><br>
+                    银行有50万的上限——超出的部分要看银行清算结果。<br>
+                    理财、信托、基金——亏了就亏了，没有兜底机制。<br>
+                    <span class="highlight">但人寿保单——法律强制接盘，行业保障基金兜底，没有金额上限。</span><br><br>
+                    「您存在银行的500万，万一银行出了问题，只有50万有存款保险保障。但您存在保险里的500万——第92条说了：就算公司倒了，也要有人继续管您的保单，而且合同约定的权益一样不能少。这不是某家公司的承诺，这是国家法律的承诺。」<br><br>
+                    <span class="highlight">做保险销售必知：</span>当客户把保险和银行存款比收益的时候，你不需要和他比收益——把「破产保护的上限」这个话题抛出来，银行的50万上限和保险的无上限接盘义务，一下就拉开了差距。
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">特别提醒——第92条保护的是「人寿保险」，不是所有保险</div>
+                <div class="section-content">
+                    注意一个关键细节：<br><br>
+                    <span class="highlight">保险法第92条说的是「经营有人寿保险业务的保险公司」——不是所有保险都受第92条保护。</span><br><br>
+                    ✅ 受第92条保护的：人寿保险（终身寿险、定期寿险、两全保险、年金保险）<br>
+                    ❌ 不受第92条直接保护的：财产险、意外险、健康险（短期医疗险等）<br><br>
+                    这是因为：<br>
+                    ✅ 人寿保险是长期合同，缴费期可能长达20年、30年——客户把一生的积蓄都放在里面，法律必须给予最强保护<br>
+                    ❌ 意外险和健康险一般是短期险（一年一保），保险公司破产了——大不了换一家公司买，损失有限<br><br>
+                    那客户买的年金险、增额终身寿呢？<br>
+                    <span class="highlight">答：都属于人寿保险——第92条全部覆盖。</span><br><br>
+                    <span class="highlight">一句话：</span>「您买的长期寿险和年金险，是保险法保护力度最大的产品类型——第92条就是为您这种情况量身定做的。」
+                </div>
+            </div>
+            
+            <div class="summary">
+                <div class="summary-title">核心要点</div>
+                <div class="summary-content">
+                    《保险法》第89条+第92条：<span class="highlight">人寿保险公司不能随便解散——真要破产了，保单必须由另一家公司接盘继续履行，行业保障基金兜底，法律强制维护被保险人、受益人权益。</span><br><br>
+                    四层安全体系：<br>
+                    <span class="highlight">① 门槛高</span>——注册资本最低2亿+20%保证金+10%法定公积金<br>
+                    <span class="highlight">② 监管严</span>——偿付能力三色预警，踩线立即限制<br>
+                    <span class="highlight">③ 破产有接盘</span>——第92条强制接盘合同继续有效<br>
+                    <span class="highlight">④ 行业有基金</span>——保险保障基金3000亿+兜底<br><br>
+                    三句话记牢：<br>
+                    ✅ 「保险公司可以破产，但你的保单不会失效——法律要求必须有人接盘继续管」<br>
+                    ✅ 「中国保险业40年，没有一张人寿保单因公司经营问题失效过」<br>
+                    ✅ 「银行的保护有50万上限，第92条的保单保护没有上限——这不是公司承诺，是法律承诺」<br><br>
+                    <span class="highlight">一句话暴击：</span>「你不需要证明这家公司不会倒——你只需要证明这个行业倒了也没事。」
+                </div>
+            </div>
+        </div>
+        
+        <div class="disclaimer">
+            声明：本资讯内容仅供内部学习交流参考，不构成任何法律建议或投资建议。所涉观点如非事实陈述，均为知识分享，不代表任何机构立场。任何决策请基于个人独立判断，并谨慎考虑自身实际情况。
+            <br><br><a href="archive.html" style="color:rgba(255,255,255,0.2);text-decoration:none;font-size:10px;">历史回顾 →</a>
+        </div>
+    </div>
+</body>
+</html>
