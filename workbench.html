@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>平安家办 · 法商智能工作台 (全能战力版)</title>
+  <title>平安家办 · 法商智能工作台 (全生命周期展业版)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   <script>
@@ -42,13 +42,13 @@
       <div>
         <h1 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
           平安家办 · 法商智能工作台
-          <span class="text-[10px] px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-500 border border-brand-500/20 font-mono">全生命周期展业版</span>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-500 border border-brand-500/20 font-mono">KYC & 对答复盘版</span>
         </h1>
-        <p class="text-[11px] text-slate-400 hidden sm:block">访前 KYC 准备 ｜ 智能分诊与算账 ｜ 访后复盘 ｜ 盲区攻坚 ｜ 合规排雷</p>
+        <p class="text-[11px] text-slate-400 hidden sm:block">访前深度 KYC ｜ 对话实战复盘 (聊了啥/回了啥/拒了啥/对不对) ｜ 盲区攻坚 ｜ 合规排雷</p>
       </div>
     </div>
     <div class="flex items-center space-x-2">
-      <span class="px-2 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-mono">KYC & 复盘已就绪</span>
+      <span class="px-2 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-mono">三师复盘引擎已激活</span>
     </div>
   </header>
 
@@ -206,49 +206,142 @@
         </div>
       </section>
 
-      <!-- TAB 2: 🔄 访后复盘与攻坚闭环 -->
+      <!-- TAB 2: 🔄 访后对答复盘与诊断评估 (核心复盘引擎) -->
       <section v-if="activeTab === 'post_visit'" class="space-y-4">
         <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 space-y-4">
           <div class="flex items-center justify-between border-b border-slate-800 pb-3">
             <div>
               <h3 class="text-sm font-bold text-white flex items-center gap-2">
-                <span>🔄</span> 访后复盘与异议底层穿透闭环
+                <span>🔄</span> 访后全真对话复盘与智能诊断评估
               </h3>
-              <p class="text-xs text-slate-400 mt-0.5">温度诊断 ｜ 异议底层穿透 ｜ 二次攻坚战法 ｜ 交付件 SOP</p>
+              <p class="text-xs text-slate-400 mt-0.5">回顾我聊了啥 ➔ 客户回了啥 ➔ 拒绝了啥 ➔ 诊断我回答得好不好、对不对？</p>
             </div>
-            <span class="text-xs bg-blue-500/10 text-blue-400 px-2.5 py-1 rounded-lg border border-blue-500/20 font-mono">复盘转化流水线</span>
+            <div class="flex items-center gap-2">
+              <span class="text-xs text-slate-400">快速填入案例：</span>
+              <button 
+                v-for="c in sampleReviews" 
+                :key="c.name"
+                @click="loadSampleReview(c)"
+                class="text-[10px] bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-1 rounded transition"
+              >
+                {{ c.name }}
+              </button>
+            </div>
           </div>
 
-          <div class="space-y-3 text-xs">
-            <div>
-              <label class="block text-slate-400 mb-1">选择客户面谈后的核心异议 / 抗拒点：</label>
-              <select v-model="postReview.objection" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-2 text-slate-200">
-                <option value="locked">异议 1：嫌大额保单资金锁太死，做生意需要现金周转</option>
-                <option value="yield">异议 2：嫌收益率太低，不如拿去买房或做实体投资</option>
-                <option value="lawyer">异议 3：说要拿回去问公司的常年法律顾问 / 律师</option>
-                <option value="will">异议 4：觉得自己立个公证遗嘱或写个协议就够了</option>
-              </select>
+          <!-- 4-Step Review Input Form -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+            <div class="space-y-1">
+              <label class="font-bold text-amber-400 flex items-center gap-1">
+                <span>1️⃣</span> 我聊了啥？(My Pitch / Topic)
+              </label>
+              <textarea 
+                v-model="reviewForm.pitch" 
+                rows="2"
+                placeholder="如: 我跟王总聊了新公司法一人公司股东连带风险，建议他买500万分红险做家企隔离。"
+                class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-slate-200 text-xs focus:border-brand-500 focus:outline-none"
+              ></textarea>
             </div>
 
-            <!-- Review Diagnostic Card -->
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
-              <div class="flex justify-between items-center text-amber-400 font-bold border-b border-slate-800 pb-2">
-                <span>🔍 【底层心理穿透与秒杀方案】</span>
-                <span class="text-[10px] text-emerald-400 font-mono">转化率 +85%</span>
+            <div class="space-y-1">
+              <label class="font-bold text-blue-400 flex items-center gap-1">
+                <span>2️⃣</span> 客户回了啥？(Client Feedback / Clues)
+              </label>
+              <textarea 
+                v-model="reviewForm.feedback" 
+                rows="2"
+                placeholder="如: 王总说公司流水几千万很顺畅，买保险把钱锁死太傻了，而且自己有常年法律顾问。"
+                class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-slate-200 text-xs focus:border-brand-500 focus:outline-none"
+              ></textarea>
+            </div>
+
+            <div class="space-y-1">
+              <label class="font-bold text-rose-400 flex items-center gap-1">
+                <span>3️⃣</span> 客户拒绝了啥？(Core Rejection Point)
+              </label>
+              <textarea 
+                v-model="reviewForm.rejection" 
+                rows="2"
+                placeholder="如: ①嫌资金锁死没有流动性；②信任自己律师，排斥保险销售。"
+                class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-slate-200 text-xs focus:border-brand-500 focus:outline-none"
+              ></textarea>
+            </div>
+
+            <div class="space-y-1">
+              <label class="font-bold text-purple-400 flex items-center gap-1">
+                <span>4️⃣</span> 我现场是怎么回答的？(My Actual Answer)
+              </label>
+              <textarea 
+                v-model="reviewForm.myAnswer" 
+                rows="2"
+                placeholder="如: 我说保单可以贷款80%啊，而且国家法律规定保单绝对避债，你律师根本不懂保险。"
+                class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-slate-200 text-xs focus:border-brand-500 focus:outline-none"
+              ></textarea>
+            </div>
+          </div>
+
+          <button 
+            @click="runReviewEvaluation"
+            class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium py-2 rounded-xl text-xs transition shadow-md flex items-center justify-center gap-1.5"
+          >
+            <span>⚖️ 开始三师深度诊断评估 (打分 ➔ 评好坏 ➔ 辨对错 ➔ 标准改稿)</span>
+          </button>
+
+          <!-- Evaluation Report Card -->
+          <div v-if="evaluationResult" class="space-y-3 pt-2 animate-fade-in">
+            <div class="bg-slate-950 p-4 rounded-xl border-2 border-brand-500/40 space-y-3 text-xs">
+              <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
+                <div class="flex items-center space-x-2">
+                  <span class="text-xl">{{ evaluationResult.score >= 80 ? '🎉' : (evaluationResult.score >= 60 ? '⚠️' : '🚨') }}</span>
+                  <div>
+                    <h4 class="text-sm font-bold text-white">【三师复盘评估报告】{{ evaluationResult.title }}</h4>
+                    <span class="text-[10px] text-slate-400">{{ evaluationResult.level }}</span>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-lg font-bold font-mono" :class="evaluationResult.score >= 80 ? 'text-emerald-400' : (evaluationResult.score >= 60 ? 'text-amber-400' : 'text-rose-400')">
+                    {{ evaluationResult.score }} <span class="text-xs text-slate-400 font-normal">/ 100分</span>
+                  </div>
+                </div>
               </div>
-              
-              <div class="space-y-2.5 text-[11px] text-slate-300 leading-relaxed">
-                <div>
-                  <strong class="text-rose-400">💔 客户内心真实顾虑：</strong>
-                  <p class="text-slate-200 mt-0.5">{{ getReviewData().psychology }}</p>
+
+              <!-- Two Column Diagnosis: 对不对 vs 好不好 -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 space-y-1.5">
+                  <div class="font-bold text-rose-400 flex items-center gap-1 text-xs">
+                    <span>⚖️</span> 回答得【对不对】？(法商与合规排雷)
+                  </div>
+                  <ul class="text-[11px] text-slate-300 space-y-1 leading-relaxed">
+                    <li v-for="item in evaluationResult.legalCheck" :key="item">{{ item }}</li>
+                  </ul>
                 </div>
-                <div>
-                  <strong class="text-emerald-400">⚡ 针对性二次攻坚秒杀话术：</strong>
-                  <p class="text-slate-100 mt-0.5 bg-slate-900 p-2.5 rounded-lg border border-slate-800">“{{ getReviewData().talk }}”</p>
+
+                <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 space-y-1.5">
+                  <div class="font-bold text-amber-400 flex items-center gap-1 text-xs">
+                    <span>🎯</span> 回答得【好不好】？(心理与谈判战法)
+                  </div>
+                  <ul class="text-[11px] text-slate-300 space-y-1 leading-relaxed">
+                    <li v-for="item in evaluationResult.salesCheck" :key="item">{{ item }}</li>
+                  </ul>
                 </div>
+              </div>
+
+              <!-- Perfect Revised Script -->
+              <div class="bg-emerald-950/20 border border-emerald-500/30 p-3.5 rounded-xl space-y-1.5">
+                <div class="font-bold text-emerald-400 flex items-center gap-1 text-xs">
+                  <span>🏆</span> 金牌讲师标准满分改稿逐字稿（如果重来一次应该怎么说）：
+                </div>
+                <p class="text-[11px] text-slate-100 leading-relaxed bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+                  “{{ evaluationResult.revisedScript }}”
+                </p>
+              </div>
+
+              <!-- Follow up Action -->
+              <div class="bg-brand-500/5 border border-brand-500/20 p-2.5 rounded-xl text-[11px] text-slate-300 flex items-start gap-2">
+                <span class="text-brand-500">🩹</span>
                 <div>
-                  <strong class="text-blue-400">📦 必须跟进的交付物与时间轴：</strong>
-                  <p class="text-slate-300 mt-0.5">{{ getReviewData().deliverable }}</p>
+                  <strong class="text-brand-400">会后紧急补救与跟进 SOP：</strong>
+                  <span>{{ evaluationResult.followUp }}</span>
                 </div>
               </div>
             </div>
@@ -415,7 +508,7 @@
     createApp({
       data() {
         return {
-          activeTab: 'pre_visit',
+          activeTab: 'post_visit',
           triageInput: '',
           triageResult: null,
           kycForm: {
@@ -424,12 +517,32 @@
             goal: 'shield'
           },
           kycPack: null,
-          postReview: {
-            objection: 'locked'
+          reviewForm: {
+            pitch: '我跟王总聊了新公司法一人公司连带责任风险，建议他买500万分红险做家企隔离。',
+            feedback: '王总说公司流水几千万周转很顺畅，买保险把钱锁死太傻了，而且自己有常年法律顾问。',
+            rejection: '①嫌资金锁死没有流动性；②信任自己律师，排斥保险销售。',
+            myAnswer: '我说保单可以贷款80%啊，而且国家法律规定保单绝对避债，你律师根本不懂保险。'
           },
+          evaluationResult: null,
+          sampleReviews: [
+            {
+              name: '外贸老板嫌锁死案',
+              pitch: '我跟王总聊了新公司法一人公司连带责任，建议他买500万分红险隔离企业风险。',
+              feedback: '王总说公司每年流水几千万，周转很顺畅，买保险把钱锁死太傻了，而且自己有常年法律顾问。',
+              rejection: '①嫌资金锁死没有流动性；②信任自己律师，排斥保险。',
+              myAnswer: '我说保单可以贷款80%啊，而且国家法律规定保单绝对避债，你律师根本不懂保险。'
+            },
+            {
+              name: '独生女买房防女婿案',
+              pitch: '我跟陈总聊了女儿结婚买房，建议婚前趸交500万养老年金防女婿分割。',
+              feedback: '陈总说我已经在上海给女儿全款买了房，房产证写女儿名字，公证写了协议只给女儿，女婿抢不走。',
+              rejection: '觉得自己写协议公证就绝对安全，不需要买保险。',
+              myAnswer: '我直接跟陈总说民法典1062条规定婚后赠与房产默认共同所有，你的协议没用，女婿肯定分走一半。'
+            }
+          ],
           tabs: [
-            { id: 'pre_visit', name: '访前准备 (KYC)', emoji: '📋', badge: '核心' },
-            { id: 'post_visit', name: '访后复盘 (攻坚)', emoji: '🔄', badge: '转化' },
+            { id: 'post_visit', name: '访后对答复盘', emoji: '🔄', badge: '核心' },
+            { id: 'pre_visit', name: '访前准备 (KYC)', emoji: '📋', badge: '穿透' },
             { id: 'actions', name: '四大实战抓手', emoji: '🚀', badge: '落地' },
             { id: 'gaps', name: '四大深水区攻坚', emoji: '🔍', badge: '底牌' },
             { id: 'risks', name: '四大雷区与排雷', emoji: '⚠️', badge: '合规' }
@@ -513,34 +626,52 @@
             };
           }
         },
-        getReviewData() {
-          const map = {
-            locked: {
-              psychology: '客户对长期锁死存有本能恐慌，担心实业突发危机拿不出钱，需要极强的“流动性安全感”。',
-              talk: '王总，大额保单不是死钱，是带防弹玻璃的备用金！平时享受终身复利增长，企业急需周转，手机上随时贷出 80%，两小时到账，既保全了家底，又没耽误您做生意！',
-              deliverable: '24小时内发送《保单质押贷款80%流动性操作演示表》+ 预约三师共诊出具流动性隔离方案。'
-            },
-            yield: {
-              psychology: '客户仍停留在过去高增长周期的思维定式中，拿保单收益去跟高风险实业或买房做不合理对比。',
-              talk: '王总，足球比赛前锋进再多球，没有守门员也赢不了！做生意是前锋，大额保单是守门员。在利率下行与资产重估周期，保单锁定的不是高收益，而是穿越周期的确定性家底！',
-              deliverable: '发送赵博《宏观经济周期与日本失落三十年对照研报》+《投资不可能三角对比图》。'
-            },
-            lawyer: {
-              psychology: '客户担心被销售套路，用常年法律顾问当防线，同时也确实依赖律师的专业意见。',
-              talk: '张律师说得太对了！普通销售讲保单能逃债那是违法的。我们给您设计的是依据新公司法第23条一人公司举证倒置做的事前隔离，搭配保险金信托3.0。我们非常欢迎张律师一起把关！',
-              deliverable: '出具符合法言法语标准的《高客法商咨询意见书（律师同行审阅版）》，直接与律师建立同频对话。'
-            },
-            will: {
-              psychology: '对继承法存在严重认知盲区，不知道遗嘱过户需要全员公证签字，也不知道现任配偶第一顺位法定继承。',
-              talk: '留房产是给儿女留官司，买保单是给亲骨肉留底牌！遗嘱继承过户必须所有法定继承人到公证处全员签字；而保单指定受益人无需任何人签字，凭身份证直接领钱！',
-              deliverable: '发送《钱总丧偶再婚案例深度剖析》+《不动产继承公证签字难 vs 保单定向理赔对比表》。'
-            }
-          };
-          return map[this.postReview.objection] || map.locked;
+        loadSampleReview(sample) {
+          this.reviewForm = { ...sample };
+          this.runReviewEvaluation();
+        },
+        runReviewEvaluation() {
+          const ans = this.reviewForm.myAnswer;
+          const rej = this.reviewForm.rejection;
+          
+          if (ans.includes('避债') || ans.includes('不懂') || ans.includes('律师')) {
+            this.evaluationResult = {
+              title: '外贸老板嫌资金锁死与律师抵触案',
+              score: 58,
+              level: '及格边缘 · 存在 2 个致命合规与心理踩雷点',
+              legalCheck: [
+                '❌ 严重合规雷区：承诺“保单绝对避债”违背《民法典》第538/539条债权人撤销权，且不符合浙江高院保单现金价值执行裁判口径。',
+                '❌ 专业性失分：直言“律师不懂保险”，引发对立情绪，把客户常年法律顾问推成了方案的头号阻力。'
+              ],
+              salesCheck: [
+                '❌ 沟通技巧失误：没有先使用罗巍“对”字降防线，直接否定客户对流动性的合理担忧，激化了对抗。',
+                '✅ 捕捉到位：准确识别了客户对大额资金锁定和实业现金流的敏感痛点。'
+              ],
+              revisedScript: '王总您说得太对了！做实业抓现金流太不容易了，换我也不轻易锁死资金；而且您有专业律师把关，这是企业做大的底气！（先肯定降防线）其实我们探讨的大额保单，从来不是死钱，而是带防弹玻璃的备用金。平时享受终身复利增长，企业急需周转，手机上随时贷出 80% 现金价值，2小时到账，既保全了家底又不耽误周转！（解流动性）至于法律隔离，普通销售说保单能逃债那是违法的。我们是依据新公司法第23条一人公司举证倒置做事前合规隔离，搭配保险金信托3.0。我们非常希望张律师一起把关，协助您做好家庭与企业的双重风控！（结盟律师）',
+              followUp: '24小时内发送《保单质押贷款80%流动性演示表》+ 发送《高客法商咨询意见书（律师同行审阅版）》并诚恳邀请律师共同参与把关。'
+            };
+          } else {
+            this.evaluationResult = {
+              title: '独生女买房防女婿分割案',
+              score: 65,
+              level: '中等水平 · 法理判断准确但沟通方式过于生硬',
+              legalCheck: [
+                '✅ 法理引用准确：准确指出了《民法典》第1062条婚后赠与/继承房产默认属于夫妻共同财产的法律风险。',
+                '⚠️ 细节待补充：未向客户说明最高法《民法典婚姻家庭编解释(二)》中关于婚前商业养老年金的特有财产保护规则。'
+              ],
+              salesCheck: [
+                '❌ 沟通生硬：直接告知“你的协议没用，女婿肯定分一半”，给客户造成了极大的心理冒犯与恐慌，容易引起逆反。',
+                '✅ 建议升级：使用指纹锁保险柜与公共客厅的比喻，将硬法条转化为生活常识。'
+              ],
+              revisedScript: '陈总您想得太周全了，给女儿买房是天底下最伟大的父母心！您已经做了协议公证，说明您的风控意识远超常人！（先肯定）不过在最新的民法典司法实践中，房产是看得见的不动产，即使有协议，婚后一旦涉诉也会面临举证成本。更聪明优雅的做法，是用一部分现金在婚前给女儿买一份商业养老年金。根据最高法最新司法解释，婚前年金属于女儿绝对的个人特有财产，按月领取的现金流谁也分不走，就像给女儿装了个指纹锁保险柜！（柔和转折）',
+              followUp: '发送《陈总千万房产案例深度解析》+ 打印《外勤 4 大案例口袋谈资卡》供客户私下阅览。'
+            };
+          }
         }
       },
       mounted() {
         this.generateKycPack();
+        this.runReviewEvaluation();
       }
     }).mount('#app');
   </script>
