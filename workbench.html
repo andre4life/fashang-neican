@@ -3,630 +3,399 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>平安家办 · 法商智能语音工作台 (全能展业版)</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              50: '#fbf7ee',
-              500: '#c8974a',
-              600: '#b88338',
-              700: '#966628',
-              900: '#1a1f2c'
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <meta name="x5-orientation" content="portrait">
+  <meta name="format-detection" content="telephone=no">
+  <title>平安家办 · 法商智能工作台</title>
   <style>
-    [v-cloak] { display: none; }
-    ::-webkit-scrollbar { width: 5px; height: 5px; }
-    ::-webkit-scrollbar-thumb { background: rgba(200,151,74,0.3); border-radius: 3px; }
-    @keyframes pulse-ring {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-      70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
-    }
-    .recording-pulse {
-      animation: pulse-ring 1.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body { background-color: #0b0f19; color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 13px; line-height: 1.5; padding-bottom: 50px; }
+    
+    /* Header */
+    .header { position: sticky; top: 0; z-index: 100; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #1e293b; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
+    .header-left { display: flex; align-items: center; gap: 10px; }
+    .header-icon { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, #c8974a, #966628); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: bold; }
+    .header-title { font-size: 14px; font-weight: bold; color: #ffffff; }
+    .header-sub { font-size: 10px; color: #94a3b8; }
+    .status-badge { font-size: 10px; background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); padding: 2px 8px; border-radius: 12px; }
+
+    /* WeChat Guide Tip */
+    .wechat-tip { background: rgba(200, 151, 74, 0.1); border: 1px solid rgba(200, 151, 74, 0.25); border-radius: 10px; padding: 8px 12px; margin: 10px 12px 0 12px; font-size: 11px; color: #f5ecd6; display: flex; align-items: center; justify-content: space-between; }
+
+    /* Nav Tabs */
+    .nav-tabs { display: flex; overflow-x: auto; padding: 12px 12px 6px 12px; gap: 8px; scrollbar-width: none; }
+    .nav-tabs::-webkit-scrollbar { display: none; }
+    .tab-btn { flex-shrink: 0; background: #1e293b; color: #94a3b8; border: 1px solid #334155; padding: 6px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .tab-btn.active { background: linear-gradient(135deg, #c8974a, #966628); color: #ffffff; border-color: #c8974a; box-shadow: 0 2px 8px rgba(200, 151, 74, 0.3); }
+
+    /* Container */
+    .container { padding: 12px; }
+    .card { background: #111827; border: 1px solid #1e293b; border-radius: 16px; padding: 14px; margin-bottom: 12px; }
+    .card-title { font-size: 13px; font-weight: bold; color: #ffffff; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; }
+    
+    /* Voice Recording Button */
+    .voice-box { text-align: center; padding: 16px 10px; background: #070a10; border-radius: 12px; margin-bottom: 12px; }
+    .mic-btn { width: 60px; height: 60px; border-radius: 50%; border: none; background: linear-gradient(135deg, #c8974a, #966628); color: white; font-size: 24px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(200, 151, 74, 0.4); transition: transform 0.2s; }
+    .mic-btn:active { transform: scale(0.92); }
+    .mic-btn.recording { background: #ef4444; box-shadow: 0 0 0 8px rgba(239, 68, 68, 0.3); animation: pulse 1.2s infinite; }
+    @keyframes pulse { 0% { transform: scale(0.96); } 50% { transform: scale(1.04); } 100% { transform: scale(0.96); } }
+
+    /* Inputs and Textareas */
+    textarea, input, select { width: 100%; background: #070a10; border: 1px solid #334155; border-radius: 10px; padding: 10px; color: #f1f5f9; font-size: 12px; margin-bottom: 10px; outline: none; }
+    textarea:focus, input:focus, select:focus { border-color: #c8974a; }
+    .btn-primary { width: 100%; background: linear-gradient(135deg, #2563eb, #4f46e5); color: white; border: none; border-radius: 10px; padding: 10px; font-size: 12px; font-weight: bold; cursor: pointer; text-align: center; margin-top: 4px; }
+    .btn-brand { width: 100%; background: linear-gradient(135deg, #c8974a, #966628); color: white; border: none; border-radius: 10px; padding: 10px; font-size: 12px; font-weight: bold; cursor: pointer; text-align: center; margin-top: 4px; }
+
+    /* Score and Diagnosis */
+    .score-badge { font-size: 18px; font-weight: bold; color: #ef4444; font-family: monospace; }
+    .score-badge.high { color: #10b981; }
+    .diag-box { background: #0f172a; border-radius: 10px; padding: 10px; margin-bottom: 8px; font-size: 11px; }
+    .diag-box strong { display: block; margin-bottom: 3px; font-size: 11px; }
+    .script-box { background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 10px; padding: 10px; margin-top: 8px; }
+
+    /* Roleplay Chat Box */
+    .chat-container { background: #070a10; border-radius: 12px; padding: 10px; height: 220px; overflow-y: auto; margin-bottom: 10px; border: 1px solid #1e293b; }
+    .chat-bubble { padding: 8px 10px; border-radius: 10px; margin-bottom: 8px; max-width: 90%; font-size: 11px; line-height: 1.4; }
+    .chat-bubble.assistant { background: #1e293b; color: #e2e8f0; align-self: flex-start; }
+    .chat-bubble.user { background: rgba(200, 151, 74, 0.2); color: #f5ecd6; border: 1px solid rgba(200, 151, 74, 0.3); margin-left: auto; text-align: right; }
+    
+    .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
+    .persona-card { background: #070a10; border: 1px solid #1e293b; border-radius: 10px; padding: 6px 4px; text-align: center; cursor: pointer; font-size: 10px; color: #94a3b8; }
+    .persona-card.active { border-color: #c8974a; background: rgba(200, 151, 74, 0.15); color: #f5ecd6; font-weight: bold; }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-brand-500 selection:text-white pb-14" id="app" v-cloak>
+<body>
 
-  <!-- Top Navigation Header -->
-  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 px-4 py-3 flex items-center justify-between">
-    <div class="flex items-center space-x-2.5">
-      <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-brand-500 to-amber-600 flex items-center justify-center text-white shadow font-bold text-base">
-        🎙️
-      </div>
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <div class="header-icon">🏛️</div>
       <div>
-        <h1 class="text-sm font-bold text-white flex items-center gap-1.5">
-          平安家办 · 语音智能工作台
-          <span class="text-[9px] px-1.5 py-0.2 rounded-full bg-brand-500/20 text-brand-400 border border-brand-500/30 font-mono">语音实战版</span>
-        </h1>
-        <p class="text-[10px] text-slate-400">语音口述复盘 ｜ 语音全真对练 ｜ 访前 KYC ｜ 深度诊断打分</p>
+        <div class="header-title">平安家办 · 法商智能工作台</div>
+        <div class="header-sub">访前 KYC ｜ 语音对练 ｜ 对答复盘</div>
       </div>
     </div>
-    <div class="flex items-center space-x-1.5">
-      <span class="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] flex items-center gap-1 font-mono">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> 语音就绪
-      </span>
+    <div class="status-badge">● 极速就绪</div>
+  </div>
+
+  <!-- WeChat Guide Tip -->
+  <div class="wechat-tip">
+    <span>💡 如需使用麦克风直接说话：请点击右上角「···」选择「在浏览器中打开」</span>
+  </div>
+
+  <!-- Tabs Navigation -->
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('tab_voice_review')">🎙️ 语音对答复盘</button>
+    <button class="tab-btn" onclick="switchTab('tab_roleplay')">🗣️ 语音全真对练</button>
+    <button class="tab-btn" onclick="switchTab('tab_kyc')">📋 访前准备 (KYC)</button>
+    <button class="tab-btn" onclick="switchTab('tab_pillars')">🏛️ 抓手/盲区/雷区</button>
+  </div>
+
+  <!-- Content Container -->
+  <div class="container">
+
+    <!-- TAB 1: 语音对答复盘 -->
+    <div id="tab_voice_review" class="tab-content">
+      <div class="card">
+        <div class="card-title">
+          <span>🎙️ 访后语音口述一键复盘</span>
+          <span style="font-size:10px; color:#c8974a;">三师智能诊断</span>
+        </div>
+
+        <div class="voice-box">
+          <button id="micBtn" class="mic-btn" onclick="toggleVoice()">🎙️</button>
+          <div id="micStatus" style="font-size:11px; margin-top:8px; color:#94a3b8;">点击麦克风开始说话（或直接在下方输入）</div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; font-size:10px; color:#94a3b8; margin-bottom:4px;">
+          <span>面谈对答口述内容：</span>
+          <span style="color:#c8974a; cursor:pointer;" onclick="loadSampleReview()">载入经典实战案例 ➔</span>
+        </div>
+        <textarea id="voiceInput" rows="4" placeholder="口述或输入：聊了啥 / 客户回了啥 / 拒绝了啥 / 我现场怎么答的..."></textarea>
+
+        <button class="btn-primary" onclick="runEvaluation()">⚖️ 开始三师深度诊断与打分 (评好坏 / 找漏洞 / 改满分)</button>
+
+        <!-- Result Box -->
+        <div id="evalResult" style="display:none; margin-top:14px;">
+          <div style="background:#070a10; border:1px solid #c8974a; border-radius:12px; padding:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #1e293b; padding-bottom:8px; margin-bottom:8px;">
+              <div>
+                <div id="evalTitle" style="font-size:13px; font-weight:bold; color:#ffffff;">【三师复盘评估报告】</div>
+                <div id="evalLevel" style="font-size:10px; color:#94a3b8;"></div>
+              </div>
+              <div id="evalScore" class="score-badge">58 <span style="font-size:10px; font-normal;">分</span></div>
+            </div>
+
+            <div class="diag-box" style="border-left:3px solid #ef4444;">
+              <strong style="color:#f87171;">⚖️ 回答得【对不对】？(法商与合规排雷)</strong>
+              <div id="evalLegal" style="color:#cbd5e1; line-height:1.4;"></div>
+            </div>
+
+            <div class="diag-box" style="border-left:3px solid #f59e0b;">
+              <strong style="color:#fbbf24;">🎯 回答得【好不好】？(沟通心理与战术)</strong>
+              <div id="evalSales" style="color:#cbd5e1; line-height:1.4;"></div>
+            </div>
+
+            <div class="script-box">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                <strong style="color:#34d399; font-size:11px;">🏆 金牌讲师标准满分改稿逐字稿：</strong>
+                <span style="font-size:10px; color:#10b981; cursor:pointer;" onclick="speakRevisedScript()">🔊 语音朗读</span>
+              </div>
+              <div id="evalScript" style="font-size:11px; color:#f1f5f9; line-height:1.5;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </header>
 
-  <!-- Main Container -->
-  <div class="max-w-4xl mx-auto px-3 sm:px-6 py-4 space-y-4">
+    <!-- TAB 2: 语音全真对练 -->
+    <div id="tab_roleplay" class="tab-content" style="display:none;">
+      <div class="card">
+        <div class="card-title">
+          <span>🗣️ 语音全真模拟对练</span>
+          <span style="font-size:10px; color:#60a5fa;">AI 客户原声发难</span>
+        </div>
 
-    <!-- Top Navigation Tabs (Mobile Optimized Horizontal Scroll) -->
-    <nav class="flex space-x-2 overflow-x-auto pb-1 scrollbar-none border-b border-slate-800/80">
-      <button 
-        v-for="tab in tabs" 
-        :key="tab.id"
-        @click="activeTab = tab.id"
-        :class="activeTab === tab.id ? 'bg-gradient-to-r from-brand-500/20 to-amber-500/10 text-brand-500 border-b-2 border-brand-500 font-bold' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50'"
-        class="whitespace-nowrap px-3.5 py-2 rounded-t-xl text-xs flex items-center space-x-1.5 transition-all flex-shrink-0"
-      >
-        <span>{{ tab.emoji }}</span>
-        <span>{{ tab.name }}</span>
-        <span v-if="tab.badge" class="text-[9px] bg-slate-800 text-slate-400 px-1 py-0.2 rounded font-mono">{{ tab.badge }}</span>
-      </button>
-    </nav>
+        <div class="persona-grid">
+          <div class="persona-card active" onclick="choosePersona(0, this)">
+            <div style="font-size:16px;">👔</div>
+            <div>王总</div>
+            <div style="font-size:8px; opacity:0.7;">外贸老板·嫌锁死</div>
+          </div>
+          <div class="persona-card" onclick="choosePersona(1, this)">
+            <div style="font-size:16px;">💍</div>
+            <div>陈总</div>
+            <div style="font-size:8px; opacity:0.7;">独生女父·防女婿</div>
+          </div>
+          <div class="persona-card" onclick="choosePersona(2, this)">
+            <div style="font-size:16px;">🛡️</div>
+            <div>钱总</div>
+            <div style="font-size:8px; opacity:0.7;">再婚老板·立遗嘱</div>
+          </div>
+        </div>
 
-    <!-- TAB 1: 🎙️ 语音口述复盘 (Speech-to-Text & Diagnostic) -->
-    <section v-if="activeTab === 'voice_review'" class="space-y-4">
-      <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-4 sm:p-5 space-y-4">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div id="chatBox" class="chat-container">
+          <div class="chat-bubble assistant" id="initialClientMsg">王总：李老师，我这几年做外贸每年几千万流水周转很顺畅，买大额保单把钱锁死太傻了，而且我有常年法律顾问。</div>
+        </div>
+
+        <input type="text" id="roleplayInput" placeholder="输入您的回答话术..." onkeypress="if(event.keyCode==13) sendRoleplayMsg()">
+        <div style="display:flex; gap:6px;">
+          <button class="btn-brand" style="flex:1;" onclick="sendRoleplayMsg()">发送对答</button>
+          <button class="btn-primary" style="flex:1;" onclick="finishRoleplayAndReview()">🎯 结束对练并复盘</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: 访前准备 (KYC) -->
+    <div id="tab_kyc" class="tab-content" style="display:none;">
+      <div class="card">
+        <div class="card-title">
+          <span>📋 访前准备与 KYC 深度穿透</span>
+          <span style="font-size:10px; color:#c8974a;">杨笑提问技术</span>
+        </div>
+
+        <label style="font-size:11px; color:#94a3b8;">1. 客户行业与画像：</label>
+        <select id="kycIndustry">
+          <option value="enterprise">实业/外贸民营企业主 (45-55岁)</option>
+          <option value="daughter">家有独生女出资买房 (50-60岁)</option>
+          <option value="remarried">再婚多子女家庭 (55-65岁)</option>
+          <option value="elderly">老龄失能防架空 (60岁以上)</option>
+        </select>
+
+        <button class="btn-brand" onclick="buildKycPack()">🚀 智能生成访前敲门武器包</button>
+
+        <div id="kycResult" style="display:none; margin-top:12px; background:#070a10; border:1px solid #334155; border-radius:10px; padding:10px; font-size:11px;">
+          <div id="kycTitle" style="color:#c8974a; font-weight:bold; margin-bottom:6px;"></div>
+          <div style="margin-bottom:6px;">
+            <strong style="color:#fbbf24;">🔥 破冰敲门第一句话（罗巍“对”字降防线）：</strong>
+            <p id="kycIce" style="color:#f1f5f9; margin-top:2px;"></p>
+          </div>
           <div>
-            <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
-              <span>🎙️</span> 访后语音口述一键复盘
-            </h3>
-            <p class="text-[11px] text-slate-400 mt-0.5">掏出手机直接说话，系统自动拆解并出具三师打分与标准改稿</p>
-          </div>
-          <span class="text-[10px] text-brand-500 bg-brand-500/10 px-2 py-0.5 rounded border border-brand-500/20">智能语音识别</span>
-        </div>
-
-        <!-- Voice Recorder Control -->
-        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col items-center justify-center space-y-3">
-          <button 
-            @click="toggleSpeechRecognition"
-            :class="isRecording ? 'bg-rose-600 text-white recording-pulse scale-105' : 'bg-gradient-to-r from-brand-500 to-amber-600 text-white hover:opacity-90'"
-            class="w-16 h-16 rounded-full flex items-center justify-center text-2xl shadow-lg transition transform"
-          >
-            <span>{{ isRecording ? '⏹️' : '🎙️' }}</span>
-          </button>
-          <div class="text-center">
-            <span class="text-xs font-bold" :class="isRecording ? 'text-rose-400' : 'text-slate-300'">
-              {{ isRecording ? '正在倾听您的口述...（点击结束）' : '点击麦克风，口述您的面谈经过' }}
-            </span>
-            <p class="text-[10px] text-slate-500 mt-0.5">
-              例如：“我今天跟外贸王总聊了新公司法一人公司连带，王总说公司流水很好不想锁死资金，我说保单可以贷款80%而且能避税避债，王总说要问律师...”
-            </p>
-          </div>
-        </div>
-
-        <!-- Dictated Text Area -->
-        <div class="space-y-1.5">
-          <div class="flex justify-between items-center text-xs text-slate-400">
-            <span>口述文本（支持手动微调）：</span>
-            <div class="space-x-2">
-              <button @click="loadSampleVoiceText" class="text-[10px] text-brand-400 hover:underline">载入经典案例</button>
-              <button @click="voiceText = ''" class="text-[10px] text-slate-500 hover:text-slate-300">清空</button>
-            </div>
-          </div>
-          <textarea 
-            v-model="voiceText" 
-            rows="4" 
-            placeholder="点击上方麦克风说话，语音将实时转写在此处..."
-            class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-brand-500"
-          ></textarea>
-        </div>
-
-        <button 
-          @click="analyzeVoiceDictation"
-          class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium py-2 rounded-xl text-xs transition shadow flex items-center justify-center gap-1.5"
-        >
-          <span>⚖️ 开始三师深度诊断与智能打分 (评好坏 / 找漏洞 / 改满分)</span>
-        </button>
-
-        <!-- Dynamic Evaluation Result -->
-        <div v-if="voiceEvalResult" class="space-y-3 pt-2">
-          <div class="bg-slate-950 p-4 rounded-xl border-2 border-brand-500/40 space-y-3 text-xs">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
-              <div class="flex items-center space-x-2">
-                <span class="text-xl">{{ voiceEvalResult.score >= 80 ? '🎉' : (voiceEvalResult.score >= 60 ? '⚠️' : '🚨') }}</span>
-                <div>
-                  <h4 class="text-sm font-bold text-white">【三师复盘评估报告】{{ voiceEvalResult.title }}</h4>
-                  <span class="text-[10px] text-slate-400">{{ voiceEvalResult.level }}</span>
-                </div>
-              </div>
-              <div class="text-right">
-                <div class="text-lg font-bold font-mono" :class="voiceEvalResult.score >= 80 ? 'text-emerald-400' : (voiceEvalResult.score >= 60 ? 'text-amber-400' : 'text-rose-400')">
-                  {{ voiceEvalResult.score }} <span class="text-xs text-slate-400 font-normal">/ 100分</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Segmented Dialogue Breakdown -->
-            <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800 space-y-1.5 text-[11px]">
-              <div class="text-brand-400 font-bold">📋 智能对话分段还原：</div>
-              <p><strong class="text-amber-400">1️⃣ 我聊了啥：</strong>{{ voiceEvalResult.segmented.pitch }}</p>
-              <p><strong class="text-blue-400">2️⃣ 客户回了啥：</strong>{{ voiceEvalResult.segmented.feedback }}</p>
-              <p><strong class="text-rose-400">3️⃣ 客户拒绝了啥：</strong>{{ voiceEvalResult.segmented.rejection }}</p>
-              <p><strong class="text-purple-400">4️⃣ 我现场怎么答的：</strong>{{ voiceEvalResult.segmented.myAnswer }}</p>
-            </div>
-
-            <!-- Two Column Diagnosis -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 space-y-1.5">
-                <div class="font-bold text-rose-400 flex items-center gap-1 text-xs">
-                  <span>⚖️</span> 回答得【对不对】？(法商与合规排雷)
-                </div>
-                <ul class="text-[11px] text-slate-300 space-y-1 leading-relaxed">
-                  <li v-for="item in voiceEvalResult.legalCheck" :key="item">{{ item }}</li>
-                </ul>
-              </div>
-
-              <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 space-y-1.5">
-                <div class="font-bold text-amber-400 flex items-center gap-1 text-xs">
-                  <span>🎯</span> 回答得【好不好】？(心理与谈判战法)
-                </div>
-                <ul class="text-[11px] text-slate-300 space-y-1 leading-relaxed">
-                  <li v-for="item in voiceEvalResult.salesCheck" :key="item">{{ item }}</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Perfect Revised Script -->
-            <div class="bg-emerald-950/20 border border-emerald-500/30 p-3.5 rounded-xl space-y-1.5">
-              <div class="flex justify-between items-center text-emerald-400 font-bold text-xs">
-                <span>🏆 金牌讲师标准满分改稿逐字稿：</span>
-                <button @click="speakText(voiceEvalResult.revisedScript)" class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded flex items-center gap-1">
-                  <span>🔊</span> 朗读话术
-                </button>
-              </div>
-              <p class="text-[11px] text-slate-100 leading-relaxed bg-slate-950 p-2.5 rounded-lg border border-slate-800">
-                “{{ voiceEvalResult.revisedScript }}”
-              </p>
-            </div>
+            <strong style="color:#60a5fa;">❓ 杨笑 KYC 数字脱敏三连问：</strong>
+            <ul id="kycQuestions" style="margin-top:2px; padding-left:14px; color:#cbd5e1; line-height:1.4;"></ul>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- TAB 2: 🗣️ 语音全真对练 (Interactive Voice Roleplay with HNW Client) -->
-    <section v-if="activeTab === 'voice_roleplay'" class="space-y-4">
-      <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-4 sm:p-5 space-y-4">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-          <div>
-            <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
-              <span>🗣️</span> 语音全真模拟对练与即时复盘
-            </h3>
-            <p class="text-[11px] text-slate-400 mt-0.5">选择高净值客户角色，用语音实时对话，模拟真实实战交锋</p>
-          </div>
-          <span class="text-[10px] text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">AI 角色扮演</span>
+    <!-- TAB 4: 抓手 / 盲区 / 雷区 -->
+    <div id="tab_pillars" class="tab-content" style="display:none;">
+      <div class="card">
+        <div class="card-title"><span>🏛️ 抓手 ｜ 盲区 ｜ 雷区 核心速查</span></div>
+        <div style="background:#070a10; border-radius:10px; padding:10px; margin-bottom:8px; font-size:11px;">
+          <strong style="color:#fbbf24; display:block; margin-bottom:2px;">🚀 四大实战落地抓手：</strong>
+          <span style="color:#cbd5e1;">• 早会3讲课件 + 4案例口袋谈资卡<br>• 家办私董会45分钟主旨演讲全案<br>• 三师共诊大单定制咨询意见书<br>• 法商内参每日08:00自动化推送</span>
         </div>
-
-        <!-- Roleplay Persona Selection -->
-        <div class="grid grid-cols-3 gap-2 text-xs">
-          <button 
-            v-for="p in personas" 
-            :key="p.id"
-            @click="selectPersona(p)"
-            :class="selectedPersona.id === p.id ? 'border-brand-500 bg-brand-500/10 text-brand-400 font-bold' : 'border-slate-800 bg-slate-950 text-slate-400 hover:text-slate-200'"
-            class="p-2.5 rounded-xl border text-center transition"
-          >
-            <div class="text-base">{{ p.avatar }}</div>
-            <div class="text-[11px] mt-0.5">{{ p.name }}</div>
-            <div class="text-[9px] opacity-75">{{ p.tag }}</div>
-          </button>
+        <div style="background:#070a10; border-radius:10px; padding:10px; margin-bottom:8px; font-size:11px;">
+          <strong style="color:#f87171; display:block; margin-bottom:2px;">🔍 四大深水区盲区攻坚：</strong>
+          <span style="color:#cbd5e1;">• 浙江高院保单执行三层抗辩闭环<br>• 新公司法5年实缴80%质押借款回流<br>• 平安信托1.0/2.0/3.0门槛费率全景<br>• 跨境外贸CRS申报与离岸合规红线</span>
         </div>
-
-        <!-- Dialogue Chat History Box -->
-        <div class="bg-slate-950 rounded-2xl border border-slate-800 p-3.5 space-y-3 h-64 overflow-y-auto">
-          <div v-for="msg in chatHistory" :key="msg.text" class="flex flex-col space-y-1">
-            <div class="flex items-center space-x-1.5 text-[10px]" :class="msg.role === 'user' ? 'justify-end text-brand-400' : 'justify-start text-blue-400'">
-              <span>{{ msg.role === 'user' ? '🧑‍💼 我' : selectedPersona.avatar + ' ' + selectedPersona.name }}</span>
-            </div>
-            <div 
-              class="p-2.5 rounded-xl text-xs max-w-[85%] leading-relaxed"
-              :class="msg.role === 'user' ? 'self-end bg-brand-500/20 text-slate-100 border border-brand-500/30' : 'self-start bg-slate-900 text-slate-200 border border-slate-800'"
-            >
-              {{ msg.text }}
-            </div>
-          </div>
-        </div>
-
-        <!-- User Voice / Text Input in Roleplay -->
-        <div class="flex items-center space-x-2">
-          <button 
-            @click="toggleRoleplayRecording"
-            :class="isRoleplayRecording ? 'bg-rose-600 recording-pulse text-white' : 'bg-slate-800 hover:bg-slate-700 text-slate-200'"
-            class="p-2.5 rounded-xl border border-slate-700 text-sm flex-shrink-0 transition"
-          >
-            {{ isRoleplayRecording ? '⏹️ 录音中' : '🎙️ 语音输入' }}
-          </button>
-          <input 
-            v-model="roleplayInput" 
-            @keyup.enter="sendRoleplayMessage"
-            placeholder="按麦克风说话，或在此输入您的话术..."
-            class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-brand-500"
-          />
-          <button 
-            @click="sendRoleplayMessage"
-            class="bg-brand-500 hover:bg-brand-600 text-white px-3.5 py-2 rounded-xl text-xs font-medium transition flex-shrink-0"
-          >
-            发送
-          </button>
-        </div>
-
-        <!-- Finish and Trigger Review Button -->
-        <button 
-          @click="finishRoleplayAndReview"
-          class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-medium py-2 rounded-xl text-xs transition shadow flex items-center justify-center gap-1"
-        >
-          <span>🎯 结束对练，一键三师全景复盘与打分</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- TAB 3: 📋 访前准备 (KYC 深度画像) -->
-    <section v-if="activeTab === 'pre_visit'" class="space-y-4">
-      <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-4 sm:p-5 space-y-4">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-          <div>
-            <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
-              <span>📋</span> 访前准备与 KYC 深度穿透引擎
-            </h3>
-            <p class="text-[11px] text-slate-400 mt-0.5">杨笑 KYC 两问 ｜ 四账户错配 ｜ 数字脱敏提问 ｜ 专属弹药包</p>
-          </div>
-          <span class="text-[10px] bg-brand-500/10 text-brand-500 px-2 py-0.5 rounded border border-brand-500/20 font-mono">KYC 4步法</span>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
-          <div>
-            <label class="block text-slate-400 mb-1">1. 客户行业与年龄：</label>
-            <select v-model="kycForm.industry" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2 py-1.5 text-slate-200">
-              <option value="enterprise">实业/外贸民营企业主 (45-55岁)</option>
-              <option value="single_daughter">家有独生女出资买房 (50-60岁)</option>
-              <option value="remarried">再婚/重组多子女家庭 (55-65岁)</option>
-              <option value="elderly">老龄失能防架空 (60岁以上)</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-slate-400 mb-1">2. 核心隐性风险点：</label>
-            <select v-model="kycForm.risk" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2 py-1.5 text-slate-200">
-              <option value="liability">新公司法 9 大连带与对外担保</option>
-              <option value="marriage">子女婚变分割 50% 资产</option>
-              <option value="inheritance">法定继承全员公证难与转继承</option>
-              <option value="tax">40% 综合税负折损与金税四期</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-slate-400 mb-1">3. 资产核心诉求：</label>
-            <select v-model="kycForm.goal" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2 py-1.5 text-slate-200">
-              <option value="shield">家庭水密隔舱 + 80%质押借款</option>
-              <option value="lock">婚前个人特有财产锁定 (防女婿)</option>
-              <option value="trust">指定受益人精准定向传承</option>
-              <option value="guard">意定监护 + 养老信托给付</option>
-            </select>
-          </div>
-        </div>
-
-        <button 
-          @click="generateKycPack"
-          class="w-full bg-gradient-to-r from-brand-500 to-amber-600 hover:from-brand-600 hover:to-amber-700 text-white font-medium py-2 rounded-xl text-xs transition shadow flex items-center justify-center gap-1.5"
-        >
-          <span>🚀 智能生成访前专属准备与敲门武器包</span>
-        </button>
-
-        <div v-if="kycPack" class="bg-slate-950 p-4 rounded-xl border border-brand-500/30 space-y-2.5 text-xs">
-          <div class="flex items-center justify-between text-brand-500 font-bold border-b border-slate-800 pb-2">
-            <span>🎯 【访前弹药包】{{ kycPack.title }}</span>
-            <button @click="speakText(kycPack.icebreaker)" class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded flex items-center gap-1">
-              <span>🔊</span> 试听破冰话术
-            </button>
-          </div>
-          <div class="space-y-2 text-slate-300 text-[11px] leading-relaxed">
-            <div>
-              <strong class="text-amber-400">🔥 破冰敲门第一句话（罗巍“对”字降防线）：</strong>
-              <p class="text-slate-100 mt-0.5 bg-slate-900 p-2.5 rounded-lg border border-slate-800">“{{ kycPack.icebreaker }}”</p>
-            </div>
-            <div>
-              <strong class="text-blue-400">❓ 杨笑 KYC 数字脱敏深度三连问：</strong>
-              <ul class="list-disc list-inside space-y-1 mt-0.5 text-slate-300">
-                <li v-for="q in kycPack.questions" :key="q">{{ q }}</li>
-              </ul>
-            </div>
-          </div>
+        <div style="background:#070a10; border-radius:10px; padding:10px; margin-bottom:8px; font-size:11px;">
+          <strong style="color:#34d399; display:block; margin-bottom:2px;">⚠️ 四大合规雷区排雷：</strong>
+          <span style="color:#cbd5e1;">• 严禁绝对化承诺保单避债防撤销权<br>• 破解自书遗嘱与转继承死穴<br>• 意定监护协议必须办理司法公证<br>• 对客律师同频攻防四步法</span>
         </div>
       </div>
-    </section>
-
-    <!-- TAB 4: 🚀 抓手 / 盲区 / 雷区 综合知识库 -->
-    <section v-if="activeTab === 'pillars'" class="space-y-4">
-      <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-4 sm:p-5 space-y-4">
-        <div class="border-b border-slate-800 pb-3">
-          <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
-            <span>🏛️</span> 抓手 ｜ 盲区 ｜ 雷区 核心实战底牌速查
-          </h3>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-          <div class="bg-slate-950 p-3.5 rounded-xl border border-amber-500/30 space-y-1.5">
-            <strong class="text-amber-400 block text-xs">🚀 四大实战抓手：</strong>
-            <p class="text-slate-300 text-[11px]">• 早会3讲课件 + 4案例口袋谈资卡<br>• 家办私董会45分钟主旨演讲全案<br>• 三师共诊大单定制咨询意见书<br>• 法商内参每日08:00自动化推送</p>
-          </div>
-
-          <div class="bg-slate-950 p-3.5 rounded-xl border border-rose-500/30 space-y-1.5">
-            <strong class="text-rose-400 block text-xs">🔍 四大深水区盲区：</strong>
-            <p class="text-slate-300 text-[11px]">• 浙江法院保单执行三层抗辩闭环<br>• 新公司法5年实缴80%借款回流<br>• 平安信托1.0/2.0/3.0门槛费率对照<br>• 跨境外贸CRS申报与离岸红线</p>
-          </div>
-
-          <div class="bg-slate-950 p-3.5 rounded-xl border border-emerald-500/30 space-y-1.5">
-            <strong class="text-emerald-400 block text-xs">⚠️ 四大合规雷区排雷：</strong>
-            <p class="text-slate-300 text-[11px]">• 严禁承诺“保单避债”防撤销权<br>• 破解自书遗嘱与转继承死穴<br>• 意定监护协议必须办理司法公证<br>• 对客律师同频攻防四步法</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
 
   </div>
 
   <script>
-    const { createApp } = Vue;
+    // Tab switching
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).style.display = 'block';
+      event.target.classList.add('active');
+    }
 
-    createApp({
-      data() {
-        return {
-          activeTab: 'voice_review',
-          isRecording: false,
-          recognition: null,
-          voiceText: '',
-          voiceEvalResult: null,
-          isRoleplayRecording: false,
-          roleplayRecognition: null,
-          roleplayInput: '',
-          selectedPersona: {
-            id: 'wang',
-            name: '王总',
-            avatar: '👔',
-            tag: '48岁外贸老板·嫌锁死',
-            opening: '李老师，我这几年做外贸每年几千万流水，周转很顺畅。你让我买大额保单把钱锁死5年太傻了，而且我有常年法律顾问。'
-          },
-          personas: [
-            {
-              id: 'wang',
-              name: '王总',
-              avatar: '👔',
-              tag: '48岁外贸老板·嫌锁死',
-              opening: '李老师，我这几年做外贸每年几千万流水，周转很顺畅。你让我买大额保单把钱锁死5年太傻了，而且我有常年法律顾问。'
-            },
-            {
-              id: 'chen',
-              name: '陈总',
-              avatar: '💍',
-              tag: '55岁独生女父亲·防女婿',
-              opening: '小张，我已经在上海全款给女儿买了房，房产证写女儿名字，公证写了协议只给女儿，女婿怎么可能分得走？'
-            },
-            {
-              id: 'qian',
-              name: '钱总',
-              avatar: '🛡️',
-              tag: '60岁再婚老板·立遗嘱',
-              opening: '我之前立过公证遗嘱，我名下的房产和存款百年后全部留给我儿子，现任太太也知道，用不着买什么大额寿险。'
-            }
-          ],
-          chatHistory: [],
-          kycForm: {
-            industry: 'enterprise',
-            risk: 'liability',
-            goal: 'shield'
-          },
-          kycPack: null,
-          tabs: [
-            { id: 'voice_review', name: '语音口述复盘', emoji: '🎙️', badge: '核心' },
-            { id: 'voice_roleplay', name: '语音模拟对练', emoji: '🗣️', badge: '对练' },
-            { id: 'pre_visit', name: '访前准备(KYC)', emoji: '📋', badge: '穿透' },
-            { id: 'pillars', name: '抓手/盲区/雷区', emoji: '🏛️', badge: '底牌' }
-          ]
-        }
-      },
-      methods: {
-        initSpeech() {
-          const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
-          if (SpeechRec) {
-            this.recognition = new SpeechRec();
-            this.recognition.lang = 'zh-CN';
-            this.recognition.continuous = true;
-            this.recognition.interimResults = true;
+    // Speech Recognition
+    let recognition = null;
+    let isRecording = false;
 
-            this.recognition.onresult = (event) => {
-              let transcript = '';
-              for (let i = event.resultIndex; i < event.results.length; ++i) {
-                transcript += event.results[i][0].transcript;
-              }
-              this.voiceText += transcript;
-            };
-
-            this.recognition.onerror = (e) => {
-              console.warn('Speech Rec Error:', e);
-              this.isRecording = false;
-            };
-
-            this.recognition.onend = () => {
-              this.isRecording = false;
-            };
-
-            // Roleplay speech recognition
-            this.roleplayRecognition = new SpeechRec();
-            this.roleplayRecognition.lang = 'zh-CN';
-            this.roleplayRecognition.onresult = (event) => {
-              let transcript = '';
-              for (let i = event.resultIndex; i < event.results.length; ++i) {
-                transcript += event.results[i][0].transcript;
-              }
-              this.roleplayInput = transcript;
-              this.isRoleplayRecording = false;
-            };
+    function initSpeech() {
+      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (SpeechRec) {
+        recognition = new SpeechRec();
+        recognition.lang = 'zh-CN';
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.onresult = function(e) {
+          let text = '';
+          for (let i = e.resultIndex; i < e.results.length; i++) {
+            text += e.results[i][0].transcript;
           }
-        },
-        toggleSpeechRecognition() {
-          if (!this.recognition) {
-            this.initSpeech();
-          }
-          if (!this.recognition) {
-            alert('当前浏览器未开放原生麦克风语音转写接口，您可以直接在文本框输入或载入案例体验！');
-            return;
-          }
-          if (this.isRecording) {
-            this.recognition.stop();
-            this.isRecording = false;
-          } else {
-            this.isRecording = true;
-            this.recognition.start();
-          }
-        },
-        toggleRoleplayRecording() {
-          if (!this.roleplayRecognition) {
-            this.initSpeech();
-          }
-          if (!this.roleplayRecognition) {
-            alert('请直接在输入框打字输入您的对练回答！');
-            return;
-          }
-          if (this.isRoleplayRecording) {
-            this.roleplayRecognition.stop();
-            this.isRoleplayRecording = false;
-          } else {
-            this.isRoleplayRecording = true;
-            this.roleplayRecognition.start();
-          }
-        },
-        speakText(text) {
-          if ('speechSynthesis' in window) {
-            window.speechSynthesis.cancel();
-            const utter = new SpeechSynthesisUtterance(text);
-            utter.lang = 'zh-CN';
-            utter.rate = 1.0;
-            window.speechSynthesis.speak(utter);
-          }
-        },
-        loadSampleVoiceText() {
-          this.voiceText = '我今天去拜访了做外贸的王总，跟他聊了新公司法一人公司股东无限连带的风险，建议他拿500万买分红险做家企隔离。王总听了之后很不屑，说自己公司每年流水几千万周转很顺畅，买保险把钱锁死太傻了，而且自己有常年法律顾问。我当时跟他说保单可以贷款80%啊，而且国家法律规定保单绝对避税避债，你那个律师根本不懂保险，王总听完就说有事先走了。';
-          this.analyzeVoiceDictation();
-        },
-        analyzeVoiceDictation() {
-          const txt = this.voiceText;
-          if (!txt.trim()) {
-            alert('请先口述或输入面谈内容！');
-            return;
-          }
-          
-          if (txt.includes('避债') || txt.includes('不懂') || txt.includes('锁死') || txt.includes('律师')) {
-            this.voiceEvalResult = {
-              title: '外贸老板嫌资金锁死与律师抵触案',
-              score: 58,
-              level: '及格边缘 · 存在 2 个致命合规与沟通踩雷点',
-              segmented: {
-                pitch: '新公司法一人公司连带责任风险与 500 万大额分红险家企隔离。',
-                feedback: '每年流水几千万周转顺畅，买保险锁死太傻，有常年法律顾问。',
-                rejection: '①嫌资金锁死无流动性；②信任自己律师，排斥保险销售。',
-                myAnswer: '保单可以贷款80%，国家规定保单绝对避债，律师不懂保险。'
-              },
-              legalCheck: [
-                '❌ 严重合规雷区：承诺“保单绝对避债”违背《民法典》第538/539条债权人撤销权及浙江高院保单现金价值执行指导意见。',
-                '❌ 法律对立风险：直言“律师不懂保险”，引发敌对防御心理，把客户常年法律顾问推到了对立面。'
-              ],
-              salesCheck: [
-                '❌ 沟通技巧失误：没有先使用罗巍“对”字降防线，直接否定客户对实业流动性的合理诉求。',
-                '✅ 痛点抓取准确：识别到了客户对大额资金锁定和实业现金流的敏感点。'
-              ],
-              revisedScript: '王总您说得太对了！做实业抓现金流太不容易了，换我也不轻易锁死资金；而且您有专业律师把关，这是企业做大做强的底气！（先肯定降防线）其实我们探讨的大额保单，从来不是死钱，而是带防弹玻璃的备用金。平时享受终身复利增长，企业急需周转，手机上随时贷出 80% 现金价值，2小时到账，既保全了家底又不耽误做生意！（解流动性）至于法律隔离，普通销售说保单能逃债那是违法的。我们是依据新公司法第23条一人公司举证倒置做事前合规隔离，搭配保险金信托3.0。我们非常希望张律师一起把关，协助您做好家庭与企业的双重风控！（结盟律师）',
-              followUp: '24小时内发送《保单质押贷款80%流动性演示表》+ 发送《高客法商咨询意见书（律师同行审阅版）》并诚恳邀请律师共同参与把关。'
-            };
-          } else {
-            this.voiceEvalResult = {
-              title: '独生女买房防女婿分割案',
-              score: 65,
-              level: '中等水平 · 法理判断准确但沟通方式过于生硬',
-              segmented: {
-                pitch: '独生女结婚出资买房防婚变分割与商业养老年金配置。',
-                feedback: '已经在上海全款买房写女儿名字，公证写了协议只给女儿。',
-                rejection: '觉得自己写协议公证就绝对安全，不需要买保险。',
-                myAnswer: '民法典1062条规定婚后赠与房产默认共同共有，协议没用，女婿肯定分一半。'
-              },
-              legalCheck: [
-                '✅ 法理引用准确：准确指出了《民法典》第1062条婚后赠与/继承房产默认属于夫妻共同财产的法律风险。',
-                '⚠️ 细节待补充：未说明最高法《民法典婚姻家庭编解释(二)》中婚前商业养老年金的特有财产保护规则。'
-              ],
-              salesCheck: [
-                '❌ 沟通生硬：直接告知“你的协议没用，女婿肯定分一半”，给客户造成了极大的心理冒犯与恐慌。',
-                '✅ 建议升级：使用“指纹锁保险柜”与“公共客厅”的比喻，将硬法条转化为生活常识。'
-              ],
-              revisedScript: '陈总您想得太周全了，给女儿买房是天底下最伟大的父母心！您已经做了协议公证，说明您的风控意识远超常人！（先肯定）不过在最新的民法典司法实践中，房产是看得见的不动产，即使有协议，婚后一旦涉诉也会面临举证成本。更聪明优雅的做法，是用一部分现金在婚前给女儿买一份商业养老年金。根据最高法最新司法解释，婚前年金属于女儿绝对的个人特有财产，按月领取的现金流谁也分不走，就像给女儿装了个指纹锁保险柜！（柔和转折）',
-              followUp: '发送《陈总千万房产案例深度解析》+ 打印《外勤 4 大案例口袋谈资卡》供客户私下阅览。'
-            };
-          }
-          this.speakText('三师复盘评估完成，您的得分为' + this.voiceEvalResult.score + '分。' + this.voiceEvalResult.level);
-        },
-        selectPersona(p) {
-          this.selectedPersona = p;
-          this.chatHistory = [
-            { role: 'assistant', text: p.opening }
-          ];
-          this.speakText(p.opening);
-        },
-        sendRoleplayMessage() {
-          const msg = this.roleplayInput.trim();
-          if (!msg) return;
-          this.chatHistory.push({ role: 'user', text: msg });
-          this.roleplayInput = '';
-
-          // Client AI response
-          setTimeout(() => {
-            let reply = '';
-            if (msg.includes('贷款') || msg.includes('80') || msg.includes('备用金')) {
-              reply = '听你这么一说，保单还能随时贷出80%周转？那我倒有点兴趣了，但万一我公司欠债，法院真不会来封这笔钱吗？';
-            } else if (msg.includes('避债') || msg.includes('逃债')) {
-              reply = '你别忽悠我，我常年法律顾问张律师说浙江高院明确能执行保单现金价值，你这根本避不了！';
-            } else {
-              reply = '你说的这些大道理我都懂，但做实业每天都要现金流动，你能不能拿具体数据跟我算算账？';
-            }
-            this.chatHistory.push({ role: 'assistant', text: reply });
-            this.speakText(reply);
-          }, 800);
-        },
-        finishRoleplayAndReview() {
-          const userMsgs = this.chatHistory.filter(m => m.role === 'user').map(m => m.text).join('；');
-          this.voiceText = '【对练复盘】我向' + this.selectedPersona.name + '切入法商话题，' + this.selectedPersona.name + '提出抗拒说：' + this.selectedPersona.opening + '。我现场回答说：' + (userMsgs || '（未输入详细话术）');
-          this.activeTab = 'voice_review';
-          this.analyzeVoiceDictation();
-        },
-        generateKycPack() {
-          this.kycPack = {
-            title: '实业/外贸企业主：新公司法连带隔离与流动性武器包',
-            icebreaker: '王总，做实业抓现金流太不容易了，换我也不轻易锁死。但您想过没有：做企业是无限连带，家里的生活费有没有留水密隔舱？',
-            questions: [
-              '王总，公司如果遇到行业周期波动，家庭这边的独立生活费账户准备好了吗？',
-              '新公司法 5 年实缴期，您打算纯用现金硬交，还是希望既锁死家底、又通过 80% 借款回流实缴？',
-              '名下的银行贷款连带担保，太太名下的房产和存款有没有做合法切断？'
-            ]
-          };
-        }
-      },
-      mounted() {
-        this.initSpeech();
-        this.selectPersona(this.personas[0]);
-        this.generateKycPack();
+          document.getElementById('voiceInput').value += text;
+        };
+        recognition.onerror = function() { stopVoice(); };
+        recognition.onend = function() { stopVoice(); };
       }
-    }).mount('#app');
+    }
+
+    function toggleVoice() {
+      if (!recognition) initSpeech();
+      if (!recognition) {
+        alert('当前微信环境限制了直接录音，请在文本框直接输入，或点击右上角「···」选择「在系统浏览器中打开」即可畅享原生语音转写！');
+        return;
+      }
+      if (isRecording) {
+        stopVoice();
+      } else {
+        isRecording = true;
+        document.getElementById('micBtn').classList.add('recording');
+        document.getElementById('micStatus').innerText = '正在倾听您的口述...（点击结束）';
+        document.getElementById('micStatus').style.color = '#f87171';
+        recognition.start();
+      }
+    }
+
+    function stopVoice() {
+      isRecording = false;
+      document.getElementById('micBtn').classList.remove('recording');
+      document.getElementById('micStatus').innerText = '点击麦克风开始说话（或直接在下方输入）';
+      document.getElementById('micStatus').style.color = '#94a3b8';
+      if (recognition) try { recognition.stop(); } catch(e){}
+    }
+
+    function loadSampleReview() {
+      document.getElementById('voiceInput').value = '我今天去拜访了做外贸的王总，跟他聊了新公司法一人公司连带，建议他拿500万买分红险做家企隔离。王总说自己每年流水几千万周转很顺畅，买保险把钱锁死太傻了，而且有常年法律顾问。我当时跟他说保单可以贷款80%啊，而且国家法律规定保单绝对避税避债，你那个律师根本不懂保险。';
+      runEvaluation();
+    }
+
+    function runEvaluation() {
+      const val = document.getElementById('voiceInput').value;
+      if (!val.trim()) {
+        alert('请先输入或口述面谈经过！');
+        return;
+      }
+      document.getElementById('evalResult').style.display = 'block';
+      if (val.includes('避债') || val.includes('不懂') || val.includes('律师') || val.includes('锁死')) {
+        document.getElementById('evalScore').innerText = '58 分';
+        document.getElementById('evalScore').className = 'score-badge';
+        document.getElementById('evalTitle').innerText = '【三师复盘评估报告】外贸老板嫌资金锁死与律师抵触案';
+        document.getElementById('evalLevel').innerText = '及格边缘 · 存在 2 个致命合规与沟通踩雷点';
+        document.getElementById('evalLegal').innerHTML = '• ❌ 严重合规雷区：承诺“保单绝对避债”违背《民法典》第538/539条债权人撤销权及浙江高院保单执行口径。<br>• ❌ 法律对立风险：直言“律师不懂保险”，引发敌对心理，把客户常年法务推到了对立面。';
+        document.getElementById('evalSales').innerHTML = '• ❌ 沟通技巧失误：没有先使用罗巍“对”字降防线，直接否定客户对实业现金流的合理诉求。<br>• ✅ 痛点抓取准确：准确捕捉了客户对流动性与企业安全的敏感点。';
+        document.getElementById('evalScript').innerText = '“王总您说得太对了！做实业抓现金流太不容易了，换我也不轻易锁死资金；而且您有专业律师把关，这是企业做大做强的底气！（先肯定降防线）其实我们探讨的大额保单，从来不是死钱，而是带防弹玻璃的备用金。平时享受终身复利，企业急需周转，手机上随时贷出 80% 现金价值，2小时到账，既保全家底又不耽误做生意！（解流动性）至于法律隔离，普通销售说保单能逃债那是违法的。我们是依据新公司法第23条一人公司举证倒置做事前合规隔离，搭配保险金信托3.0。我们非常希望张律师一起把关，协助您做好家庭与企业的双重风控！（结盟律师）”';
+      } else {
+        document.getElementById('evalScore').innerText = '65 分';
+        document.getElementById('evalScore').className = 'score-badge';
+        document.getElementById('evalTitle').innerText = '【三师复盘评估报告】独生女买房防女婿分割案';
+        document.getElementById('evalLevel').innerText = '中等水平 · 法理引用准确但沟通较为生硬';
+        document.getElementById('evalLegal').innerHTML = '• ✅ 法理引用准确：指出了民法典1062条婚后赠与房产默认夫妻共有的法律风险。<br>• ⚠️ 细节待补充：未说明最高法司法解释二中婚前年金的特有财产保护。';
+        document.getElementById('evalSales').innerHTML = '• ❌ 沟通生硬：直接说“协议没用女婿肯定分一半”，造成客户心理逆反。<br>• ✅ 建议升级：使用指纹锁保险柜与公共客厅比喻。';
+        document.getElementById('evalScript').innerText = '“陈总您想得太周全了，给女儿买房是天底下最伟大的父母心！不过房产看得见摸得着，即使有协议也有举证成本。更聪明优雅的做法，是用一部分现金婚前给女儿买商业养老年金，属于女儿绝对特有财产，按月领现金流谁也分不走，就像装了个指纹锁保险柜！”';
+      }
+    }
+
+    function speakRevisedScript() {
+      const text = document.getElementById('evalScript').innerText;
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'zh-CN';
+        window.speechSynthesis.speak(utter);
+      }
+    }
+
+    // Roleplay Logic
+    const personas = [
+      { name: '王总', opening: '李老师，我这几年做外贸每年几千万流水周转很顺畅，买大额保单把钱锁死太傻了，而且我有常年法律顾问。' },
+      { name: '陈总', opening: '小张，我已经在上海全款给女儿买了房写女儿名字，公证写了协议只给女儿，女婿怎么可能分得走？' },
+      { name: '钱总', opening: '我立过公证遗嘱，名下房产存款百年后全留给我儿子，现任太太也知道，用不着买什么大额寿险。' }
+    ];
+    let currentPersonaIdx = 0;
+
+    function choosePersona(idx, el) {
+      currentPersonaIdx = idx;
+      document.querySelectorAll('.persona-card').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('chatBox').innerHTML = '<div class="chat-bubble assistant">' + personas[idx].name + '：' + personas[idx].opening + '</div>';
+    }
+
+    function sendRoleplayMsg() {
+      const input = document.getElementById('roleplayInput');
+      const text = input.value.trim();
+      if (!text) return;
+      
+      const box = document.getElementById('chatBox');
+      box.innerHTML += '<div class="chat-bubble user">' + text + '</div>';
+      input.value = '';
+      box.scrollTop = box.scrollHeight;
+
+      setTimeout(() => {
+        let reply = '';
+        if (text.includes('贷款') || text.includes('80') || text.includes('备用金')) {
+          reply = '听你这么说，保单还能随时贷出80%周转？那我倒有点兴趣，但万一我公司欠债，法院真不会来封这笔钱吗？';
+        } else if (text.includes('避债') || text.includes('逃债')) {
+          reply = '你别忽悠我，我常年法律顾问张律师说浙江高院明确能执行保单现金价值，你这根本避不了！';
+        } else {
+          reply = '你说的这些大道理我都懂，但做实业每天都要现金流动，你能不能拿具体数据跟我算算账？';
+        }
+        box.innerHTML += '<div class="chat-bubble assistant">' + personas[currentPersonaIdx].name + '：' + reply + '</div>';
+        box.scrollTop = box.scrollHeight;
+      }, 700);
+    }
+
+    function finishRoleplayAndReview() {
+      document.getElementById('voiceInput').value = '我向' + personas[currentPersonaIdx].name + '切入法商话题，客户提出抗拒说：' + personas[currentPersonaIdx].opening + '。';
+      switchTab('tab_voice_review');
+      document.querySelectorAll('.tab-btn')[0].classList.add('active');
+      document.querySelectorAll('.tab-btn')[1].classList.remove('active');
+      runEvaluation();
+    }
+
+    function buildKycPack() {
+      document.getElementById('kycResult').style.display = 'block';
+      const ind = document.getElementById('kycIndustry').value;
+      if (ind === 'enterprise') {
+        document.getElementById('kycTitle').innerText = '🎯 【实业/外贸企业主】新公司法连带隔离与流动性武器包';
+        document.getElementById('kycIce').innerText = '“王总，做实业抓现金流太不容易了，换我也不轻易锁死。但您想过没有：做企业是无限连带，家里的生活费有没有留独立水密隔舱？”';
+        document.getElementById('kycQuestions').innerHTML = '<li>公司如果遇到行业周期波动，家庭不受追索的独立生活费账户准备好了吗？</li><li>新公司法5年实缴期，打算纯用现金硬交，还是希望既锁死家底、又通过80%借款回流实缴？</li><li>名下银行贷款连带担保，太太名下的房产和存款有没有做合法切断？</li>';
+      } else {
+        document.getElementById('kycTitle').innerText = '🎯 【独生女出资买房家庭】婚前财产锁定与防女婿分割武器包';
+        document.getElementById('kycIce').innerText = '“王姐，给女儿一筐现金或买套房，就像把钱放在公共客厅，结了婚女婿依法能分走一半！”';
+        document.getElementById('kycQuestions').innerHTML = '<li>给女儿结婚买房，知不知道民法典1062条婚后默认共同财产？</li><li>给女儿的这笔钱，是希望变成夫妻共有，还是装进指纹锁私人保险柜？</li>';
+      }
+    }
   </script>
 </body>
 </html>
