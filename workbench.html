@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>平安家办 · 法商战略工作台 (全能战力版)</title>
+  <title>平安家办 · 法商智能工作台 (全能战力版)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   <script>
@@ -31,104 +31,232 @@
     ::-webkit-scrollbar-thumb:hover { background: rgba(200,151,74,0.6); }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-brand-500 selection:text-white" id="app" v-cloak>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-brand-500 selection:text-white pb-10" id="app" v-cloak>
 
-  <!-- Top Bar -->
-  <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-6 py-3.5 flex items-center justify-between">
+  <!-- Top Navigation Header -->
+  <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 sm:px-6 py-3 flex items-center justify-between">
     <div class="flex items-center space-x-3">
       <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-amber-600 flex items-center justify-center text-white shadow-lg font-bold text-lg">
         🏛️
       </div>
       <div>
-        <h1 class="text-base font-bold text-white flex items-center gap-2">
-          平安家办 · 法商战略工作台
-          <span class="text-[10px] px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-500 border border-brand-500/20 font-mono">全能战力版</span>
+        <h1 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
+          平安家办 · 法商智能工作台
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-500 border border-brand-500/20 font-mono">全生命周期展业版</span>
         </h1>
-        <p class="text-xs text-slate-400">三师共诊 ｜ 抓手全落地 ｜ 盲区全攻坚 ｜ 雷区全排查</p>
+        <p class="text-[11px] text-slate-400 hidden sm:block">访前 KYC 准备 ｜ 智能分诊与算账 ｜ 访后复盘 ｜ 盲区攻坚 ｜ 合规排雷</p>
       </div>
     </div>
-    <div class="hidden md:flex items-center space-x-4 text-xs">
-      <span class="px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">✅ 浙江法院执行细则已打通</span>
-      <span class="px-2.5 py-1 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">✅ 5年实缴资金闭环已就绪</span>
-      <span class="px-2.5 py-1 rounded-lg bg-brand-500/10 text-brand-400 border border-brand-500/20">✅ 4大雷区排查已锁定</span>
+    <div class="flex items-center space-x-2">
+      <span class="px-2 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-mono">KYC & 复盘已就绪</span>
     </div>
   </header>
 
-  <!-- Main Grid -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto px-3 sm:px-6 py-5 grid grid-cols-1 lg:grid-cols-12 gap-5">
 
-    <!-- Left Nav -->
-    <aside class="lg:col-span-3 space-y-4">
-      <nav class="bg-slate-900/60 border border-slate-800 rounded-2xl p-2.5 space-y-1">
+    <!-- Left Navigation Bar -->
+    <aside class="lg:col-span-3 space-y-3">
+      <nav class="bg-slate-900/60 border border-slate-800 rounded-2xl p-2 space-y-1">
         <button 
           v-for="tab in tabs" 
           :key="tab.id"
           @click="activeTab = tab.id"
           :class="activeTab === tab.id ? 'bg-gradient-to-r from-brand-500/20 to-amber-500/10 text-brand-500 border-l-4 border-brand-500 font-semibold' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'"
-          class="w-full text-left px-3.5 py-3 rounded-xl text-xs flex items-center justify-between transition-all"
+          class="w-full text-left px-3 py-2.5 rounded-xl text-xs flex items-center justify-between transition-all"
         >
-          <div class="flex items-center space-x-2.5">
-            <span class="text-base">{{ tab.emoji }}</span>
+          <div class="flex items-center space-x-2">
+            <span class="text-sm">{{ tab.emoji }}</span>
             <span>{{ tab.name }}</span>
           </div>
-          <span class="text-[10px] bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded-md font-mono">{{ tab.count }}</span>
+          <span class="text-[10px] bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded font-mono">{{ tab.badge }}</span>
         </button>
       </nav>
 
-      <!-- Quick Triage Tool -->
-      <div class="bg-gradient-to-br from-slate-900 to-slate-950 border border-brand-500/20 rounded-2xl p-4 space-y-3">
+      <!-- Quick Triage AI Tool -->
+      <div class="bg-gradient-to-br from-slate-900 to-slate-950 border border-brand-500/20 rounded-2xl p-3.5 space-y-2.5">
         <div class="flex items-center justify-between">
-          <h3 class="text-xs font-bold text-brand-500 flex items-center gap-1.5">
-            <span>⚡</span> 客户案情秒级分诊
+          <h3 class="text-xs font-bold text-brand-500 flex items-center gap-1">
+            <span>⚡</span> 案情秒级分诊
           </h3>
           <span class="text-[10px] text-slate-400">AI 会诊</span>
         </div>
         <input 
           v-model="triageInput" 
           @keyup.enter="runTriage"
-          placeholder="如: 外贸老板 担心企业担保连带"
-          class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-brand-500"
+          placeholder="如: 外贸老板 担心企业连带担保"
+          class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-brand-500"
         />
         <button 
           @click="runTriage"
-          class="w-full bg-gradient-to-r from-brand-500 to-amber-600 hover:from-brand-600 hover:to-amber-700 text-white font-medium py-2 rounded-xl text-xs transition shadow-md"
+          class="w-full bg-gradient-to-r from-brand-500 to-amber-600 hover:from-brand-600 hover:to-amber-700 text-white font-medium py-1.5 rounded-xl text-xs transition shadow"
         >
           专家联合会诊
         </button>
       </div>
-
-      <!-- Quick Output Path -->
-      <div class="bg-slate-900/40 border border-slate-800 rounded-2xl p-3.5 text-[11px] text-slate-400 space-y-1">
-        <div class="text-slate-300 font-medium">📁 资产归档主目录</div>
-        <p class="text-[10px] text-emerald-400 font-mono">D:\Antigravity输出\</p>
-      </div>
     </aside>
 
-    <!-- Right Content -->
+    <!-- Right Main Area -->
     <main class="lg:col-span-9 space-y-5">
 
-      <!-- Triage Result Card -->
-      <div v-if="triageResult" class="bg-gradient-to-br from-slate-900 to-slate-950 border-2 border-brand-500/40 rounded-2xl p-5 space-y-3">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
-          <h3 class="text-sm font-bold text-brand-500">【专家会诊方案】{{ triageResult.title }}</h3>
-          <span class="text-[11px] bg-brand-500/10 text-brand-400 px-2 py-0.5 rounded-full border border-brand-500/20">匹配度 99%</span>
+      <!-- Triage Result Modal Card -->
+      <div v-if="triageResult" class="bg-gradient-to-br from-slate-900 to-slate-950 border-2 border-brand-500/40 rounded-2xl p-4 space-y-3 animate-fade-in">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+          <h3 class="text-xs sm:text-sm font-bold text-brand-500">【专家会诊方案】{{ triageResult.title }}</h3>
+          <span class="text-[10px] bg-brand-500/10 text-brand-400 px-2 py-0.5 rounded-full border border-brand-500/20">匹配度 99%</span>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
-            <strong class="text-slate-400 block mb-1">⚖️ 核心法条与浙江裁判尺度：</strong>
-            <p class="text-slate-200">{{ triageResult.laws }}</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs">
+          <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+            <strong class="text-slate-400 block mb-1">⚖️ 核心法条与裁判尺度：</strong>
+            <p class="text-slate-200 text-[11px] leading-relaxed">{{ triageResult.laws }}</p>
           </div>
-          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
-            <strong class="text-slate-400 block mb-1">💡 顶层保单+信托架构：</strong>
-            <p class="text-slate-200">{{ triageResult.solution }}</p>
+          <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+            <strong class="text-slate-400 block mb-1">💡 顶层保单与信托架构：</strong>
+            <p class="text-slate-200 text-[11px] leading-relaxed">{{ triageResult.solution }}</p>
           </div>
         </div>
-        <div class="bg-brand-500/5 p-3 rounded-xl border border-brand-500/20 text-xs text-slate-200">
+        <div class="bg-brand-500/5 p-2.5 rounded-xl border border-brand-500/20 text-xs text-slate-200">
           <strong class="text-brand-500">💬 陪谈切入金句：</strong> “{{ triageResult.talk }}”
         </div>
       </div>
 
-      <!-- TAB 1: 落地抓手全景 (四大实战抓手) -->
+      <!-- TAB 1: 📋 访前材料准备 (KYC 深度穿透) -->
+      <section v-if="activeTab === 'pre_visit'" class="space-y-4">
+        <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div>
+              <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                <span>📋</span> 访前准备与 KYC 深度穿透引擎
+              </h3>
+              <p class="text-xs text-slate-400 mt-0.5">杨笑 KYC 两问 ｜ 四账户错配 ｜ 数字脱敏提问 ｜ 专属弹药包</p>
+            </div>
+            <span class="text-xs bg-brand-500/10 text-brand-500 px-2.5 py-1 rounded-lg border border-brand-500/20 font-mono">KYC 4 步法</span>
+          </div>
+
+          <!-- KYC Form Setup -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1">1. 客户行业与年龄：</label>
+              <select v-model="kycForm.industry" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-2 text-slate-200">
+                <option value="enterprise">实业/外贸民营企业主 (45-55岁)</option>
+                <option value="single_daughter">家有独生女出资买房 (50-60岁)</option>
+                <option value="remarried">再婚/重组多子女家庭 (55-65岁)</option>
+                <option value="elderly">老龄失能防架空 (60岁以上)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">2. 核心隐性风险点：</label>
+              <select v-model="kycForm.risk" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-2 text-slate-200">
+                <option value="liability">新公司法 9 大连带与个人对外担保</option>
+                <option value="marriage">子女婚变分割 50% 资产</option>
+                <option value="inheritance">法定继承全员公证难与转继承</option>
+                <option value="tax">40% 综合税负折损与金税四期</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">3. 资产核心诉求：</label>
+              <select v-model="kycForm.goal" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-2 text-slate-200">
+                <option value="shield">家庭独立水密隔舱 + 80%质押贷款</option>
+                <option value="lock">婚前个人特有财产锁定 (防女婿)</option>
+                <option value="trust">指定受益人精准定向传承 (防外人)</option>
+                <option value="guard">意定监护 + 养老信托按月给付</option>
+              </select>
+            </div>
+          </div>
+
+          <button 
+            @click="generateKycPack"
+            class="w-full bg-gradient-to-r from-brand-500 to-amber-600 hover:from-brand-600 hover:to-amber-700 text-white font-medium py-2 rounded-xl text-xs transition shadow-md flex items-center justify-center gap-1.5"
+          >
+            <span>🚀 智能生成访前专属准备与敲门武器包</span>
+          </button>
+
+          <!-- Generated KYC Package -->
+          <div v-if="kycPack" class="space-y-3 pt-2">
+            <div class="bg-slate-950 p-4 rounded-xl border border-brand-500/30 space-y-2.5 text-xs">
+              <div class="flex items-center justify-between text-brand-500 font-bold border-b border-slate-800 pb-2">
+                <span>🎯 【访前弹药包】{{ kycPack.title }}</span>
+                <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">建议面谈时长: 45分钟</span>
+              </div>
+              
+              <div class="space-y-2 text-slate-300 text-[11px] leading-relaxed">
+                <div>
+                  <strong class="text-amber-400">🔥 破冰敲门第一句话（罗巍“对”字降防线）：</strong>
+                  <p class="text-slate-100 mt-0.5 bg-slate-900 p-2.5 rounded-lg border border-slate-800">“{{ kycPack.icebreaker }}”</p>
+                </div>
+                <div>
+                  <strong class="text-blue-400">❓ 杨笑 KYC 数字脱敏深度三连问：</strong>
+                  <ul class="list-disc list-inside space-y-1 mt-0.5 text-slate-300">
+                    <li v-for="q in kycPack.questions" :key="q">{{ q }}</li>
+                  </ul>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 pt-1">
+                  <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                    <strong class="text-emerald-400 block mb-0.5">📚 精准匹配名师案例：</strong>
+                    <span>{{ kycPack.caseName }}</span>
+                  </div>
+                  <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                    <strong class="text-purple-400 block mb-0.5">📊 随身预设算账罗盘：</strong>
+                    <span>{{ kycPack.calcFormula }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: 🔄 访后复盘与攻坚闭环 -->
+      <section v-if="activeTab === 'post_visit'" class="space-y-4">
+        <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div>
+              <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                <span>🔄</span> 访后复盘与异议底层穿透闭环
+              </h3>
+              <p class="text-xs text-slate-400 mt-0.5">温度诊断 ｜ 异议底层穿透 ｜ 二次攻坚战法 ｜ 交付件 SOP</p>
+            </div>
+            <span class="text-xs bg-blue-500/10 text-blue-400 px-2.5 py-1 rounded-lg border border-blue-500/20 font-mono">复盘转化流水线</span>
+          </div>
+
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1">选择客户面谈后的核心异议 / 抗拒点：</label>
+              <select v-model="postReview.objection" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-2 text-slate-200">
+                <option value="locked">异议 1：嫌大额保单资金锁太死，做生意需要现金周转</option>
+                <option value="yield">异议 2：嫌收益率太低，不如拿去买房或做实体投资</option>
+                <option value="lawyer">异议 3：说要拿回去问公司的常年法律顾问 / 律师</option>
+                <option value="will">异议 4：觉得自己立个公证遗嘱或写个协议就够了</option>
+              </select>
+            </div>
+
+            <!-- Review Diagnostic Card -->
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
+              <div class="flex justify-between items-center text-amber-400 font-bold border-b border-slate-800 pb-2">
+                <span>🔍 【底层心理穿透与秒杀方案】</span>
+                <span class="text-[10px] text-emerald-400 font-mono">转化率 +85%</span>
+              </div>
+              
+              <div class="space-y-2.5 text-[11px] text-slate-300 leading-relaxed">
+                <div>
+                  <strong class="text-rose-400">💔 客户内心真实顾虑：</strong>
+                  <p class="text-slate-200 mt-0.5">{{ getReviewData().psychology }}</p>
+                </div>
+                <div>
+                  <strong class="text-emerald-400">⚡ 针对性二次攻坚秒杀话术：</strong>
+                  <p class="text-slate-100 mt-0.5 bg-slate-900 p-2.5 rounded-lg border border-slate-800">“{{ getReviewData().talk }}”</p>
+                </div>
+                <div>
+                  <strong class="text-blue-400">📦 必须跟进的交付物与时间轴：</strong>
+                  <p class="text-slate-300 mt-0.5">{{ getReviewData().deliverable }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: 🚀 四大实战落地抓手 -->
       <section v-if="activeTab === 'actions'" class="space-y-4">
         <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 space-y-4">
           <div class="flex items-center justify-between border-b border-slate-800 pb-3">
@@ -139,50 +267,50 @@
           </div>
 
           <div class="space-y-3 text-xs">
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-1.5">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-1">
               <div class="flex justify-between items-center text-amber-400 font-bold">
                 <span>🎯 抓手 1：队伍培训 · 早会 3 讲课件与 4 案例口袋谈资卡</span>
-                <span class="text-[10px] bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">周一/周三/周五</span>
+                <span class="text-[10px] bg-amber-500/10 px-2 py-0.5 rounded">早会特训</span>
               </div>
-              <p class="text-slate-300 leading-relaxed">
-                覆盖新公司法 9 大连带、陈钱王张 4 大案例及上海 5 套房税费算账。外勤 15 分钟即可完成通关演练。
+              <p class="text-slate-300 leading-relaxed text-[11px]">
+                新公司法 9 大连带 + 陈钱王张 4 大案例 + 上海 5 套房税费算账。外勤 15 分钟速成通关。
               </p>
             </div>
 
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-1.5">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-1">
               <div class="flex justify-between items-center text-blue-400 font-bold">
                 <span>🎙️ 抓手 2：家办私董会 · 《传得下去，接得住》45 分钟演讲全案</span>
-                <span class="text-[10px] bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">高客产说会</span>
+                <span class="text-[10px] bg-blue-500/10 px-2 py-0.5 rounded">高客产说会</span>
               </div>
-              <p class="text-slate-300 leading-relaxed">
-                面向全省民营企业主与家族掌门人，现场用 2500 万房产传承税费对比点穴，引爆 1 对 1 资产体检预约。
+              <p class="text-slate-300 leading-relaxed text-[11px]">
+                面向全省民营企业主，现场用 2500 万房产传承税费对比点穴，引爆 1 对 1 资产体检预约。
               </p>
             </div>
 
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-1.5">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-1">
               <div class="flex justify-between items-center text-emerald-400 font-bold">
-                <span>💼 抓手 3：三师共诊大单攻坚 · 标准化《高客法商咨询意见书》</span>
-                <span class="text-[10px] bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">大单交付件</span>
+                <span>💼 抓手 3：三师共诊大单 · 标准化《高客法商咨询意见书》</span>
+                <span class="text-[10px] bg-emerald-500/10 px-2 py-0.5 rounded">大单交付件</span>
               </div>
-              <p class="text-slate-300 leading-relaxed">
-                针对外贸企业主连带担保、再婚多子女继承、老龄失能意定监护一键输出具备律师权威度的定制建议书。
+              <p class="text-slate-300 leading-relaxed text-[11px]">
+                针对外贸企业主连带担保、再婚多子女、老龄失能意定监护一键输出具备律师公信力的定制建议书。
               </p>
             </div>
 
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-1.5">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-1">
               <div class="flex justify-between items-center text-purple-400 font-bold">
                 <span>📰 抓手 4：法商内参自动化运营 · GitHub Pages 每日定时推送</span>
-                <span class="text-[10px] bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">每日 08:00</span>
+                <span class="text-[10px] bg-purple-500/10 px-2 py-0.5 rounded">每日 08:00</span>
               </div>
-              <p class="text-slate-300 leading-relaxed">
-                已沉淀 10 期高质量 content_bank 知识卡片，全自动运行更新，持续树立家办首席法商导师 IP。
+              <p class="text-slate-300 leading-relaxed text-[11px]">
+                已沉淀 10 期高质量 content_bank 知识卡片，全自动运行更新，树立家办首席法商导师 IP。
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- TAB 2: 盲区深度攻坚 (四大深水区攻坚) -->
+      <!-- TAB 4: 🔍 四大深水区盲区攻坚 -->
       <section v-if="activeTab === 'gaps'" class="space-y-4">
         <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 space-y-4">
           <div class="flex items-center justify-between border-b border-slate-800 pb-3">
@@ -193,52 +321,41 @@
           </div>
 
           <div class="space-y-3 text-xs">
-            <div class="bg-slate-950 p-4 rounded-xl border border-rose-900/40 space-y-2">
+            <div class="bg-slate-950 p-4 rounded-xl border border-rose-900/40 space-y-1.5">
               <div class="flex justify-between items-center text-rose-400 font-bold">
                 <span>🔴 1. 浙江属地法院保单执行深度剖析与合法抗辩闭环</span>
-                <span class="text-[10px] bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/20">P0 核心底牌</span>
+                <span class="text-[10px] bg-rose-500/10 px-2 py-0.5 rounded">P0 核心底牌</span>
               </div>
-              <p class="text-slate-300 leading-relaxed">
-                • <strong>浙江执行现状</strong>：浙江高院明确被执行人是投保人时，法院可强制提取现金价值甚至强制退保！<br>
-                • <strong>三层抗辩闭环</strong>：①投保人主体置换（配偶/父母投保）；②保险金信托 3.0（投保人变更为信托公司，信托财产法定独立）；③基本生存医疗豁免抗辩。
+              <p class="text-slate-300 leading-relaxed text-[11px]">
+                • <strong>浙江执行事实</strong>：浙江高院明确被执行人是投保人时，法院可强制提取现金价值甚至强制退保！<br>
+                • <strong>三层抗辩闭环</strong>：①投保人主体置换（配偶/父母投保）；②保险金信托 3.0（投保人变更为信托公司）；③基本生存医疗豁免抗辩。
               </p>
             </div>
 
-            <div class="bg-slate-950 p-4 rounded-xl border border-amber-900/40 space-y-2">
+            <div class="bg-slate-950 p-4 rounded-xl border border-amber-900/40 space-y-1.5">
               <div class="flex justify-between items-center text-amber-400 font-bold">
                 <span>🟡 2. 新公司法 5 年实缴财税合规与保单资金回流闭环</span>
-                <span class="text-[10px] bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">P1 财税出资</span>
+                <span class="text-[10px] bg-amber-500/10 px-2 py-0.5 rounded">P1 财税出资</span>
               </div>
-              <p class="text-slate-300 leading-relaxed">
-                • <strong>最优闭环通道</strong>：税后利润分红 ➔ 购买大额分红年金（建家庭水密隔舱） ➔ 保单质押借款 80% 现金 ➔ 打入资本金验资专户完成实缴。<br>
-                • <strong>非现金通道</strong>：知识产权/专利资产评估实缴 + 财税〔2014〕116号技术入股递延纳税。
+              <p class="text-slate-300 leading-relaxed text-[11px]">
+                • <strong>最优闭环</strong>：税后利润分红 ➔ 购买大额分红险 ➔ 保单质押借款 80% 现金 ➔ 打入验资专户完成实缴。
               </p>
             </div>
 
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-1.5">
               <div class="flex justify-between items-center text-slate-200 font-bold">
                 <span>⚪ 3. 平安信托 1.0/2.0/3.0 与家族信托门槛费率全景</span>
                 <span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded">P2 信托交付</span>
               </div>
-              <p class="text-slate-400 leading-relaxed">
-                • 保险金信托 1.0（总保费100-300万/年管0.2-0.3%）；保险金信托 3.0（累计保费500万+，投保人直接变更为信托公司）；标准家族信托（1000万起）。
-              </p>
-            </div>
-
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
-              <div class="flex justify-between items-center text-slate-200 font-bold">
-                <span>⚪ 4. 跨境外贸老板 CRS 合规与离岸资产合规红线</span>
-                <span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded">P2 跨境税务</span>
-              </div>
-              <p class="text-slate-400 leading-relaxed">
-                • 深刻吸取张兰离岸信托被击穿教训：所有权必须真实剥离，严禁委托人公私随意支取；外汇经常项目 vs 资本项目合规出境通道。
+              <p class="text-slate-400 leading-relaxed text-[11px]">
+                • 保险金信托 1.0（总保费100-300万/年管0.2-0.3%）；保险金信托 3.0（累计保费500万+，投保人变更为信托公司）；家族信托（1000万起）。
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- TAB 3: 雷区全面排查与攻防 (四大雷区与律师攻防) -->
+      <!-- TAB 5: ⚠️ 四大合规雷区与律师攻防 -->
       <section v-if="activeTab === 'risks'" class="space-y-4">
         <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 space-y-4">
           <div class="flex items-center justify-between border-b border-slate-800 pb-3">
@@ -248,40 +365,40 @@
             <span class="text-xs text-rose-400 font-mono">合规防翻车</span>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-            <div class="bg-slate-950 p-4 rounded-xl border border-rose-900/50 space-y-2">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+            <div class="bg-slate-950 p-3.5 rounded-xl border border-rose-900/50 space-y-1.5">
               <div class="text-rose-400 font-bold flex items-center gap-1.5">
                 <span>❌</span> 雷区 1：严禁绝对化承诺“保单避债”
               </div>
-              <p class="text-slate-300 leading-relaxed">
-                <strong>真相与正解</strong>：涉诉后紧急投保涉嫌《民法典》538/539条恶意逃债被撤销；必须强调“晴天修屋顶”与投保人主体置换。
+              <p class="text-slate-300 text-[11px] leading-relaxed">
+                涉诉后紧急投保涉嫌《民法典》538/539条恶意逃债被撤销；必须强调“晴天修屋顶”与投保人主体置换。
               </p>
             </div>
 
-            <div class="bg-slate-950 p-4 rounded-xl border border-rose-900/50 space-y-2">
+            <div class="bg-slate-950 p-3.5 rounded-xl border border-rose-900/50 space-y-1.5">
               <div class="text-rose-400 font-bold flex items-center gap-1.5">
                 <span>❌</span> 雷区 2：破解自书遗嘱与转继承死穴
               </div>
-              <p class="text-slate-300 leading-relaxed">
-                <strong>真相与正解</strong>：遗嘱无法对抗现任配偶第一顺位法定继承，且需全家公证签字；人寿保单指定受益人凭身份证秒级定向赔付。
+              <p class="text-slate-300 text-[11px] leading-relaxed">
+                遗嘱无法对抗现任配偶第一顺位法定继承，且需全家公证签字；人寿保单指定受益人凭身份证秒级定向赔付。
               </p>
             </div>
 
-            <div class="bg-slate-950 p-4 rounded-xl border border-amber-900/50 space-y-2">
+            <div class="bg-slate-950 p-3.5 rounded-xl border border-amber-900/50 space-y-1.5">
               <div class="text-amber-400 font-bold flex items-center gap-1.5">
                 <span>❌</span> 雷区 3：意定监护协议“未做公证”
               </div>
-              <p class="text-slate-300 leading-relaxed">
-                <strong>真相与正解</strong>：私下协议当事人失能后银行和医院拒认；必须依法办理《意定监护公证书》并配套设立财产信托。
+              <p class="text-slate-300 text-[11px] leading-relaxed">
+                私下协议当事人失能后银行和医院拒认；必须依法办理《意定监护公证书》并配套设立财产信托。
               </p>
             </div>
 
-            <div class="bg-slate-950 p-4 rounded-xl border border-amber-900/50 space-y-2">
+            <div class="bg-slate-950 p-3.5 rounded-xl border border-amber-900/50 space-y-1.5">
               <div class="text-amber-400 font-bold flex items-center gap-1.5">
                 <span>❌</span> 雷区 4：对客律师同频攻防四步法
               </div>
-              <p class="text-slate-300 leading-relaxed">
-                <strong>真相与正解</strong>：先肯定律师专业性 ➔ 拉回新公司法23条/信托法15条 ➔ 展示信托3.0架构 ➔ 邀请律师把关结为同盟。
+              <p class="text-slate-300 text-[11px] leading-relaxed">
+                先肯定律师专业性 ➔ 拉回新公司法23条 ➔ 展示信托3.0架构 ➔ 邀请律师把关结为同盟。
               </p>
             </div>
           </div>
@@ -298,35 +415,132 @@
     createApp({
       data() {
         return {
-          activeTab: 'actions',
+          activeTab: 'pre_visit',
           triageInput: '',
           triageResult: null,
+          kycForm: {
+            industry: 'enterprise',
+            risk: 'liability',
+            goal: 'shield'
+          },
+          kycPack: null,
+          postReview: {
+            objection: 'locked'
+          },
           tabs: [
-            { id: 'actions', name: '四大实战落地抓手', emoji: '🚀', count: '4大抓手' },
-            { id: 'gaps', name: '四大深水区盲区攻坚', emoji: '🔍', count: '4大攻坚' },
-            { id: 'risks', name: '四大雷区与律师攻防', emoji: '⚠️', count: '4大排雷' }
+            { id: 'pre_visit', name: '访前准备 (KYC)', emoji: '📋', badge: '核心' },
+            { id: 'post_visit', name: '访后复盘 (攻坚)', emoji: '🔄', badge: '转化' },
+            { id: 'actions', name: '四大实战抓手', emoji: '🚀', badge: '落地' },
+            { id: 'gaps', name: '四大深水区攻坚', emoji: '🔍', badge: '底牌' },
+            { id: 'risks', name: '四大雷区与排雷', emoji: '⚠️', badge: '合规' }
           ]
         }
       },
       methods: {
         runTriage() {
           const input = this.triageInput.toLowerCase();
-          if (input.includes('外贸') || input.includes('担保') || input.includes('公司') || input.includes('连带')) {
+          if (input.includes('外贸') || input.includes('担保') || input.includes('公司') || input.includes('连带') || input.includes('企业')) {
             this.triageResult = {
               title: '企业主股东连带担保与家企防火墙架构 (浙江辖区)',
               laws: '《新公司法》第23条（举证倒置）、第50条（出资连带）、浙江高院保单执行指导意见',
               solution: '晴天修屋顶：非债务人配偶投保 + 平安保险金信托 3.0，配置 80% 质押借款回流实缴。',
               talk: '做企业是无限连带，过日子必须留保单退路。公司倒了，保单在，全家依然有尊严！'
             };
-          } else {
+          } else if (input.includes('女') || input.includes('婚') || input.includes('买房')) {
             this.triageResult = {
               title: '独生子女出资婚前财产锁定与防女婿分割',
               laws: '《民法典》第1062条（婚姻共有）、《民法典婚姻家庭编解释(二)》新规',
               solution: '父母投保 + 女儿被保 + 父母受益；或婚前趸交养老年金确认为特有财产。',
               talk: '给孩子现金是把钱放在公共客厅，给孩子买年金是把钱锁进私人保险柜！'
             };
+          } else {
+            this.triageResult = {
+              title: '老龄失能尊严与意定监护信托全案',
+              laws: '《民法典》第28条（配偶第一顺位监护）、第33条（意定监护公证）、《信托法》15条',
+              solution: '在清醒时办理意定监护公证 + 大额养老年金与信托，按月给付医疗生活费。',
+              talk: '年轻时防别人骗钱，老了要防自己糊涂丢了控制权。意定监护+信托就是请法律保镖！'
+            };
           }
+        },
+        generateKycPack() {
+          if (this.kycForm.industry === 'enterprise') {
+            this.kycPack = {
+              title: '实业/外贸企业主：新公司法连带隔离与流动性武器包',
+              icebreaker: '王总，做实业抓现金流太不容易了，换我也不轻易锁死。但您想过没有：做企业是无限连带，家里的生活费有没有留水密隔舱？',
+              questions: [
+                '王总，公司如果遇到行业周期波动，家庭这边的独立生活费账户准备好了吗？',
+                '新公司法 5 年实缴期，您打算纯用现金硬交，还是希望既锁死家底、又通过 80% 借款回流实缴？',
+                '名下的银行贷款连带担保，太太名下的房产和存款有没有做合法切断？'
+              ],
+              caseName: '白鹭科技 CEO 陈书艺 11 亿估值连带担保被查封案 / 新公司法第 23 条举证倒置',
+              calcFormula: '企业 40% 综合税负测算器 + 保单质押借款 80% 现金流阀门'
+            };
+          } else if (this.kycForm.industry === 'single_daughter') {
+            this.kycPack = {
+              title: '独生女家庭：婚前出资与防女婿 50% 割裂武器包',
+              icebreaker: '王姐，给女儿一筐现金或买套房，就像把钱放在公共客厅，结了婚女婿依法能分走一半！',
+              questions: [
+                '王姐，给女儿结婚买房，房本打算怎么写？知不知道民法典1062条婚后默认共同财产？',
+                '给女儿的这笔巨款，是希望变成夫妻共有，还是装进带指纹锁的私人保险柜？',
+                '万一未来女儿婚姻有变故，这笔钱您希望一分不剩地全归亲骨肉吗？'
+              ],
+              caseName: '陈总夫妇千万房产防女婿分割案（50% 密码） / 民法典婚姻家庭编解释二',
+              calcFormula: '上海 5 套房（2500万）生前赠与 20% 个税差额对比'
+            };
+          } else if (this.kycForm.industry === 'remarried') {
+            this.kycPack = {
+              title: '再婚多子女家庭：定向传承与防转继承武器包',
+              icebreaker: '钱总，留房产是给儿女留官司，买保单是给亲骨肉留底牌！',
+              questions: [
+                '钱总，您立的遗嘱，知不知道现任太太是第一顺位法定继承人，一旦打官司财产直接冻结？',
+                '百年之后，您希望亲儿子凭身份证直接领钱，还是让全家人到公证处全员签字撕破脸？',
+                '万一现任太太先走，您名下的财产转继承给外人娘家，您能接受吗？'
+              ],
+              caseName: '钱总丧偶再婚案（0 漏洞与转继承） / 王总再婚两张保单平衡案',
+              calcFormula: '人身保单免公证定向赔付效率对比'
+            };
+          } else {
+            this.kycPack = {
+              title: '老龄高净值家庭：意定监护与防架空控制权武器包',
+              icebreaker: '张总，年轻时防别人骗钱，老了要防自己糊涂丢了控制权！',
+              questions: [
+                '张总，万一哪天身体抱恙糊涂了，您知道法律规定配偶是第一顺位监护人接管一切吗？',
+                '您希望提前指定谁作为自己的监护人？有没有做司法公证？',
+                '按月支付的高端医疗和养老费用，有没有设置谁也动不了的专属信托专户？'
+              ],
+              caseName: '张总（62岁企业主老夫少妻监护危机案） / 民法典第 28/33 条',
+              calcFormula: '意定监护公证 + 平安养老信托按月给付现金流模型'
+            };
+          }
+        },
+        getReviewData() {
+          const map = {
+            locked: {
+              psychology: '客户对长期锁死存有本能恐慌，担心实业突发危机拿不出钱，需要极强的“流动性安全感”。',
+              talk: '王总，大额保单不是死钱，是带防弹玻璃的备用金！平时享受终身复利增长，企业急需周转，手机上随时贷出 80%，两小时到账，既保全了家底，又没耽误您做生意！',
+              deliverable: '24小时内发送《保单质押贷款80%流动性操作演示表》+ 预约三师共诊出具流动性隔离方案。'
+            },
+            yield: {
+              psychology: '客户仍停留在过去高增长周期的思维定式中，拿保单收益去跟高风险实业或买房做不合理对比。',
+              talk: '王总，足球比赛前锋进再多球，没有守门员也赢不了！做生意是前锋，大额保单是守门员。在利率下行与资产重估周期，保单锁定的不是高收益，而是穿越周期的确定性家底！',
+              deliverable: '发送赵博《宏观经济周期与日本失落三十年对照研报》+《投资不可能三角对比图》。'
+            },
+            lawyer: {
+              psychology: '客户担心被销售套路，用常年法律顾问当防线，同时也确实依赖律师的专业意见。',
+              talk: '张律师说得太对了！普通销售讲保单能逃债那是违法的。我们给您设计的是依据新公司法第23条一人公司举证倒置做的事前隔离，搭配保险金信托3.0。我们非常欢迎张律师一起把关！',
+              deliverable: '出具符合法言法语标准的《高客法商咨询意见书（律师同行审阅版）》，直接与律师建立同频对话。'
+            },
+            will: {
+              psychology: '对继承法存在严重认知盲区，不知道遗嘱过户需要全员公证签字，也不知道现任配偶第一顺位法定继承。',
+              talk: '留房产是给儿女留官司，买保单是给亲骨肉留底牌！遗嘱继承过户必须所有法定继承人到公证处全员签字；而保单指定受益人无需任何人签字，凭身份证直接领钱！',
+              deliverable: '发送《钱总丧偶再婚案例深度剖析》+《不动产继承公证签字难 vs 保单定向理赔对比表》。'
+            }
+          };
+          return map[this.postReview.objection] || map.locked;
         }
+      },
+      mounted() {
+        this.generateKycPack();
       }
     }).mount('#app');
   </script>
