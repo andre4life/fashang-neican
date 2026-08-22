@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="x5-orientation" content="portrait">
+  <meta name="format-detection" content="telephone=no">
+  <title>平安家办 · 全域财富架构师终极数字图书馆</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070a12;
+      --sidebar-bg: #0c1322;
+      --card-bg: rgba(16, 24, 44, 0.95);
+      --card-border: rgba(96, 165, 250, 0.16);
+      --primary: #3b82f6;
+      --primary-dark: #1d4ed8;
+      --brand: #c8974a;
+      --brand-dark: #966628;
+      --gold: #fbbf24;
+      --crimson: #ef4444;
+      --emerald: #10b981;
+      --purple: #a855f7;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 'Noto Sans SC', sans-serif;
+      font-size: 13.5px;
+      line-height: 1.8;
+      padding-bottom: 70px;
+    }
+    .app-container { display: flex; flex: 1; min-height: 100vh; position: relative; }
+
+    /* Sidebar Navigation (PC / iPad) */
+    aside.sidebar {
+      width: 360px;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      z-index: 50;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .sidebar-header {
+      padding: 24px 20px;
+      border-bottom: 1px solid var(--card-border);
+      background: rgba(12, 19, 34, 0.98);
+    }
+    .brand-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--gold);
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+    }
+    .brand-title { font-family: 'Noto Serif SC', serif; font-size: 18px; font-weight: 900; color: #fff; }
+    .brand-sub { font-size: 11px; color: #94a3b8; font-weight: 600; margin-top: 2px; }
+
+    .nav-list { flex: 1; overflow-y: auto; padding: 16px 12px; }
+    .nav-group-title { font-size: 11px; font-weight: 800; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.2px; padding: 14px 12px 6px; }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    .nav-item:hover { background: rgba(255, 255, 255, 0.05); color: #fff; }
+    .nav-item.active { background: rgba(200, 151, 74, 0.15); color: var(--gold); border: 1px solid rgba(200, 151, 74, 0.4); font-weight: 700; }
+    .nav-tag { font-size: 10.5px; font-weight: 800; padding: 2px 6px; border-radius: 4px; background: rgba(255, 255, 255, 0.08); flex-shrink: 0; }
+    .nav-item.active .nav-tag { background: linear-gradient(135deg, var(--brand), var(--brand-dark)); color: #fff; }
+
+    /* Main Content */
+    main.content-area { flex: 1; padding: 40px 48px; max-width: 1160px; margin: 0 auto; width: 100%; }
+
+    /* Mobile Header */
+    .mobile-bar {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: var(--sidebar-bg);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+    .menu-btn { background: rgba(255, 255, 255, 0.08); border: 1px solid var(--card-border); color: #fff; padding: 7px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; }
+
+    /* Mobile Quick Tabs (Horizontal) */
+    .mobile-quick-tabs {
+      display: none;
+      overflow-x: auto;
+      padding: 10px 12px 4px 12px;
+      gap: 6px;
+      scrollbar-width: none;
+      background: #090d16;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      position: sticky;
+      top: 55px;
+      z-index: 39;
+    }
+    .mobile-quick-tabs::-webkit-scrollbar { display: none; }
+    .m-tab {
+      flex-shrink: 0;
+      background: #111827;
+      color: #94a3b8;
+      border: 1px solid #334155;
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .m-tab.active {
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+      color: #fff;
+      border-color: var(--brand);
+    }
+
+    /* Modules */
+    .module-section { display: none; animation: fadeIn 0.2s ease-out; }
+    .module-section.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+    .lvl-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 14px; border-radius: 9999px; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); color: var(--gold); font-size: 12px; font-weight: 800; margin-bottom: 16px; }
+    h1.sec-title { font-family: 'Noto Serif SC', serif; font-size: 28px; font-weight: 900; color: #ffffff; line-height: 1.35; margin-bottom: 14px; }
+    p.sec-lead { font-size: 15px; color: var(--text-muted); margin-bottom: 30px; line-height: 1.8; border-left: 3px solid var(--brand); padding-left: 14px; background: rgba(200, 151, 74, 0.05); padding: 12px 14px; border-radius: 0 8px 8px 0; }
+
+    /* Deep Cards */
+    .deep-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 28px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+    }
+    .deep-card h2 { font-family: 'Noto Serif SC', serif; font-size: 20px; font-weight: 900; color: #f8fafc; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 12px; }
+    .deep-card h2::before { content: ''; display: inline-block; width: 4px; height: 20px; background: var(--brand); border-radius: 2px; }
+    .deep-card h3 { font-size: 16px; font-weight: 800; color: #93c5fd; margin: 22px 0 10px; }
+    .deep-card p { font-size: 14.5px; color: #cbd5e1; margin-bottom: 14px; line-height: 1.85; text-align: justify; }
+    .deep-card ul { margin-left: 20px; margin-bottom: 16px; }
+    .deep-card li { font-size: 14px; color: #cbd5e1; margin-bottom: 8px; line-height: 1.75; }
+    .deep-card strong { color: #ffffff; font-weight: 700; }
+
+    /* Action Checklist Box */
+    .action-box {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(15, 23, 42, 0.9) 100%);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 20px 0;
+    }
+    .action-title { font-size: 14.5px; font-weight: 800; color: #34d399; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .action-list { list-style: none; margin-left: 0 !important; }
+    .action-item { font-size: 13.5px; color: #e2e8f0; margin-bottom: 6px; display: flex; align-items: flex-start; gap: 8px; }
+
+    /* Tables */
+    .table-box { overflow-x: auto; margin: 20px 0; border-radius: 12px; border: 1px solid var(--card-border); }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13.5px; }
+    th { background: #0b1322; color: #f1f5f9; font-weight: 800; padding: 12px 16px; border-bottom: 2px solid var(--card-border); white-space: nowrap; }
+    td { padding: 12px 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #cbd5e1; vertical-align: top; line-height: 1.7; }
+    tr:hover td { background: rgba(59, 130, 246, 0.08); }
+
+    /* Bibliography & Citation Box */
+    .biblio-box {
+      background: #070a10;
+      border: 1px solid rgba(200, 151, 74, 0.3);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 22px 0;
+    }
+    .biblio-title { font-size: 14px; font-weight: 800; color: var(--gold); margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; }
+    .biblio-item { font-size: 13px; color: #cbd5e1; margin-bottom: 8px; padding-left: 10px; border-left: 2px solid var(--brand); line-height: 1.6; }
+    .biblio-tag { font-size: 10px; font-weight: 800; background: rgba(200, 151, 74, 0.2); color: #f5ecd6; padding: 1px 6px; border-radius: 4px; margin-right: 4px; }
+
+    @media (max-width: 960px) {
+      aside.sidebar { position: fixed; left: 0; top: 0; bottom: 0; transform: translateX(-100%); }
+      aside.sidebar.open { transform: translateX(0); }
+      .mobile-bar { display: flex; }
+      .mobile-quick-tabs { display: flex; }
+      main.content-area { padding: 20px 14px; }
+      h1.sec-title { font-size: 22px; }
+      .deep-card { padding: 18px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile Top Bar -->
+  <div class="mobile-bar">
+    <div>
+      <div class="brand-title">平安家办 · 财富架构师图书馆</div>
+      <div class="brand-sub">👑 钱的生·保·用·传 终极真经</div>
+    </div>
+    <button class="menu-btn" onclick="toggleSidebar()">☰ 馆藏目录</button>
+  </div>
+
+  <!-- Mobile Quick Tabs (Swipeable) -->
+  <div class="mobile-quick-tabs">
+    <button class="m-tab active" onclick="showModule('lvl1', this)">卷一 · 富人与传富全景</button>
+    <button class="m-tab" onclick="showModule('lvl2', this)">卷二 · 民法典婚姻债务保全</button>
+    <button class="m-tab" onclick="showModule('lvl3', this)">卷三 · 新公司法实缴合规</button>
+    <button class="m-tab" onclick="showModule('lvl4', this)">卷四 · 家族信托与保险金信托</button>
+    <button class="m-tab" onclick="showModule('lvl5', this)">卷五 · 金税四期与CRS离岸</button>
+  </div>
+
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-badge">🏛️ 馆藏总纲 · 财富逻辑主线</div>
+        <div class="brand-title">全域财富架构师图书馆</div>
+        <div class="brand-sub">围绕“钱的生·保·用·传” 5大核心卷宗</div>
+      </div>
+      <div class="nav-list">
+        <div class="nav-group-title">👑 第一卷 · 核心总纲与传富全景</div>
+        <div class="nav-item active" onclick="showModule('lvl1', this)">
+          <div class="nav-tag">卷一</div>
+          <div>富人怎么富的？现在什么阶段？传富7大路径利弊全景大PK</div>
+        </div>
+
+        <div class="nav-group-title">⚖️ 第二卷 · 钱怎么保？法律深水区</div>
+        <div class="nav-item" onclick="showModule('lvl2', this)">
+          <div class="nav-tag">卷二</div>
+          <div>婚姻财产外流、民法典1064共债与保单强制执行裁判口径</div>
+        </div>
+
+        <div class="nav-group-title">🏢 第三卷 · 企业家的钱怎么合规流转？</div>
+        <div class="nav-item" onclick="showModule('lvl3', this)">
+          <div class="nav-tag">卷三</div>
+          <div>新《公司法》5年实缴、出资加速到期与保单贷款注资</div>
+        </div>
+
+        <div class="nav-group-title">🏰 第四卷 · 钱怎么控？信托与家办顶层</div>
+        <div class="nav-item" onclick="showModule('lvl4', this)">
+          <div class="nav-tag">卷四</div>
+          <div>《信托法》财产独立性、保险金信托2.0与武汉张某信托案</div>
+        </div>
+
+        <div class="nav-group-title">💼 第五卷 · 税务合规与跨境资产</div>
+        <div class="nav-item" onclick="showModule('lvl5', this)">
+          <div class="nav-tag">卷五</div>
+          <div>金税四期公私混同、财税158号股东借款20%与CRS穿透实务</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+
+      <!-- ================= 卷一：富人与传富全景 ================= -->
+      <section id="lvl1" class="module-section active">
+        <div class="lvl-badge">👑 第一卷 · 核心灵魂与认知破局</div>
+        <h1 class="sec-title">富人是怎么富起来的？现在处于什么阶段？<br>传富 7 大路径利弊全景大 PK！</h1>
+        
+        <p class="sec-lead">
+          <strong>【打开本卷你能获得什么】</strong>：<br>
+          一文看懂中国 40 年高客创富演变史；彻底搞清为什么过去的“买房/高息理财/盲目扩张”在今天全部失效；全景掌握<strong>法定继承、遗嘱、生前赠与、大额保单、保险金信托、家族信托、家族办公室</strong> 7 种传富方式的底层逻辑、硬核利弊与适用边界！
+        </p>
+
+        <!-- 本卷行动清单 -->
+        <div class="action-box">
+          <div class="action-title">📋 卷一 · 架构师行动清单（学完你必须能做到）：</div>
+          <ul class="action-list">
+            <li class="action-item">✅ <strong>画像精准识别</strong>：面对客户，3分钟判断其属于哪一代创富群体，精准说出其当前最大的资产结构痛点；</li>
+            <li class="action-item">✅ <strong>7大传承工具横向对比</strong>：能够不用草稿纸，给客户清晰画出 7 种传富路径的优缺点及成本矩阵；</li>
+            <li class="action-item">✅ <strong>打破伪认知</strong>：用法律事实讲透为什么“只立公证遗嘱”无法防二代婚变与法定特留份扣减。</li>
+          </ul>
+        </div>
+
+        <div class="deep-card">
+          <h2>一、 中国高客 40 年创富史：富人是怎么富起来的？</h2>
+          <p>中国改革开放以来的高净值群体（HNW），主要经历了四波财富创造浪潮，每一代富人的资产结构与风险敞口截然不同：</p>
+          
+          <h3>1. 第一代：80/90年代“胆量与贸易红利富豪”（商贸倒爷、资源矿产、乡镇制造业）</h3>
+          <p><strong>创富密码</strong>：价格双轨制、物资匮乏、大宗商品狂飙。依靠胆量与差价赚取第一桶金。<br>
+          <strong>当下致命弱点</strong>：财税极度不规范，企业与家庭账户严重混同，目前年龄普遍在 60~75 岁，面临极为迫切的<strong>“初代向二代交班、甚至隔代直传”</strong>的代际传承悬崖。</p>
+
+          <h3>2. 第二代：2000年代“入世与世界工厂富豪”（传统制造业、外贸出口、供应链）</h3>
+          <p><strong>创富密码</strong>：中国加入 WTO、人口红利、全球制造业产业链转移。<br>
+          <strong>当下致命弱点</strong>：产能过剩、内卷严重、利润率微薄，名下普遍背负<strong>高额银行授信抵押与个人连带担保责任</strong>，资金链脆弱。</p>
+
+          <h3>3. 第三代：2010年代“杠杆与资产泡沫富豪”（房地产高周转、城投基建、移动互联网）</h3>
+          <p><strong>创富密码</strong>：土地红利、金融高杠杆、互联网平台资本化。<br>
+          <strong>当下致命弱点</strong>：资产端严重依赖不动产与股权估值，在“去地产化”周期中<strong>资产价格剧烈缩水，但负债刚性分毫不减</strong>，深陷资产负债表衰退困局。</p>
+
+          <h3>4. 第四代：2020年代“硬科技与出海新贵”（新能源、芯片半导体、跨境电商）</h3>
+          <p><strong>创富密码</strong>：工程师红利、全球化出海、资本市场硬科技溢价。<br>
+          <strong>当下核心诉求</strong>：重视股权架构、知识产权合规、海外架构与全球反避税（CRS）申报合规。</p>
+        </div>
+
+        <div class="deep-card">
+          <h2>二、 现在处于什么阶段？——从“增量暴利”到“存量资产保卫战”</h2>
+          <p>当前宏观经济正式告别过去 20 年的“高增长、加杠杆、高通胀”周期，步入<strong>“去杠杆、破泡沫、低利率、强监管”</strong>的深水区。企业家的财富逻辑发生了历史性逆转：</p>
+          <ul>
+            <li><strong>过去 20 年的生存法则</strong>：借钱加杠杆 ➔ 拿地建厂买房 ➔ 追求每年 20%~30% 资产增值（进攻胜于防守）；</li>
+            <li><strong>当下的生存法则</strong>：<strong>降低负债率 ➔ 切断企业与家庭连带隔离 ➔ 确保家族有源源不断的确定性现金流（防守决定生死）</strong>。</li>
+          </ul>
+        </div>
+
+        <div class="deep-card">
+          <h2>三、 核心重头戏：传富 7 大主流路径与超级利弊大 PK</h2>
+          <p>客户的所有钱，最终都要面对“怎么传下去”的终极命题。市场上主流的 7 种传承方式，其底层逻辑与优缺点如下：</p>
+
+          <div class="table-box">
+            <table>
+              <thead>
+                <tr>
+                  <th>传富方式</th>
+                  <th>核心操作原理</th>
+                  <th>核心优势（利）</th>
+                  <th>致命缺陷与法律盲区（弊）</th>
+                  <th>最佳适配场景</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1. 法定继承</strong></td>
+                  <td>生前不做任何规划，身故后按《民法典》第一顺位（配偶/子女/父母）平均继承。</td>
+                  <td>生前零成本，不需要提前花费精力规划。</td>
+                  <td>❌ <strong>公证死穴</strong>：所有法定继承人必须全部到场签字，七大姑八大姨转继承纠纷极多；<br>❌ 无法定向给特定子女；<br>❌ <strong>无法防范非婚生子女争产</strong>；<br>❌ 财产必须公开，毫无隐私。</td>
+                  <td>资产极少、家庭关系极简单的普通家庭（高客绝对不能用）。</td>
+                </tr>
+                <tr>
+                  <td><strong>2. 生前直接赠与 / 现金代持</strong></td>
+                  <td>生前直接把房产过户给子女，或把大额现金直接转账到子女账户。</td>
+                  <td>简单直接，子女能立刻拿到财产控制权。</td>
+                  <td>❌ <strong>赠与后彻底失控</strong>：子女可能挥霍、创业失败被执行；<br>❌ <strong>婚变被分走一半</strong>：根据民法典1062条，婚后接受的赠与若未明确声明，默认属于夫妻共同财产；<br>❌ 父母年老后无保障，防不孝成本极高。</td>
+                  <td>小额日常支持，绝不适用于家族主力核心资产传承。</td>
+                </tr>
+                <tr>
+                  <td><strong>3. 自书 / 公证遗嘱</strong></td>
+                  <td>立遗嘱人通过书面或公证形式，指定遗产由特定继承人继承。</td>
+                  <td>可明确指定财产归属特定人，具备法律效力。</td>
+                  <td>❌ <strong>立遗嘱容易，执行极难</strong>：身故后仍需全体验收人配合确权，极易产生真伪效力诉讼；<br>❌ <strong>受制于法定“特留份”</strong>（民法典1141条）；<br>❌ <strong>无法防范二代婚变与挥霍</strong>（继承后立刻成为子女责任财产）。</td>
+                  <td>单项特定不动产/股权的初步确权辅助工具。</td>
+                </tr>
+                <tr>
+                  <td><strong>4. 大额人身保单（终身寿 / 年金）</strong></td>
+                  <td>以父母为投保人，指定子女为身故受益人；或以年金险锁定终身现金流。</td>
+                  <td>✅ <strong>免继承公证</strong>：身故金直接打入受益人账户，凭死亡证明即可领取；<br>✅ <strong>指定性极强</strong>：彻底规避法定特留份与争产纠纷；<br>✅ <strong>免征个人所得税</strong>（个税法第4条第4款）；<br>✅ <strong>保单贷款 80% 现金流</strong>。</td>
+                  <td>❌ 只能按合同约定给付，无法满足超大体量家族（如数亿元）跨三代、带复杂考核条件的永续分配需求。</td>
+                  <td>千万元级高客家庭基础防守底仓、现金流定向传承的首选工具。</td>
+                </tr>
+                <tr>
+                  <td><strong>5. 保险金信托（1.0 / 2.0 / 3.0）</strong></td>
+                  <td>保单与信托结合，保单理赔金或保单所有权装入信托专户，由信托公司按意愿书精细化分配。</td>
+                  <td>✅ <strong>低门槛撬动信托架构</strong>（总保费100万~500万即可设立）；<br>✅ <strong>防二代婚变与挥霍</strong>：按月发放、结婚/创业/医疗专项奖惩金；<br>✅ <strong>2.0 模式实现保单投保人变更，深度隔离中途负债</strong>。</td>
+                  <td>❌ 需支付信托公司年化约 0.2%~0.5% 的受托管理费；<br>❌ 需与信托公司签署专业协议。</td>
+                  <td>中产菁英与千万级企业家防二代挥霍、防婚变、防企业负债连带的最高性价比神器。</td>
+                </tr>
+                <tr>
+                  <td><strong>6. 家族信托（境内 / 离岸）</strong></td>
+                  <td>将 1000 万以上现金、金融资产过户给信托公司，设立独立的财产所有权隔离池。</td>
+                  <td>✅ <strong>《信托法》第15条绝对财产独立</strong>；<br>✅ 跨代永续传承（可管理 50~100 年）；<br>✅ 隐私度极高，无需对外公开分配方案。</td>
+                  <td>❌ 设立门槛高（境内现金 1000 万起，离岸 500 万美元起）；<br>❌ 境内目前<strong>缺乏不动产、股权信托财产登记制度</strong>，过户面临高额交易税费。</td>
+                  <td>可投资资产 3000 万以上超高净值家族的顶层财富统筹。</td>
+                </tr>
+                <tr>
+                  <td><strong>7. 家族办公室 / 控股架构（LP/GP）</strong></td>
+                  <td>设立家族顶层控股公司、有限合伙企业（LP/GP），统筹实业股权、金融投资与公益慈善。</td>
+                  <td>✅ 牢牢掌握家族企业的<strong>控制权（GP 掌握 100% 决策权）</strong>；<br>✅ 统筹全球大类资产配置与二代接班培养。</td>
+                  <td>❌ 运营成本极高（需专属法税法务团队）；<br>❌ 结构复杂，涉及大量跨国法税申报。</td>
+                  <td>资产数亿至数十亿、拥有核心实业企业的大家族。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="biblio-box">
+          <div class="biblio-title">
+            <span>📚 卷一 · 权威研读文献与理论出处</span>
+            <span style="font-size:10px; color:#94a3b8;">可延伸精读</span>
+          </div>
+          <div class="biblio-item">
+            <span class="biblio-tag">创富与周期</span><strong>辜朝明《大衰退：金融危机爆发的原因、应对及启示》</strong>—— 理解资产负债表衰退与中国民营经济的防御转向。
+          </div>
+          <div class="biblio-item">
+            <span class="biblio-tag">传承权威</span><strong>中国信托登记有限责任公司《中国家族信托行业发展白皮书》</strong>—— 掌握家族信托与保险金信托市场最新规模与运作规范。
+          </div>
+          <div class="biblio-item">
+            <span class="biblio-tag">法典依据</span><strong>《中华人民共和国民法典》继承编（第1127条、1133条、1141条）</strong>—— 查阅法定继承顺位与特留份强制规定。
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 卷二：民法典婚姻债务保全 ================= -->
+      <section id="lvl2" class="module-section">
+        <div class="lvl-badge">⚖️ 第二卷 · 钱怎么保？法律深水区</div>
+        <h1 class="sec-title">婚姻财产外流、共债共签与保单强制执行裁判口径</h1>
+        <p class="sec-lead">【核心逻辑】：客户辛辛苦苦赚来的钱，最容易被两种合法的力量切走——一是<strong>二代婚变分割（婚姻法风险）</strong>，二是<strong>企业负债连带穿透（债务连带风险）</strong>。本卷带你精通民法典裁判规则，搭建坚不可摧的法律防火隔离带。</p>
+
+        <div class="deep-card">
+          <h2>一、 二代婚变财产外流：父母出资的定性争议（民法典第1062/1063条）</h2>
+          <p>很多父母生前全款给已婚子女买房买车或给大额现金，以为“写的子女名字就是子女的”。</p>
+          <p><strong>【司法裁判红线】</strong>：根据《民法典》第 1062 条，婚姻存续期间接受的赠与或继承，未在协议中明确约定只归一方的，<strong>依法一律认定为夫妻共同财产！一旦离婚，对方合法分走一半！</strong></p>
+          
+          <h3>指纹锁保险柜模型（保单化解方案）：</h3>
+          <p>父母出资在婚前以子女为投保人购买大额年金，在赠与协议中明确约定出资款仅赠与子女个人（特有财产）。年金按月打入子女专属账户，如同为这笔钱装上了<strong>“指纹锁保险柜”</strong>，既保障了子女一生的生活费，又彻底隔绝了婚变分割风险。</p>
+        </div>
+
+        <div class="deep-card">
+          <h2>二、 夫妻共同债务的司法穿透（民法典第1064条共债共签）</h2>
+          <p>民营企业主融资时，银行普遍要求“配偶共同签字连带担保”。一旦签字，即便夫妻离婚，个人名下所有的房产、存款、保单现金价值均被列为连带责任财产。</p>
+          <p><strong>【排雷底线】</strong>：家庭核心资产持有人（如全职太太）<strong>坚决不在企业经营性贷款合同中作为担保人签字</strong>；通过民法典 1064 条将家庭日常生活开支与企业大额经营借款在法律上彻底分流。</p>
+        </div>
+
+        <div class="deep-card">
+          <h2>三、 保单现金价值强制执行的真实裁判口径（浙高法144号文穿透）</h2>
+          <p><strong>全国司法主流趋势</strong>：投保人是保单现金价值的法定所有权人。投保人负债被执行，法院有权依法发出协助执行通知书强制扣划现金价值；被保人/受益人负债在出险前不享有现实财产权益，不可扣划现价。</p>
+          <p><strong>民法典第 538 条撤销权红线</strong>：在债务逾期或涉诉后恶意变更投保人的，债权人享有 1 年撤销之诉权。<strong>所有保全架构必须在企业无涉诉的“晴天”提发布局！</strong></p>
+        </div>
+      </section>
+
+      <!-- ================= 卷三：新公司法实缴合规 ================= -->
+      <section id="lvl3" class="module-section">
+        <div class="lvl-badge">🏢 第三卷 · 企业家的钱怎么合规流转？</div>
+        <h1 class="sec-title">新《公司法》5年实缴、出资加速到期与保单贷款注资</h1>
+        <p class="sec-lead">【核心逻辑】：2024 年 7 月 1 日实施的新《公司法》，彻底堵死了“天价认缴逃废债”的漏洞。企业欠债直接穿透股东个人名下全部财产，掌握用保单贷款合规注资的完整操作链。</p>
+
+        <div class="deep-card">
+          <h2>一、 新《公司法》第 47 条与第 54 条实战穿透</h2>
+          <ul>
+            <li><strong>第 47 条（5 年认缴期限）</strong>：有限责任公司股东认缴出资必须在 5 年内缴足，存量公司在过渡期内逐步调减。</li>
+            <li><strong>第 54 条（出资加速到期——重大杀手锏）</strong>：公司不能清偿到期债务的，债权人有权要求未届出资期限的股东<strong>提前缴纳出资</strong>！法院直接执行股东个人名下的房产和银行存款来替公司偿债！</li>
+          </ul>
+        </div>
+
+        <div class="deep-card">
+          <h2>二、 保单质押贷款合规解决实缴与资金周转流程</h2>
+          <p>在企业健康盈利时，以股东合法税后分红购买大额增额终身寿险；当面临 5 年实缴期限或企业经营急需周转时：</p>
+          <ul>
+            <li><strong>保单质押贷款（获取现金价值 80%）</strong>：最快当天到账，资金合法注入资本金账户完成实缴验资；</li>
+            <li><strong>双重利益不耽误</strong>：保单底层的人身保障和现金价值刚兑复利继续增长，且保单贷款属于债务融资，<strong>完全不产生个人所得税！</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ================= 卷四：家族信托与保险金信托 ================= -->
+      <section id="lvl4" class="module-section">
+        <div class="lvl-badge">🏰 第四卷 · 钱怎么控？信托顶层架构</div>
+        <h1 class="sec-title">《信托法》财产独立性、保险金信托 2.0 与防穿透实务</h1>
+        <p class="sec-lead">【核心逻辑】：保单解决身故杠杆和现金流底仓，信托解决“长周期精细化分配与防挥霍”。精通保险金信托 2.0 投保人权属让渡与武汉张某信托案深水区排雷要件。</p>
+
+        <div class="deep-card">
+          <h2>一、 《信托法》第 15 条财产独立性与隔离机制</h2>
+          <p>根据《信托法》第 15 条、第 16 条：<strong>信托财产独立于委托人、受托人和受益人的固有财产</strong>。设立信托后，委托人破产或身故，信托财产不属于清算财产，除法定 4 种情形外不得强制执行。</p>
+        </div>
+
+        <div class="deep-card">
+          <h2>二、 保险金信托 1.0 vs 2.0 核心差异</h2>
+          <ul>
+            <li><strong>1.0 模式（身故受益金入信托）</strong>：投保人依然是客户本人，中途客户负债，法院仍可强执保单现价（仅能防身故后二代挥霍）；</li>
+            <li><strong>2.0 模式（保单所有权入信托）</strong>：设立时<strong>将保单投保人彻底变更为信托公司</strong>，保单现价归信托财产所有，真正实现中途防负债穿透！</li>
+          </ul>
+        </div>
+
+        <div class="deep-card">
+          <h2>三、 武汉张某信托案深度剖析（虚假信托 Sham Trust 防范）</h2>
+          <p>在武汉中院(2020)鄂01执异662号执行裁定书中，信托财产被法院冻结，根本在于：<strong>设立前已存在巨额到期负债，且委托人保留了过度的随时无条件撤回资金指令权，丧失了信托实质独立性</strong>。合规架构必须设立在无债务的晴天，并科学设置受托人实质管理权。</p>
+        </div>
+      </section>
+
+      <!-- ================= 卷五：金税四期与CRS离岸 ================= -->
+      <section id="lvl5" class="module-section">
+        <div class="lvl-badge">💼 第五卷 · 税务合规与跨境资产</div>
+        <h1 class="sec-title">金税四期公私混同、股东借款 20% 个税与 CRS 穿透申报</h1>
+        <p class="sec-lead">【核心逻辑】：金税四期以数治税监控企业与个人私户大额流水；财税 158 号文对股东借款跨年未还征收 20% 个税；CRS 穿透申报海外金融资产（含大额海外保单），看清离岸架构合规底线。</p>
+
+        <div class="deep-card">
+          <h2>一、 财税〔2003〕158 号文：股东借款跨年未还视同分红 20% 个税</h2>
+          <p>企业主把公司当钱包，长期以“其他应收款——股东借款”挂账用于个人开销。税局在纳税评估中一律定性为股东分红，<strong>按 20% 追缴个税，并日加收万分之五滞纳金（年化 18.25%）！</strong></p>
+        </div>
+
+        <div class="deep-card">
+          <h2>二、 CRS 与海外保单、离岸信托的真实穿透关系</h2>
+          <ul>
+            <li><strong>海外保单必须申报</strong>：具有现金价值的海外人身保险和年金合同属于 CRS 申报金融资产，香港保单现价和收益自动交换回中国税总；</li>
+            <li><strong>离岸空壳公司穿透</strong>：消极非金融实体（NFE）直接穿透至最终实控人；根据打破平局规则（Tie-breaker Rules），持有岛国护照但常住国内依然为中国税收居民，境外所得面临反避税稽查。</li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    function showModule(modId, element) {
+      document.querySelectorAll('.module-section').forEach(sec => sec.classList.remove('active'));
+      const targetSec = document.getElementById(modId);
+      if (targetSec) targetSec.classList.add('active');
+
+      document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+      document.querySelectorAll('.m-tab').forEach(tab => tab.classList.remove('active'));
+
+      if (element) element.classList.add('active');
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Close sidebar on mobile
+      if (window.innerWidth <= 960) {
+        document.getElementById('sidebar').classList.remove('open');
+      }
+    }
+
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
