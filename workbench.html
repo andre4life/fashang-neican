@@ -5,45 +5,203 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="x5-orientation" content="portrait">
   <meta name="format-detection" content="telephone=no">
-  <title>平安家办 · 法商智能工作台</title>
+  <title>平安家办 · 法商智能工作台 & 财富架构师进化树</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --card-border: #1e293b;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --brand: #c8974a;
+      --brand-dark: #966628;
+      --gold: #fbbf24;
+      --crimson: #ef4444;
+      --emerald: #10b981;
+      --purple: #a855f7;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-    body { background-color: #0b0f19; color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 13px; line-height: 1.5; padding-bottom: 50px; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 'Noto Sans SC', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
     
     /* Header */
-    .header { position: sticky; top: 0; z-index: 100; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #1e293b; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 23, 42, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
     .header-left { display: flex; align-items: center; gap: 10px; }
-    .header-icon { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, #c8974a, #966628); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: bold; }
-    .header-title { font-size: 14px; font-weight: bold; color: #ffffff; }
-    .header-sub { font-size: 10px; color: #94a3b8; }
-    .status-badge { font-size: 10px; background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); padding: 2px 8px; border-radius: 12px; }
+    .header-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      font-weight: bold;
+    }
+    .header-title { font-size: 14.5px; font-weight: bold; color: #ffffff; }
+    .header-sub { font-size: 10.5px; color: var(--gold); }
+    .status-badge {
+      font-size: 10px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
 
     /* WeChat Guide Tip */
-    .wechat-tip { background: rgba(200, 151, 74, 0.1); border: 1px solid rgba(200, 151, 74, 0.25); border-radius: 10px; padding: 8px 12px; margin: 10px 12px 0 12px; font-size: 11px; color: #f5ecd6; display: flex; align-items: center; justify-content: space-between; }
+    .wechat-tip {
+      background: rgba(200, 151, 74, 0.1);
+      border: 1px solid rgba(200, 151, 74, 0.25);
+      border-radius: 10px;
+      padding: 8px 12px;
+      margin: 10px 12px 0 12px;
+      font-size: 11px;
+      color: #f5ecd6;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
     /* Nav Tabs */
-    .nav-tabs { display: flex; overflow-x: auto; padding: 12px 12px 6px 12px; gap: 8px; scrollbar-width: none; }
+    .nav-tabs {
+      display: flex;
+      overflow-x: auto;
+      padding: 12px 12px 6px 12px;
+      gap: 8px;
+      scrollbar-width: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
     .nav-tabs::-webkit-scrollbar { display: none; }
-    .tab-btn { flex-shrink: 0; background: #1e293b; color: #94a3b8; border: 1px solid #334155; padding: 6px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
-    .tab-btn.active { background: linear-gradient(135deg, #c8974a, #966628); color: #ffffff; border-color: #c8974a; box-shadow: 0 2px 8px rgba(200, 151, 74, 0.3); }
+    .tab-btn {
+      flex-shrink: 0;
+      background: #1e293b;
+      color: #94a3b8;
+      border: 1px solid #334155;
+      padding: 7px 13px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+      color: #ffffff;
+      border-color: var(--brand);
+      box-shadow: 0 2px 10px rgba(200, 151, 74, 0.35);
+    }
 
     /* Container */
     .container { padding: 12px; }
-    .card { background: #111827; border: 1px solid #1e293b; border-radius: 16px; padding: 14px; margin-bottom: 12px; }
-    .card-title { font-size: 13px; font-weight: bold; color: #ffffff; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    .card-title {
+      font-size: 14px;
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 8px;
+    }
     
+    /* Evolution Sub-nav */
+    .lvl-nav {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+      margin-bottom: 12px;
+    }
+    .lvl-btn {
+      background: #070a10;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 6px 2px;
+      text-align: center;
+      font-size: 10.5px;
+      font-weight: 800;
+      color: #94a3b8;
+      cursor: pointer;
+    }
+    .lvl-btn.active {
+      background: rgba(200, 151, 74, 0.2);
+      border-color: var(--brand);
+      color: var(--gold);
+    }
+
+    /* Sub-card Deep Sections */
+    .sub-section { display: none; animation: fadeIn 0.2s ease-out; }
+    .sub-section.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+    .sub-h2 { font-size: 13.5px; font-weight: 800; color: #60a5fa; margin: 12px 0 6px; display: flex; align-items: center; gap: 6px; }
+    .sub-p { font-size: 12.5px; color: #cbd5e1; line-height: 1.7; margin-bottom: 10px; text-align: justify; }
+    
+    /* Highlight Callouts */
+    .callout-box {
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin: 10px 0;
+      border-left: 4px solid;
+      background: #070a10;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .callout-law { border-left-color: var(--primary); color: #93c5fd; }
+    .callout-tax { border-left-color: var(--gold); color: #fef08a; }
+    .callout-alert { border-left-color: var(--crimson); color: #fca5a5; }
+
+    /* Bibliography Box */
+    .biblio-box {
+      background: #070a10;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin: 12px 0;
+    }
+    .biblio-title { font-size: 12px; font-weight: 800; color: #60a5fa; margin-bottom: 6px; }
+    .biblio-item { font-size: 11.5px; color: #cbd5e1; margin-bottom: 4px; padding-left: 8px; border-left: 2px solid #3b82f6; }
+
     /* Voice Recording Button */
     .voice-box { text-align: center; padding: 16px 10px; background: #070a10; border-radius: 12px; margin-bottom: 12px; }
-    .mic-btn { width: 60px; height: 60px; border-radius: 50%; border: none; background: linear-gradient(135deg, #c8974a, #966628); color: white; font-size: 24px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(200, 151, 74, 0.4); transition: transform 0.2s; }
+    .mic-btn { width: 60px; height: 60px; border-radius: 50%; border: none; background: linear-gradient(135deg, var(--brand), var(--brand-dark)); color: white; font-size: 24px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(200, 151, 74, 0.4); transition: transform 0.2s; }
     .mic-btn:active { transform: scale(0.92); }
     .mic-btn.recording { background: #ef4444; box-shadow: 0 0 0 8px rgba(239, 68, 68, 0.3); animation: pulse 1.2s infinite; }
     @keyframes pulse { 0% { transform: scale(0.96); } 50% { transform: scale(1.04); } 100% { transform: scale(0.96); } }
 
     /* Inputs and Textareas */
     textarea, input, select { width: 100%; background: #070a10; border: 1px solid #334155; border-radius: 10px; padding: 10px; color: #f1f5f9; font-size: 12px; margin-bottom: 10px; outline: none; }
-    textarea:focus, input:focus, select:focus { border-color: #c8974a; }
+    textarea:focus, input:focus, select:focus { border-color: var(--brand); }
     .btn-primary { width: 100%; background: linear-gradient(135deg, #2563eb, #4f46e5); color: white; border: none; border-radius: 10px; padding: 10px; font-size: 12px; font-weight: bold; cursor: pointer; text-align: center; margin-top: 4px; }
-    .btn-brand { width: 100%; background: linear-gradient(135deg, #c8974a, #966628); color: white; border: none; border-radius: 10px; padding: 10px; font-size: 12px; font-weight: bold; cursor: pointer; text-align: center; margin-top: 4px; }
+    .btn-brand { width: 100%; background: linear-gradient(135deg, var(--brand), var(--brand-dark)); color: white; border: none; border-radius: 10px; padding: 10px; font-size: 12px; font-weight: bold; cursor: pointer; text-align: center; margin-top: 4px; }
 
     /* Score and Diagnosis */
     .score-badge { font-size: 18px; font-weight: bold; color: #ef4444; font-family: monospace; }
@@ -60,7 +218,7 @@
     
     .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
     .persona-card { background: #070a10; border: 1px solid #1e293b; border-radius: 10px; padding: 6px 4px; text-align: center; cursor: pointer; font-size: 10px; color: #94a3b8; }
-    .persona-card.active { border-color: #c8974a; background: rgba(200, 151, 74, 0.15); color: #f5ecd6; font-weight: bold; }
+    .persona-card.active { border-color: var(--brand); background: rgba(200, 151, 74, 0.15); color: #f5ecd6; font-weight: bold; }
   </style>
 </head>
 <body>
@@ -71,7 +229,7 @@
       <div class="header-icon">🏛️</div>
       <div>
         <div class="header-title">平安家办 · 法商智能工作台</div>
-        <div class="header-sub">访前 KYC ｜ 语音对练 ｜ 对答复盘</div>
+        <div class="header-sub">👑 Andre 财富架构师进阶进化树</div>
       </div>
     </div>
     <div class="status-badge">● 极速就绪</div>
@@ -79,22 +237,126 @@
 
   <!-- WeChat Guide Tip -->
   <div class="wechat-tip">
-    <span>💡 如需使用麦克风直接说话：请点击右上角「···」选择「在浏览器中打开」</span>
+    <span>💡 支持离线浏览！如需麦克风录音：请点击右上角「···」在浏览器打开</span>
   </div>
 
   <!-- Tabs Navigation -->
   <div class="nav-tabs">
-    <button class="tab-btn active" onclick="switchTab('tab_voice_review')">🎙️ 语音对答复盘</button>
-    <button class="tab-btn" onclick="switchTab('tab_roleplay')">🗣️ 语音全真对练</button>
-    <button class="tab-btn" onclick="switchTab('tab_kyc')">📋 访前准备 (KYC)</button>
-    <button class="tab-btn" onclick="switchTab('tab_pillars')">🏛️ 抓手/盲区/雷区</button>
+    <button class="tab-btn active" onclick="switchTab('tab_evolution', this)">🏆 5级打怪升级宝典</button>
+    <button class="tab-btn" onclick="switchTab('tab_voice_review', this)">🎙️ 语音对答复盘</button>
+    <button class="tab-btn" onclick="switchTab('tab_roleplay', this)">🗣️ 语音全真对练</button>
+    <button class="tab-btn" onclick="switchTab('tab_kyc', this)">📋 访前准备 (KYC)</button>
+    <button class="tab-btn" onclick="switchTab('tab_pillars', this)">🏛️ 抓手/盲区/雷区</button>
   </div>
 
   <!-- Content Container -->
   <div class="container">
 
+    <!-- TAB: 5级打怪升级宝典 (Andre Quest) -->
+    <div id="tab_evolution" class="tab-content">
+      <div class="card">
+        <div class="card-title">
+          <span>🏆 财富架构师 5 级进化树与文献索引</span>
+          <span style="font-size:10px; color:var(--gold);">深水区真经</span>
+        </div>
+
+        <div class="lvl-nav">
+          <div class="lvl-btn active" onclick="switchLvl('lvl1_sec', this)">Lv.1 宏观</div>
+          <div class="lvl-btn" onclick="switchLvl('lvl2_sec', this)">Lv.2 精算</div>
+          <div class="lvl-btn" onclick="switchLvl('lvl3_sec', this)">Lv.3 判例</div>
+          <div class="lvl-btn" onclick="switchLvl('lvl4_sec', this)">Lv.4 信托</div>
+          <div class="lvl-btn" onclick="switchLvl('lvl5_sec', this)">Lv.5 税信</div>
+        </div>
+
+        <!-- Level 1 -->
+        <div id="lvl1_sec" class="sub-section active">
+          <div class="sub-h2">🌱 Level 1 · 宏观资产负债表衰退与高客心智</div>
+          <p class="sub-p"><strong>【核心真经】</strong>：在资产价格下行、企业债务刚性的剪刀差下，企业家从“利润最大化”转向“负债最小化”。保单不是博取 3% 收益的投资品，而是战车底盘的<strong>法定安全气囊与永续刚兑现金流底仓</strong>。</p>
+          
+          <div class="biblio-box">
+            <div class="biblio-title">📚 权威文献研读索引：</div>
+            <div class="biblio-item">• <strong>辜朝明《大衰退》</strong>：资产负债表衰退行为特征</div>
+            <div class="biblio-item">• <strong>达利欧《债务危机》</strong>：大去杠杆周期的财富防守</div>
+            <div class="biblio-item">• <strong>招商银行《中国私人财富报告》</strong>：高客保全诉求调研</div>
+          </div>
+
+          <div class="callout-box callout-law">
+            <strong>🎙️ 本地导师直通</strong>：张征宇《财富私董会》(001~080段) + 韩宇《中高端客户风险分析》76页风险图谱。
+          </div>
+        </div>
+
+        <!-- Level 2 -->
+        <div id="lvl2_sec" class="sub-section">
+          <div class="sub-h2">🌿 Level 2 · 精算机制、分红平滑与抗通胀模型</div>
+          <p class="sub-p"><strong>【核心真经】</strong>：日本90年代8家保司因刚兑高息保单产生<strong>利差损破产</strong>。监管推行分红浮动收益，通过<strong>平滑准备金</strong>穿越牛熊；<strong>交清增额</strong>用复利裂变对抗30年医疗通胀。</p>
+          
+          <div class="biblio-box">
+            <div class="biblio-title">📚 权威文献研读索引：</div>
+            <div class="biblio-item">• <strong>金融监管总局《金发〔2025〕34号》</strong>：分红实现率披露规范</div>
+            <div class="biblio-item">• <strong>精算师协会《分红保险精算规定》</strong>：未分配盈余准备金算法</div>
+            <div class="biblio-item">• <strong>2020版《重大疾病保险疾病定义规范》</strong>：前28种统一定义</div>
+          </div>
+
+          <div class="callout-box callout-tax">
+            <strong>🎙️ 本地导师直通</strong>：杜峰《居家权益升级》(5.2万字实录) + 戴嘉《爱满分加倍佑福黄金搭档精算》。
+          </div>
+        </div>
+
+        <!-- Level 3 -->
+        <div id="lvl3_sec" class="sub-section">
+          <div class="sub-h2">🌲 Level 3 · 保单执行裁判口径与民法典保全</div>
+          <p class="sub-p"><strong>【核心真经】</strong>：投保人是现金价值的真正主人。浙江高院（浙高法〔2015〕144号）明确可执行投保人现价；民法典第1064条确立共债共签；债务发生后变更投保人触犯第538条<strong>诈害债权撤销权</strong>红线。</p>
+          
+          <div class="biblio-box">
+            <div class="biblio-title">📚 权威文献研读索引：</div>
+            <div class="biblio-item">• <strong>《民法典》第1064条（共债共签）、第538/539条（撤销权）</strong></div>
+            <div class="biblio-item">• <strong>浙江高院《浙高法〔2015〕144号文》</strong>：人身保单执行标杆</div>
+            <div class="biblio-item">• <strong>广东高院指导意见</strong>：被保人与受益人代偿救济权</div>
+          </div>
+
+          <div class="callout-box callout-alert">
+            <strong>🎙️ 案例库直通</strong>：ima 云端【法信·39.5万国家法律库】 + 【何帆律师拒赔案例库】。
+          </div>
+        </div>
+
+        <!-- Level 4 -->
+        <div id="lvl4_sec" class="sub-section">
+          <div class="sub-h2">🌳 Level 4 · 新公司法5年实缴与保险金信托2.0</div>
+          <p class="sub-p"><strong>【核心真经】</strong>：新《公司法》第47条(5年实缴)与第54条(加速到期穿透股东名下资产)。保险金信托2.0将投保人变更为信托公司，实现《信托法》第15条<strong>财产绝对独立</strong>；防范武汉张某案过度保留控制权（Sham Trust）。</p>
+          
+          <div class="biblio-box">
+            <div class="biblio-title">📚 权威文献研读索引：</div>
+            <div class="biblio-item">• <strong>新《公司法》（2024.7.1）第47条、第54条（出资加速到期）</strong></div>
+            <div class="biblio-item">• <strong>《信托法》第15条（信托财产独立）、第17条（强制执行豁免）</strong></div>
+            <div class="biblio-item">• <strong>武汉中院(2020)鄂01执异662号裁定书</strong>：张某家族信托案</div>
+          </div>
+
+          <div class="callout-box callout-law">
+            <strong>🎙️ 本地导师直通</strong>：陈纪涛《信托成交保单实战》(90页课件+4.6万字录音实录)。
+          </div>
+        </div>
+
+        <!-- Level 5 -->
+        <div id="lvl5_sec" class="sub-section">
+          <div class="sub-h2">👑 Level 5 · 金税四期穿透与全球 CRS 实务</div>
+          <p class="sub-p"><strong>【核心真经】</strong>：<strong>财税〔2003〕158号</strong>明确股东借款跨年未还征收20%个税+万五滞纳金；保单贷款属于债权融资完全不征税；CRS 穿透申报看税收居民身份与打破平局规则（Tie-breaker Rules），加勒比护照避税神话破灭。</p>
+          
+          <div class="biblio-box">
+            <div class="biblio-title">📚 权威文献研读索引：</div>
+            <div class="biblio-item">• <strong>财政部财税〔2003〕158号文</strong>：股东借款视同分红20%个税</div>
+            <div class="biblio-item">• <strong>《个人所得税法》第4条第4款</strong>：保险赔款完全免税</div>
+            <div class="biblio-item">• <strong>OECD CRS标准文本 & Pugachev 虚假信托案判决书</strong></div>
+          </div>
+
+          <div class="callout-box callout-tax">
+            <strong>🎙️ 智库直通</strong>：ima 云端【税务律师知识库】（王陆续） + 【高净值CRS架构指南】。
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- TAB 1: 语音对答复盘 -->
-    <div id="tab_voice_review" class="tab-content">
+    <div id="tab_voice_review" class="tab-content" style="display:none;">
       <div class="card">
         <div class="card-title">
           <span>🎙️ 访后语音口述一键复盘</span>
@@ -240,11 +502,19 @@
 
   <script>
     // Tab switching
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
-      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    function switchTab(tabId, el) {
+      document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.getElementById(tabId).style.display = 'block';
-      event.target.classList.add('active');
+      if (el) el.classList.add('active');
+    }
+
+    // Evolution Sub-level switching
+    function switchLvl(lvlId, el) {
+      document.querySelectorAll('.sub-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.lvl-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(lvlId).classList.add('active');
+      if (el) el.classList.add('active');
     }
 
     // Speech Recognition
@@ -378,8 +648,8 @@
     function finishRoleplayAndReview() {
       document.getElementById('voiceInput').value = '我向' + personas[currentPersonaIdx].name + '切入法商话题，客户提出抗拒说：' + personas[currentPersonaIdx].opening + '。';
       switchTab('tab_voice_review');
-      document.querySelectorAll('.tab-btn')[0].classList.add('active');
-      document.querySelectorAll('.tab-btn')[1].classList.remove('active');
+      document.querySelectorAll('.tab-btn')[1].classList.add('active');
+      document.querySelectorAll('.tab-btn')[2].classList.remove('active');
       runEvaluation();
     }
 
