@@ -11,34 +11,31 @@
     :root {
       --bg: #070a12;
       --sidebar-bg: #0c1322;
-      --card-bg: rgba(16, 24, 44, 0.95);
-      --card-border: rgba(96, 165, 250, 0.16);
+      --card-bg: rgba(16, 24, 44, 0.96);
+      --card-border: rgba(96, 165, 250, 0.18);
       --primary: #3b82f6;
-      --primary-dark: #1d4ed8;
       --brand: #c8974a;
       --brand-dark: #966628;
       --gold: #fbbf24;
       --crimson: #ef4444;
       --emerald: #10b981;
-      --purple: #a855f7;
       --text: #f8fafc;
       --text-muted: #94a3b8;
-      --text-dim: #64748b;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body {
       background-color: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 'Noto Sans SC', sans-serif;
-      font-size: 13.5px;
-      line-height: 1.8;
-      padding-bottom: 70px;
+      font-size: 14px;
+      line-height: 1.85;
+      padding-bottom: 80px;
     }
     .app-container { display: flex; flex: 1; min-height: 100vh; position: relative; }
 
     /* Sidebar Navigation (PC / iPad) */
     aside.sidebar {
-      width: 360px;
+      width: 380px;
       background: var(--sidebar-bg);
       border-right: 1px solid var(--card-border);
       display: flex;
@@ -69,7 +66,7 @@
     .brand-sub { font-size: 11px; color: #94a3b8; font-weight: 600; margin-top: 2px; }
 
     .nav-list { flex: 1; overflow-y: auto; padding: 16px 12px; }
-    .nav-group-title { font-size: 11px; font-weight: 800; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.2px; padding: 14px 12px 6px; }
+    .nav-group-title { font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 1.2px; padding: 14px 12px 6px; }
     .nav-item {
       display: flex;
       align-items: center;
@@ -90,7 +87,7 @@
     .nav-item.active .nav-tag { background: linear-gradient(135deg, var(--brand), var(--brand-dark)); color: #fff; }
 
     /* Main Content */
-    main.content-area { flex: 1; padding: 40px 48px; max-width: 1160px; margin: 0 auto; width: 100%; }
+    main.content-area { flex: 1; padding: 40px 48px; max-width: 1200px; margin: 0 auto; width: 100%; }
 
     /* Mobile Header */
     .mobile-bar {
@@ -110,7 +107,7 @@
     .mobile-quick-tabs {
       display: none;
       overflow-x: auto;
-      padding: 10px 12px 4px 12px;
+      padding: 10px 12px 6px 12px;
       gap: 6px;
       scrollbar-width: none;
       background: #090d16;
@@ -125,9 +122,9 @@
       background: #111827;
       color: #94a3b8;
       border: 1px solid #334155;
-      padding: 6px 12px;
-      border-radius: 16px;
-      font-size: 11px;
+      padding: 7px 13px;
+      border-radius: 18px;
+      font-size: 11.5px;
       font-weight: 700;
       cursor: pointer;
     }
@@ -144,7 +141,7 @@
 
     .lvl-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 14px; border-radius: 9999px; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); color: var(--gold); font-size: 12px; font-weight: 800; margin-bottom: 16px; }
     h1.sec-title { font-family: 'Noto Serif SC', serif; font-size: 28px; font-weight: 900; color: #ffffff; line-height: 1.35; margin-bottom: 14px; }
-    p.sec-lead { font-size: 15px; color: var(--text-muted); margin-bottom: 30px; line-height: 1.8; border-left: 3px solid var(--brand); padding-left: 14px; background: rgba(200, 151, 74, 0.05); padding: 12px 14px; border-radius: 0 8px 8px 0; }
+    p.sec-lead { font-size: 15px; color: var(--text-muted); margin-bottom: 30px; line-height: 1.85; border-left: 3px solid var(--brand); padding-left: 14px; background: rgba(200, 151, 74, 0.05); padding: 12px 14px; border-radius: 0 8px 8px 0; }
 
     /* Deep Cards */
     .deep-card {
@@ -158,11 +155,58 @@
     }
     .deep-card h2 { font-family: 'Noto Serif SC', serif; font-size: 20px; font-weight: 900; color: #f8fafc; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 12px; }
     .deep-card h2::before { content: ''; display: inline-block; width: 4px; height: 20px; background: var(--brand); border-radius: 2px; }
-    .deep-card h3 { font-size: 16px; font-weight: 800; color: #93c5fd; margin: 22px 0 10px; }
+    .deep-card h3 { font-size: 16px; font-weight: 800; color: #93c5fd; margin: 24px 0 12px; }
     .deep-card p { font-size: 14.5px; color: #cbd5e1; margin-bottom: 14px; line-height: 1.85; text-align: justify; }
     .deep-card ul { margin-left: 20px; margin-bottom: 16px; }
     .deep-card li { font-size: 14px; color: #cbd5e1; margin-bottom: 8px; line-height: 1.75; }
     .deep-card strong { color: #ffffff; font-weight: 700; }
+
+    /* Script / Dialogue Box */
+    .script-box {
+      background: rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-left: 4px solid #3b82f6;
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 16px 0;
+      font-size: 14px;
+      color: #e2e8f0;
+      line-height: 1.8;
+    }
+    .script-title { font-size: 13.5px; font-weight: 800; color: #60a5fa; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+
+    /* Case Study Box */
+    .case-box {
+      background: #090d16;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 14px;
+      padding: 22px;
+      margin: 22px 0;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+    }
+    .case-badge-fail {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      color: #ef4444;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .case-badge-success {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .case-title { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 12px; }
 
     /* Action Checklist Box */
     .action-box {
@@ -179,8 +223,8 @@
     /* Tables */
     .table-box { overflow-x: auto; margin: 20px 0; border-radius: 12px; border: 1px solid var(--card-border); }
     table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13.5px; }
-    th { background: #0b1322; color: #f1f5f9; font-weight: 800; padding: 12px 16px; border-bottom: 2px solid var(--card-border); white-space: nowrap; }
-    td { padding: 12px 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #cbd5e1; vertical-align: top; line-height: 1.7; }
+    th { background: #0b1322; color: #f1f5f9; font-weight: 800; padding: 14px 16px; border-bottom: 2px solid var(--card-border); white-space: nowrap; }
+    td { padding: 14px 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #cbd5e1; vertical-align: top; line-height: 1.75; }
     tr:hover td { background: rgba(59, 130, 246, 0.08); }
 
     /* Bibliography & Citation Box */
@@ -219,8 +263,8 @@
 
   <!-- Mobile Quick Tabs (Swipeable) -->
   <div class="mobile-quick-tabs">
-    <button class="m-tab active" onclick="showModule('lvl1', this)">卷一 · 富人与传富全景</button>
-    <button class="m-tab" onclick="showModule('lvl2', this)">卷二 · 民法典婚姻债务保全</button>
+    <button class="m-tab active" onclick="showModule('lvl1', this)">卷一 · 创富演变与享富传富</button>
+    <button class="m-tab" onclick="showModule('lvl2', this)">卷二 · 婚姻债务与保单执行</button>
     <button class="m-tab" onclick="showModule('lvl3', this)">卷三 · 新公司法实缴合规</button>
     <button class="m-tab" onclick="showModule('lvl4', this)">卷四 · 家族信托与保险金信托</button>
     <button class="m-tab" onclick="showModule('lvl5', this)">卷五 · 金税四期与CRS离岸</button>
@@ -236,10 +280,10 @@
         <div class="brand-sub">围绕“钱的生·保·用·传” 5大核心卷宗</div>
       </div>
       <div class="nav-list">
-        <div class="nav-group-title">👑 第一卷 · 核心总纲与传富全景</div>
+        <div class="nav-group-title">👑 第一卷 · 核心总纲与创富传富</div>
         <div class="nav-item active" onclick="showModule('lvl1', this)">
           <div class="nav-tag">卷一</div>
-          <div>富人怎么富的？现在什么阶段？传富7大路径利弊全景大PK</div>
+          <div>40年创富史、宏观金融三大利刃、享富与传富7大路径大PK</div>
         </div>
 
         <div class="nav-group-title">⚖️ 第二卷 · 钱怎么保？法律深水区</div>
@@ -271,59 +315,116 @@
     <!-- Main Content Area -->
     <main class="content-area">
 
-      <!-- ================= 卷一：富人与传富全景 ================= -->
+      <!-- ================= 卷一：创富演变、宏观金融穿透与享富传富 ================= -->
       <section id="lvl1" class="module-section active">
         <div class="lvl-badge">👑 第一卷 · 核心灵魂与认知破局</div>
-        <h1 class="sec-title">富人是怎么富起来的？现在处于什么阶段？<br>传富 7 大路径利弊全景大 PK！</h1>
+        <h1 class="sec-title">中国 40 年创富大迁徙、宏观金融三大利刃<br>与享富传富 7 大路径超级利弊大 PK！</h1>
         
         <p class="sec-lead">
           <strong>【打开本卷你能获得什么】</strong>：<br>
-          一文看懂中国 40 年高客创富演变史；彻底搞清为什么过去的“买房/高息理财/盲目扩张”在今天全部失效；全景掌握<strong>法定继承、遗嘱、生前赠与、大额保单、保险金信托、家族信托、家族办公室</strong> 7 种传富方式的底层逻辑、硬核利弊与适用边界！
+          彻底看懂中国 40 年四代富人是如何富起来的，以及在今天面临的生死存亡挑战；精通<strong>低利率资产荒、美元加降息潮汐、汇率波动与出海</strong>三大宏观利刃对高客资产的重塑；掌握与企业家高维同频的沟通对话力；深剖<strong>长寿失能“享富”与代际接班“传富”</strong>的底层死穴；全景对比 7 种传富路径，并深度解剖 5 大血泪判例与标杆方案！
         </p>
 
         <!-- 本卷行动清单 -->
         <div class="action-box">
           <div class="action-title">📋 卷一 · 架构师行动清单（学完你必须能做到）：</div>
           <ul class="action-list">
-            <li class="action-item">✅ <strong>画像精准识别</strong>：面对客户，3分钟判断其属于哪一代创富群体，精准说出其当前最大的资产结构痛点；</li>
-            <li class="action-item">✅ <strong>7大传承工具横向对比</strong>：能够不用草稿纸，给客户清晰画出 7 种传富路径的优缺点及成本矩阵；</li>
-            <li class="action-item">✅ <strong>打破伪认知</strong>：用法律事实讲透为什么“只立公证遗嘱”无法防二代婚变与法定特留份扣减。</li>
+            <li class="action-item">✅ <strong>画像精准洞察</strong>：面对任何企业家，3 分钟剖析出其属于哪一代创富模式，精准切中其当前在企业连带、账期与接班上的致命痛点；</li>
+            <li class="action-item">✅ <strong>宏观高维破局</strong>：不再推销 3% 收益率，而是用“再投资风险（Reinvestment Risk）”和“资产负债表防御”重塑企业家的法商底仓认知；</li>
+            <li class="action-item">✅ <strong>传富 7 大工具脱口而出</strong>：清晰对比法定继承、遗嘱、赠与、保单、保险金信托、家族信托、家办控股的门槛、法律依据、隔离效果与漏洞；</li>
+            <li class="action-item">✅ <strong>案例杀伤力</strong>：熟练运用“转继承公证瘫痪案”、“上海全款买婚房婚变分走600万案”等 5 大案例击穿客户心防。</li>
           </ul>
         </div>
 
+        <!-- 第一章 -->
         <div class="deep-card">
-          <h2>一、 中国高客 40 年创富史：富人是怎么富起来的？</h2>
-          <p>中国改革开放以来的高净值群体（HNW），主要经历了四波财富创造浪潮，每一代富人的资产结构与风险敞口截然不同：</p>
+          <h2>第一章 · 中国 40 年创富大迁徙：四代富人画像与当下生死挑战</h2>
+          <p>中国改革开放 40 年积累的民间财富，主要经历了四波财富创造浪潮。每一代富人踩中了不同的时代红利，但在今天面对的资产挑战截然不同：</p>
           
-          <h3>1. 第一代：80/90年代“胆量与贸易红利富豪”（商贸倒爷、资源矿产、乡镇制造业）</h3>
-          <p><strong>创富密码</strong>：价格双轨制、物资匮乏、大宗商品狂飙。依靠胆量与差价赚取第一桶金。<br>
-          <strong>当下致命弱点</strong>：财税极度不规范，企业与家庭账户严重混同，目前年龄普遍在 60~75 岁，面临极为迫切的<strong>“初代向二代交班、甚至隔代直传”</strong>的代际传承悬崖。</p>
+          <h3>1. 第一代：80/90 年代“胆量与贸易红利富豪”（商贸倒爷、资源矿产、初代乡镇制造业）</h3>
+          <p><strong>创富密码</strong>：价格双轨制、物资匮乏时代、煤炭钢铁大宗商品暴利。依靠体制下海的胆量与区域信息差赚取了第一桶金。<br>
+          <strong>当下生死挑战</strong>：
+          <ul>
+            <li><strong>接班断崖危机</strong>：这批创始人目前年龄普遍跨入 <strong>65~80 岁高龄</strong>，身体机能衰退，急需交班；但二代普遍接受过海外高等教育，热衷于金融与创投，<strong>根本看不上父辈脏乱累的传统工厂</strong>；</li>
+            <li><strong>产权与财税历史遗留原罪</strong>：当年乡镇企业挂靠、红帽子企业改制、土地厂房产权不清晰，且企业与个人账户深度混同，一旦老创始人发生意外，家族企业立刻陷入公章争夺、兄弟阋墙与银行抽贷。</li>
+          </ul>
+          </p>
 
-          <h3>2. 第二代：2000年代“入世与世界工厂富豪”（传统制造业、外贸出口、供应链）</h3>
-          <p><strong>创富密码</strong>：中国加入 WTO、人口红利、全球制造业产业链转移。<br>
-          <strong>当下致命弱点</strong>：产能过剩、内卷严重、利润率微薄，名下普遍背负<strong>高额银行授信抵押与个人连带担保责任</strong>，资金链脆弱。</p>
+          <h3>2. 第二代：2000 年代“入世与世界工厂富豪”（传统制造业、外贸出口、供应链加工）</h3>
+          <p><strong>创富密码</strong>：中国加入 WTO、人口红利、全球产业链东移，靠三班倒和极度勤奋成为全球供应链关键节点。<br>
+          <strong>当下生死挑战</strong>：
+          <ul>
+            <li><strong>内卷降价与账期恶化</strong>：全球需求疲软叠加国内产能过剩，企业利润率跌至冰点，应收账款账期从 30 天拉长到 180 天甚至大面积坏账；</li>
+            <li><strong>个人无限连带担保地雷</strong>：为了维持企业周转，企业主普遍在银行授信合同中签署了<strong>个人及配偶无限连带担保责任</strong>。一旦一笔货款违约，法院不仅封查工厂，还会冻结企业家名下所有家庭豪宅、私人存款与股票，<strong>一人开厂、全家破产</strong>。</li>
+          </ul>
+          </p>
 
-          <h3>3. 第三代：2010年代“杠杆与资产泡沫富豪”（房地产高周转、城投基建、移动互联网）</h3>
-          <p><strong>创富密码</strong>：土地红利、金融高杠杆、互联网平台资本化。<br>
-          <strong>当下致命弱点</strong>：资产端严重依赖不动产与股权估值，在“去地产化”周期中<strong>资产价格剧烈缩水，但负债刚性分毫不减</strong>，深陷资产负债表衰退困局。</p>
+          <h3>3. 第三代：2010 年代“杠杆与资产泡沫富豪”（房地产高周转、城投基建、移动互联网）</h3>
+          <p><strong>创富密码</strong>：土地财政、金融高杠杆、城投非标 10% 刚兑、互联网平台创投盛宴。<br>
+          <strong>当下生死挑战</strong>：
+          <ul>
+            <li><strong>资产负债表剪刀差衰退</strong>：在“去地产化”与化债周期下，名下重仓的商业地产、豪宅价格缩水 30%~50% 且完全无法变现，但<strong>负债端的银行贷款利息分秒必争、分毫不减</strong>；</li>
+            <li><strong>流动性彻底冻结</strong>：手握数亿账面资产，但口袋里拿不出 500 万流动现金，稍有风吹草动即面临债务爆雷。</li>
+          </ul>
+          </p>
 
-          <h3>4. 第四代：2020年代“硬科技与出海新贵”（新能源、芯片半导体、跨境电商）</h3>
-          <p><strong>创富密码</strong>：工程师红利、全球化出海、资本市场硬科技溢价。<br>
-          <strong>当下核心诉求</strong>：重视股权架构、知识产权合规、海外架构与全球反避税（CRS）申报合规。</p>
+          <h3>4. 第四代：2020 年代“硬科技与出海新贵”（新能源、半导体芯片、跨境电商）</h3>
+          <p><strong>创富密码</strong>：专精特新、工程师红利、出海全球化（TikTok/SHEIN/亚马逊生态）。<br>
+          <strong>当下生死挑战</strong>：
+          <ul>
+            <li><strong>对赌协议与股权代持风险</strong>：早期融资签署的回购对赌协议在上市受阻下面临巨额回购清偿；</li>
+            <li><strong>全球反避税（CRS）稽查</strong>：境外架构搭建不规范，海外资金面临金税四期境外所得穿透与外汇合规稽查。</li>
+          </ul>
+          </p>
         </div>
 
+        <!-- 第二章 -->
         <div class="deep-card">
-          <h2>二、 现在处于什么阶段？——从“增量暴利”到“存量资产保卫战”</h2>
-          <p>当前宏观经济正式告别过去 20 年的“高增长、加杠杆、高通胀”周期，步入<strong>“去杠杆、破泡沫、低利率、强监管”</strong>的深水区。企业家的财富逻辑发生了历史性逆转：</p>
+          <h2>第二章 · 宏观金融三大利刃穿透与高维对客沟通力</h2>
+          <p>很多金融内勤在面对企业家时，只会机械背诵“保险安全、保单保本”，这在见多识广的大老板面前显得极度浅显。<strong>真正的大架构师，一开口聊的是宏观金融变量对客户资产负债表的重塑</strong>：</p>
+
+          <h3>1. 利刃一：低利率时代与“再投资风险（Reinvestment Risk）”</h3>
+          <p><strong>宏观事实</strong>：中国 1 年期 LPR 与存款准备金率持续下行，国有大行 3 年期定存利率跌破 1.5%，国债收益率迈入“1时代”；纵观日本与欧洲，一旦进入老龄化低增长周期，低利率甚至负利率将长达 20 年以上。<br>
+          <strong>富人痛点</strong>：过去靠银行大额存单、信托非标 8%~10% 刚兑“躺赢”的时代一去不复返；高客手头到期的大额现金，面临找不到任何安全高息资产的<strong>“再投资悬崖”</strong>——每过 3 年，收益率就被腰斩一次。</p>
+          
+          <div class="script-box">
+            <div class="script-title">🎙️ 架构师对客破局话术（再投资风险对话）：</div>
+            “王总，做实业您是行家，但您有没有注意到宏观金融环境发生了一个不可逆的大转向？过去 10 年，钱放在信托有 8%，放在大额存单有 4.5%，您不着急锁利；但现在国债已经跌破 2%，大额存单全面降到 1.5%，未来甚至可能步入日本欧洲那样的零利率时代！这意味着您名下这 2000 万现金，每过 3 年到期就要面临一次收益腰斩！今天我们探讨的大额分红增额寿与年金，根本不是让您博取暴利，而是<strong>用白纸黑字的法律合同，在利率下行的大悬崖边，为您和家族提前抢占一个锁定未来 30~50 年复利成长底盘的永续现金流管道！</strong>”
+          </div>
+
+          <h3>2. 利刃二：美元加降息潮汐与中美利差倒挂（Carry Trade 博弈）</h3>
+          <p><strong>宏观事实</strong>：美联储经历激进加息后进入降息周期，中美利差出现历史性倒挂。盲目跟风换汇出海，不仅面临高达 3%~5% 的换汇损耗与外汇管制，更面临海外资产被纳税评估的合规风险。<br>
+          <strong>高维策略</strong>：指导客户构建<strong>“境内人民币法商底仓（保单/信托） + 离岸合规配置”</strong>的双轮驱动架构，而不是非法的地下钱庄出海。</p>
+
+          <h3>3. 利刃三：汇率波动与制造业出海（东南亚/墨西哥）的多币种隔离</h3>
+          <p><strong>宏观事实</strong>：伴随关税壁垒，制造业老板被迫在越南、泰国、印尼或墨西哥建厂。境外收益面临当地劳工法、地缘政治冲突以及<strong>跨境利润如何合规回流、如何做家庭防火隔离</strong>的重大命题。</p>
+        </div>
+
+        <!-- 第三章 -->
+        <div class="deep-card">
+          <h2>第三章 · 财富生命周期转折：从“创富”跨越到“享富”与“传富”</h2>
+          <p>企业家前半生全力以赴“创富”（把本金变成利润）；后半生必须面对<strong>“享富（自己怎么花得尊严体面）”</strong>与<strong>“传富（后代怎么接得稳当平安）”</strong>两大命题：</p>
+
+          <h3>一、 “享富”阶段的四大深水区痛点：</h3>
           <ul>
-            <li><strong>过去 20 年的生存法则</strong>：借钱加杠杆 ➔ 拿地建厂买房 ➔ 追求每年 20%~30% 资产增值（进攻胜于防守）；</li>
-            <li><strong>当下的生存法则</strong>：<strong>降低负债率 ➔ 切断企业与家庭连带隔离 ➔ 确保家族有源源不断的确定性现金流（防守决定生死）</strong>。</li>
+            <li><strong>长寿风险与医疗通胀</strong>：人类平均寿命向 90 岁迈进，重疾质子重离子放疗、CAR-T 免疫疗法（120万一针）完全自费；没有确定性现金流，高寿反而变成家庭沉重负担；</li>
+            <li><strong>失能失智照护尊严与老龄防架空（杜峰老师四张王牌）</strong>：当企业家 75 岁以上失能失智时，名下巨额房产和银行卡极易被不良保姆、心怀不轨的亲戚非法侵占架空。<strong>必须通过年金专款专用 + 司法意定监护公证</strong>，确保每月照护费直达康养机构；</li>
+            <li><strong>投资降维陷阱</strong>：很多成功企业家退休后不甘寂寞，盲目跨界搞二级市场、非标借贷或给朋友担保，<strong>一生创富、三年败光</strong>。</li>
+          </ul>
+
+          <h3>二、 “传富”阶段的四大深水区死穴：</h3>
+          <ul>
+            <li><strong>法定公证死穴与转继承扩散</strong>：未做规划突发身故，八大姑七大姨转继承导致企业股权和房产彻底瘫痪；</li>
+            <li><strong>二代婚变财产外流（民法典第 1062 条）</strong>：父母赠与房产或大额现金，婚后依法默认属于夫妻共同财产，一旦二代离婚被儿媳/女婿合法切走一半；</li>
+            <li><strong>二代败家与创业挥霍</strong>：一次性给二代数千万现金，往往变成二代频繁创业亏光或落入不良金融理财陷阱的催化剂；</li>
+            <li><strong>企业经营债务连带击穿家庭资产</strong>：新公司法第 54 条出资加速到期，直接执行股东个人及家庭资产抵债。</li>
           </ul>
         </div>
 
+        <!-- 第四章 -->
         <div class="deep-card">
-          <h2>三、 核心重头戏：传富 7 大主流路径与超级利弊大 PK</h2>
-          <p>客户的所有钱，最终都要面对“怎么传下去”的终极命题。市场上主流的 7 种传承方式，其底层逻辑与优缺点如下：</p>
+          <h2>第四章 · 核心重头戏：传富 7 大主流路径超级利弊大 PK 矩阵</h2>
+          <p>客户的所有钱，最终都要落地到具体的法律与金融工具中。市场上主流 7 种传富方式的全维度横向对比：</p>
 
           <div class="table-box">
             <table>
@@ -333,35 +434,35 @@
                   <th>核心操作原理</th>
                   <th>核心优势（利）</th>
                   <th>致命缺陷与法律盲区（弊）</th>
-                  <th>最佳适配场景</th>
+                  <th>适用资金门槛与场景</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><strong>1. 法定继承</strong></td>
-                  <td>生前不做任何规划，身故后按《民法典》第一顺位（配偶/子女/父母）平均继承。</td>
-                  <td>生前零成本，不需要提前花费精力规划。</td>
-                  <td>❌ <strong>公证死穴</strong>：所有法定继承人必须全部到场签字，七大姑八大姨转继承纠纷极多；<br>❌ 无法定向给特定子女；<br>❌ <strong>无法防范非婚生子女争产</strong>；<br>❌ 财产必须公开，毫无隐私。</td>
+                  <td>不做任何生前规划，身故后按《民法典》第一顺位（配偶/子女/父母）平均分割。</td>
+                  <td>生前零成本，不需要花费任何精力。</td>
+                  <td>❌ <strong>公证死穴</strong>：所有继承人必须全部到场签字放弃，只要一人不同意即陷入死锁；<br>❌ <strong>转继承扩散</strong>：父母后死引发叔伯姑婶分钱；<br>❌ 无法防非婚生子争产，财产必须全公开毫无隐私。</td>
                   <td>资产极少、家庭关系极简单的普通家庭（高客绝对不能用）。</td>
                 </tr>
                 <tr>
                   <td><strong>2. 生前直接赠与 / 现金代持</strong></td>
-                  <td>生前直接把房产过户给子女，或把大额现金直接转账到子女账户。</td>
-                  <td>简单直接，子女能立刻拿到财产控制权。</td>
-                  <td>❌ <strong>赠与后彻底失控</strong>：子女可能挥霍、创业失败被执行；<br>❌ <strong>婚变被分走一半</strong>：根据民法典1062条，婚后接受的赠与若未明确声明，默认属于夫妻共同财产；<br>❌ 父母年老后无保障，防不孝成本极高。</td>
-                  <td>小额日常支持，绝不适用于家族主力核心资产传承。</td>
+                  <td>生前直接把房产过户给子女，或把大额现金直接转账到子女个人账户。</td>
+                  <td>手续简单直接，子女能立刻拿到财产控制权。</td>
+                  <td>❌ <strong>赠与后彻底失控</strong>：子女可能挥霍、创业失败被执行；<br>❌ <strong>婚变被分走一半</strong>：根据民法典1062条，婚后接受的赠与默认属于夫妻共同财产；<br>❌ 父母失去防不孝底牌。</td>
+                  <td>小额日常贴补，绝不适用于家族主力核心资产传承。</td>
                 </tr>
                 <tr>
                   <td><strong>3. 自书 / 公证遗嘱</strong></td>
-                  <td>立遗嘱人通过书面或公证形式，指定遗产由特定继承人继承。</td>
-                  <td>可明确指定财产归属特定人，具备法律效力。</td>
-                  <td>❌ <strong>立遗嘱容易，执行极难</strong>：身故后仍需全体验收人配合确权，极易产生真伪效力诉讼；<br>❌ <strong>受制于法定“特留份”</strong>（民法典1141条）；<br>❌ <strong>无法防范二代婚变与挥霍</strong>（继承后立刻成为子女责任财产）。</td>
+                  <td>立遗嘱人通过书面或公证形式，指定遗产由特定继承人单独继承。</td>
+                  <td>可明确指定财产归属特定人，具备明确法律效力。</td>
+                  <td>❌ <strong>立遗嘱容易，执行极难</strong>：身故后仍需全体验收人配合确权，极易产生真伪效力诉讼；<br>❌ <strong>受制于法定“特留份”</strong>（民法典1141条）；<br>❌ <strong>无法防范二代婚变与挥霍</strong>。</td>
                   <td>单项特定不动产/股权的初步确权辅助工具。</td>
                 </tr>
                 <tr>
                   <td><strong>4. 大额人身保单（终身寿 / 年金）</strong></td>
-                  <td>以父母为投保人，指定子女为身故受益人；或以年金险锁定终身现金流。</td>
-                  <td>✅ <strong>免继承公证</strong>：身故金直接打入受益人账户，凭死亡证明即可领取；<br>✅ <strong>指定性极强</strong>：彻底规避法定特留份与争产纠纷；<br>✅ <strong>免征个人所得税</strong>（个税法第4条第4款）；<br>✅ <strong>保单贷款 80% 现金流</strong>。</td>
+                  <td>以父母为投保人，指定子女为身故受益人；或以年金险锁定终身确定现金流。</td>
+                  <td>✅ <strong>免继承公证</strong>：身故金直接打入受益人账户，凭死亡证明即可领取；<br>✅ <strong>指定性极强</strong>：规避法定特留份与争产纠纷；<br>✅ <strong>法定免征个税</strong>（个税法第4条第4款）；<br>✅ <strong>保单贷款 80% 现金流</strong>。</td>
                   <td>❌ 只能按合同约定给付，无法满足超大体量家族（如数亿元）跨三代、带复杂考核条件的永续分配需求。</td>
                   <td>千万元级高客家庭基础防守底仓、现金流定向传承的首选工具。</td>
                 </tr>
@@ -369,7 +470,7 @@
                   <td><strong>5. 保险金信托（1.0 / 2.0 / 3.0）</strong></td>
                   <td>保单与信托结合，保单理赔金或保单所有权装入信托专户，由信托公司按意愿书精细化分配。</td>
                   <td>✅ <strong>低门槛撬动信托架构</strong>（总保费100万~500万即可设立）；<br>✅ <strong>防二代婚变与挥霍</strong>：按月发放、结婚/创业/医疗专项奖惩金；<br>✅ <strong>2.0 模式实现保单投保人变更，深度隔离中途负债</strong>。</td>
-                  <td>❌ 需支付信托公司年化约 0.2%~0.5% 的受托管理费；<br>❌ 需与信托公司签署专业协议。</td>
+                  <td>❌ 需支付信托公司年化约 0.2%~0.5% 的受托管理费；<br>❌ 需与信托公司签署专业信托合同。</td>
                   <td>中产菁英与千万级企业家防二代挥霍、防婚变、防企业负债连带的最高性价比神器。</td>
                 </tr>
                 <tr>
@@ -388,6 +489,61 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+
+        <!-- 第五章 -->
+        <div class="deep-card">
+          <h2>第五章 · 五大血泪判例与标杆案例深度解剖</h2>
+
+          <div class="case-box">
+            <div class="case-badge-fail">❌ 惨痛败局案例 1</div>
+            <div class="case-title">【心梗突发与法定继承公证死穴案】（转继承 + 非婚生子争产）</div>
+            <p><strong>真实案情</strong>：金华某实业公司李总（56岁，资产约 5000 万：1500 万写字楼、2000 万厂房股权及 1500 万银行存款）突发急性心肌梗死离世，生前未留任何遗嘱或保单规划。<br>
+            <strong>惨痛后果</strong>：
+            <ul>
+              <li><strong>转继承瘫痪</strong>：李总去世时 82 岁的老母亲健在，但 3 个月后老母亲悲伤过度相继离世。导致老母亲应继承李总的遗产份额，转继承给了李总的 4 个兄弟姐妹！李总太太和儿子要过户房产，必须找齐所有叔伯姑婶到公证处签字放弃继承，因部分亲戚身在海外且要求分钱，<strong>公证手续长达 2 年无法办理，公司账户全部被银行冻结，企业被迫停产！</strong></li>
+              <li><strong>非婚生子半路杀出</strong>：诉讼期间，一名自称李总非婚生子的代理律师向法院提起诉讼并做亲子鉴定，依法要求分走 1/4 遗产！</li>
+            </ul>
+            <strong>架构师复盘</strong>：法定继承是成本最高、纠纷最多、最无隐私的灾难级传承方式。
+            </p>
+          </div>
+
+          <div class="case-box">
+            <div class="case-badge-fail">❌ 惨痛败局案例 2</div>
+            <div class="case-title">【上海全款买婚房被女婿婚变分走 600 万案】</div>
+            <p><strong>真实案情</strong>：杭州某外贸老板陈总，在独生女结婚时，全款出资 1200 万元在上海为女儿购买一套婚房，产权证登记在女儿一人名下。陈总认为：“全款买的，写女儿名，肯定万无一失。”<br>
+            <strong>惨痛后果</strong>：婚后第 4 年，女婿出轨导致婚姻破裂提起离婚诉讼。根据《民法典》第 1062 条及司法解释，<strong>由于陈总在出资买房时未签署任何书面公证赠与协议声明“该房产仅归女儿个人所有”</strong>，法院依法认定该 1200 万房产属于女方父母对夫妻双方的赠与，<strong>判决房屋归女儿所有，但女儿必须向女婿支付 600 万元的房屋折价补偿款！</strong><br>
+            <strong>架构师复盘</strong>：给女儿买房就像把钱放在公共客厅。若婚前运用大额商业养老年金（特有财产指纹锁），按月领现金流，女婿分不走一分钱。
+            </p>
+          </div>
+
+          <div class="case-box">
+            <div class="case-badge-fail">❌ 惨痛败局案例 3</div>
+            <div class="case-title">【老董事长公证遗嘱忽视民法典 1141 条特留份致股权瘫痪案】</div>
+            <p><strong>真实案情</strong>：宁波某制造集团董事长立下公证遗嘱，将名下全部 60% 控股股权（价值 8000 万）全部指定由跟随自己打拼的大儿子继承，小儿子因自幼残疾未参与公司经营，遗嘱未给小儿子留任何份额。<br>
+            <strong>惨痛后果</strong>：董事长身故后，小儿子以自身缺乏劳动能力又无生活来源为由诉至法院。根据《民法典》第 1141 条（遗产应当为缺乏劳动能力又没有生活来源的继承人保留必要的遗产份额——**强制特留份制度**），法院判决遗嘱部分无效，依法从小儿子名下扣出 15% 股权份额。导致大儿子控股权跌破 50%，引发外部股东夺权，公司陷入治理僵局！
+            </p>
+          </div>
+
+          <div class="case-box">
+            <div class="case-badge-fail">❌ 惨痛败局案例 4</div>
+            <div class="case-title">【地下钱庄出境买香港保单遭遇 CRS 穿透追缴 800 万税款案】</div>
+            <p><strong>真实案情</strong>：深圳某高科技公司股东张总，2021 年通过地下钱庄将 3000 万元人民币换汇至香港，购买了某外资保司大额储蓄分红保单，自以为神不知鬼不觉。<br>
+            <strong>惨痛后果</strong>：根据 OECD 规则，具有现金价值的保险合同属于 CRS 申报金融资产。香港税务局将张总的保单账户、现金价值及分红数据自动交换回中国国家税务总局。税务机关开展跨境反避税纳税评估，查明该笔资金来源于境内未分配利润私户走账，**责令张总补缴 20% 个人所得税 600 万元，并按日加收万分之五滞纳金（累计超 200 万元）！**
+            </p>
+          </div>
+
+          <div class="case-box">
+            <div class="case-badge-success">✅ 正向经典标杆案例 5</div>
+            <div class="case-title">【温州制造业标杆：500 万保险金信托 2.0 打造“享富+传富+防婚变+防破产”水密隔舱】</div>
+            <p><strong>方案架构</strong>：温州制造业王总（50岁）出资 500 万购买平安分红型年金险，并设立保险金信托 2.0（将投保人变更为信托公司）：
+            <ul>
+              <li><strong>享富养老（父母自用）</strong>：王总 60 岁前，每年领取年金 20 万元作为全球旅居基金；</li>
+              <li><strong>传富防婚变（子女结婚）</strong>：儿子结婚时，信托专户一次性发放 100 万元“创业结婚津贴”，并在信托合同中约定为儿子个人独立特有财产，防范婚变分割；</li>
+              <li><strong>防企业负债击穿（中途隔离）</strong>：王总企业在 2025 年因一笔 800 万担保涉诉被法院强制执行，由于保单所有权已装入信托专户，根据《信托法》第 15 条，信托财产享有独立性，**法院依法裁定驳回债权人的执行申请，保住了全家人的退路！**</li>
+            </ul>
+            </p>
           </div>
         </div>
 
