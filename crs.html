@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#070a12">
+  <title>CRS全球税务透明化与高客资产配置深度研究报告</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #070a12;
+      --card-bg: #0f172a;
+      --card-border: rgba(96, 165, 250, 0.16);
+      --primary: #3b82f6;
+      --gold: #fbbf24;
+      --brand: #c8974a;
+      --brand-gradient: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+      --gold-gradient: linear-gradient(135deg, #fef08a 0%, #d97706 100%);
+      --crimson: #ef4444;
+      --emerald: #10b981;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-size-base: 15px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 'Noto Sans SC', sans-serif;
+      font-size: var(--font-size-base);
+      line-height: 1.85;
+      padding-bottom: 90px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Reading Progress Bar */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--brand), var(--gold));
+      width: 0%;
+      z-index: 100;
+      transition: width 0.1s ease-out;
+    }
+
+    /* Mobile Header */
+    header.mobile-header {
+      position: sticky;
+      top: 0;
+      background: rgba(7, 10, 18, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 90;
+    }
+    .header-brand {
+      display: flex;
+      flex-direction: column;
+    }
+    .header-badge {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 0.5px;
+    }
+    .header-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 15px;
+      font-weight: 900;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 220px;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .font-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #cbd5e1;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Hero Banner */
+    .hero-box {
+      padding: 24px 18px 20px;
+      background: radial-gradient(circle at 50% 0%, rgba(200, 151, 74, 0.18) 0%, rgba(7, 10, 18, 0) 70%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .tag-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .badge {
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .badge-gold { background: rgba(245, 158, 11, 0.18); color: var(--gold); border: 1px solid rgba(245, 158, 11, 0.35); }
+    .badge-blue { background: rgba(59, 130, 246, 0.18); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.35); }
+    .badge-red { background: rgba(239, 68, 68, 0.18); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.35); }
+    
+    .hero-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.4;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+    .hero-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Main Container */
+    .container {
+      padding: 16px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Section Card */
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+    .sec-tag {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .sec-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 19px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.4;
+      margin-bottom: 14px;
+      border-left: 4px solid var(--brand);
+      padding-left: 10px;
+    }
+
+    /* Zheng Shengxiong Highlight Banner */
+    .zheng-special {
+      background: linear-gradient(135deg, rgba(200, 151, 74, 0.15) 0%, rgba(15, 23, 42, 0.95) 100%);
+      border: 1.5px solid rgba(245, 158, 11, 0.45);
+      position: relative;
+      overflow: hidden;
+    }
+    .zheng-special::after {
+      content: "👑 郑胜雄导师精讲";
+      position: absolute;
+      right: -24px;
+      top: 14px;
+      background: var(--brand-gradient);
+      color: #fff;
+      font-size: 9.5px;
+      font-weight: 800;
+      padding: 3px 26px;
+      transform: rotate(45deg);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    /* Quotes */
+    .quote-box {
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 3px solid var(--gold);
+      padding: 12px 14px;
+      border-radius: 0 10px 10px 0;
+      margin: 12px 0;
+      font-size: 13.5px;
+      color: #fef08a;
+      line-height: 1.75;
+    }
+    .quote-author {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--brand);
+      margin-top: 6px;
+      text-align: right;
+    }
+
+    /* Step Cards */
+    .step-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .step-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--brand-gradient);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-name {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    /* Comparison Table (Horizontal Scrollable) */
+    .table-container {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 14px 0;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+    }
+    table {
+      width: 100%;
+      min-width: 500px;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      text-align: left;
+    }
+    th {
+      background: #1e293b;
+      color: #f8fafc;
+      font-weight: 800;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--card-border);
+      white-space: nowrap;
+    }
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+    tr:nth-child(even) td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Script Action Card with Copy Button */
+    .script-box {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 12px;
+      padding: 14px;
+      margin: 14px 0;
+      position: relative;
+    }
+    .script-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #34d399;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .copy-btn {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid #10b981;
+      color: #a7f3d0;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .script-text {
+      font-size: 13.5px;
+      color: #e2e8f0;
+      line-height: 1.75;
+    }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(16, 185, 129, 0.95);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      z-index: 1000;
+      display: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    /* Bottom Floating Bar */
+    nav.bottom-dock {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 23, 42, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 6px calc(8px + env(safe-area-inset-bottom));
+      z-index: 90;
+    }
+    .dock-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 10.5px;
+      font-weight: 700;
+      cursor: pointer;
+      gap: 3px;
+      padding: 4px 8px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .dock-item.active, .dock-item:active {
+      color: var(--gold);
+    }
+    .dock-icon {
+      font-size: 16px;
+    }
+
+    /* Slide-out Drawer (TOC) */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      display: none;
+    }
+    .drawer {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 80%;
+      max-width: 320px;
+      background: #0b1322;
+      border-left: 1px solid var(--card-border);
+      z-index: 201;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      padding: 20px 16px;
+    }
+    .drawer.open {
+      transform: translateX(0);
+    }
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .drawer-title { font-family: 'Noto Serif SC', serif; font-size: 16px; font-weight: 800; color: #fff; }
+    .close-btn { background: none; border: none; color: #94a3b8; font-size: 20px; cursor: pointer; }
+    .toc-list { overflow-y: auto; flex: 1; list-style: none; }
+    .toc-item {
+      padding: 10px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #cbd5e1;
+      border-radius: 8px;
+      margin-bottom: 4px;
+      cursor: pointer;
+      display: block;
+      text-decoration: none;
+    }
+    .toc-item:active { background: rgba(200, 151, 74, 0.2); color: var(--gold); }
+  </style>
+</head>
+<body>
+
+  <!-- Top Progress Bar -->
+  <div id="progress-bar"></div>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="header-brand">
+      <span class="header-badge">🏛️ 金华平安家办 · 法商专报</span>
+      <span class="header-title">CRS全球税务与资产配置研报</span>
+    </div>
+    <div class="header-actions">
+      <button class="font-btn" onclick="adjustFont(-1)">A-</button>
+      <button class="font-btn" onclick="adjustFont(1)">A+</button>
+      <button class="font-btn" style="background:var(--brand-gradient); color:#fff; border:none;" onclick="toggleDrawer()">📑 目录</button>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <div class="hero-box">
+    <div class="tag-row">
+      <span class="badge badge-gold">🌐 CRS 全球透明化</span>
+      <span class="badge badge-blue">⚖️ 境外信托穿透</span>
+      <span class="badge badge-red">👑 郑胜雄导师精讲融合</span>
+    </div>
+    <h1 class="hero-title">CRS 时代高净值资产配置与法商破局深度研报</h1>
+    <p class="hero-desc">从“隐匿避税”到“确权合规”：离岸账户全景扫盲、虚假信托击穿、20% 个税反避税追索与平安家办“三师共诊”实战解法。</p>
+  </div>
+
+  <div class="container">
+
+    <!-- Section 1: Zheng Shengxiong Highlights -->
+    <section id="sec-zheng" class="section-card zheng-special">
+      <span class="sec-tag">🌟 特别篇 · 郑胜雄导师核心精讲</span>
+      <h2 class="sec-title">郑胜雄：CRS 是促成大单的“照妖镜与催化剂”</h2>
+      
+      <div class="quote-box">
+        “千万不要把 CRS 当成‘狼来了’去恐慌！过去富豪习惯把钱藏在水下，现在 CRS 把水抽干了，客户在裸奔！客户当前最大的焦虑不是‘怎么藏’，而是‘已经显形的钱，怎么通过合法合规的工具安全安顿下来’。这正是大额保单与境内信托的历史性大机会！”
+        <div class="quote-author">—— 郑胜雄（国际认证财务顾问师 RFC 导师）</div>
+      </div>
+
+      <h3 style="font-size:15px; color:#fff; margin:16px 0 10px;">👑 郑胜雄拆解：离岸空壳公司的“玻璃房穿透三部曲”</h3>
+      
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">1</div>
+          <div class="step-name">定性消极非金融实体 (Passive NFE)</div>
+        </div>
+        <p style="font-size:13px; color:#94a3b8;">只要 BVI/开曼公司的收入中，50% 以上是股息、利息、租金等投资收益，银行直接判定为 Passive NFE。</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">2</div>
+          <div class="step-name">剥离所有空壳，实质穿透 (Look-Through)</div>
+        </div>
+        <p style="font-size:13px; color:#94a3b8;">无视中间套了 3 层还是 5 层 BVI 壳架构，强制向上追溯持股 25% 以上的自然人实控人。</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">3</div>
+          <div class="step-name">直报中国国家税务总局</div>
+        </div>
+        <p style="font-size:13px; color:#94a3b8;">只要实控人是中国税收居民，数据每年 9 月通过自动交换网关直达税局，多层架构如同“在透明玻璃房里换衣服”。</p>
+      </div>
+
+      <div class="script-box">
+        <div class="script-title">
+          <span>💬 郑老师独家 1 亿元资产配置模型话术</span>
+          <button class="copy-btn" onclick="copyText('李总，一个亿资产我们做水密隔舱拆分：3000万做身价型大额终身寿险，杠杆放大数倍终身保额指定传承，免去转继承纠纷；7000万留在账面做稳健年金与保险金信托2.0，终身源源不断产生现金流，为二代装上特有财产指纹锁！')">复制话术</button>
+        </div>
+        <div class="script-text">
+          “李总，一个亿资产我们做水密隔舱拆分：<strong>3000万做身价型大额终身寿险</strong>，杠杆放大数倍终身保额指定传承，免去转继承纠纷；<strong>7000万留在账面做稳健年金与保险金信托2.0</strong>，终身源源不断产生现金流，为二代装上特有财产指纹锁！”
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Account Literacy (OBU / OSU / NRA) -->
+    <section id="sec-accounts" class="section-card">
+      <span class="sec-tag">📖 第二部分 · 离岸金融体系全景扫盲</span>
+      <h2 class="sec-title">OBU、OSU、NRA、FT 跨境账户深度辨析</h2>
+      <p style="font-size:13px; color:#94a3b8; margin-bottom:12px;">许多外贸企业主过去把 OBU 当作离岸小金库，但在 CRS 穿透下，所有离岸账户均已无所遁形：</p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>账户类型</th>
+              <th>全称与业务属性</th>
+              <th>CRS 穿透与监管现状</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>OBU</strong></td>
+              <td>离岸银行单元 (Offshore Banking Unit)<br>境外银行特设，免营业税与印花税</td>
+              <td>❌ <strong>完全透明</strong><br>以离岸公司开户直接穿透至 25% 自然人实控人报回中国</td>
+            </tr>
+            <tr>
+              <td><strong>OSU</strong></td>
+              <td>离岸证券单元 (Offshore Securities Unit)<br>境外券商特设，外币股票与衍生品</td>
+              <td>❌ <strong>完全透明</strong><br>属于托管与投资实体，持仓市值与交易收益全额报送</td>
+            </tr>
+            <tr>
+              <td><strong>NRA</strong></td>
+              <td>境外机构境内账户 (Non-Resident Account)<br>境外公司在境内银行开立外币账户</td>
+              <td>⚠️ <strong>境内反洗钱重点监控</strong><br>境内银行系统直接掌握境内外流动，穿透识别实控人</td>
+            </tr>
+            <tr>
+              <td><strong>FT 账户</strong></td>
+              <td>自贸区自由贸易账户体系 (FTE/FTN等)<br>中国自贸港本外币一体化账户</td>
+              <td>⚠️ <strong>政策红利通道但绝非避税港</strong><br>严格实名穿透，涉税数据直通监管中枢</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 3: Offshore Trust Piercing -->
+    <section id="sec-trust" class="section-card">
+      <span class="sec-tag">⚖️ 第三部分 · 境外信托穿透机理</span>
+      <h2 class="sec-title">境外信托为什么不再是“避税避债保险箱”？</h2>
+      
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">1</div>
+          <div class="step-name">委托人 (Settlor)：100% 无条件全额申报</div>
+        </div>
+        <p style="font-size:13px; color:#94a3b8;">无论信托是可撤销还是不可撤销，只要委托人是中国税收居民，全部信托财产价值（年末总现价）直接关联到委托人名下报送中国税总。</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">2</div>
+          <div class="step-name">保护人 (Protector)：实质控制权人 100% 申报</div>
+        </div>
+        <p style="font-size:13px; color:#94a3b8;">享有撤换受托人、否决分配等权力的保护人，在 CRS 下被直接认定为有效控制人（Controlling Person）报送。</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">3</div>
+          <div class="step-name">受益人 (Beneficiary)：分配当年即全额申报</div>
+        </div>
+        <p style="font-size:13px; color:#94a3b8;">全权委托受益人一旦在当年获得一笔分红、生活费或资产过户，当年必须全额申报其分配金额及身份信息。</p>
+      </div>
+
+      <div class="quote-box" style="border-left-color:var(--crimson); color:#fca5a5; background:rgba(239, 68, 68, 0.08);">
+        <strong>⚠️ 张兰虚假信托 (Sham Trust) 司法判例警示：</strong><br>
+        张兰在设立离岸信托后依然随意从信托账户转账用于个人购房和投资。新加坡法院判定张兰保留了绝对支配权，信托被定性为“虚假信托”，<strong>1.42 亿美元信托财产直接被法院扣划执行</strong>。
+      </div>
+    </section>
+
+    <!-- Section 4: Recent Big Events (2024-2026) -->
+    <section id="sec-events" class="section-card">
+      <span class="sec-tag">🚨 第四部分 · 近年全球监管重大事件</span>
+      <h2 class="sec-title">新加坡家办清洗、CARF 并轨与反避税追税</h2>
+
+      <div class="step-card" style="border-left: 3px solid var(--crimson);">
+        <div class="step-name" style="color:#f87171; margin-bottom:4px;">1. 新加坡 30 亿洗钱案引发单一家办大清洗</div>
+        <p style="font-size:13px; color:#cbd5e1;">MAS 彻底收紧家办审批，倒查资金来源；无实质业务的“空壳家办”批量被撤销税务豁免，大量离岸客户被私行限期清退封户。</p>
+      </div>
+
+      <div class="step-card" style="border-left: 3px solid var(--gold);">
+        <div class="step-name" style="color:var(--gold); margin-bottom:4px;">2. CARF 加密资产框架与 CRS 2.0 正式并轨</div>
+        <p style="font-size:13px; color:#cbd5e1;">将虚拟货币交易所、USDT 稳定币、非托管钱包全量纳管，加密资产账户与法币出入金全面纳入跨国交换，“换成虚拟币逃税”彻底失效。</p>
+      </div>
+
+      <div class="step-card" style="border-left: 3px solid var(--emerald);">
+        <div class="step-name" style="color:#34d399; margin-bottom:4px;">3. 中国税总依据新《个税法》第 8 条穿透追缴 20% 个税</div>
+        <p style="font-size:13px; color:#cbd5e1;">对富豪设在 BVI/开曼等低税地的控股壳公司，无合理商业理由长期不分红的，税局直接穿透核查，<strong>按 20% 追缴股息红利个税，并加收按日万分之五的滞纳金（年化 18.25%）</strong>。</p>
+      </div>
+    </section>
+
+    <!-- Section 5: Solutions (Ping An Family Office) -->
+    <section id="sec-solutions" class="section-card">
+      <span class="sec-tag">🏰 第五部分 · 平安家办合规破局路径</span>
+      <h2 class="sec-title">“三师共诊”与大额保单特有财产水密隔舱</h2>
+
+      <div class="step-card">
+        <div class="step-name" style="color:var(--gold);">💡 武器一：境内大额保单（民法典 1063 条特有财产指纹锁）</div>
+        <p style="font-size:13px; color:#cbd5e1; margin-top:4px;">
+          父母出资在婚前以子女为投保人投保，签署专属赠与协议，年金按月打入子女专属账户，合法隔绝二代婚变分割；具备 80% 现金价值质押贷款功能，随时低息贷款注资实业，不产生任何个税。
+        </p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-name" style="color:#34d399;">💡 武器二：境内保险金信托 2.0（信托法 15 条财产独立性）</div>
+        <p style="font-size:13px; color:#cbd5e1; margin-top:4px;">
+          设立时将保单<strong>投保人权属彻底变更为信托公司</strong>，保单现价归入信托独立专户。中途委托人负债涉诉，法院无法强制执行保单现价，实现“享富 + 传富 + 防婚变 + 防破产”四重隔离。
+        </p>
+      </div>
+
+      <div class="script-box">
+        <div class="script-title">
+          <span>💬 高客沟通临门一脚促成金牌话术</span>
+          <button class="copy-btn" onclick="copyText('陈总，海外信托现在面临严苛的 CRS 申报与穿透风险，但我们境内的保险金信托 2.0，不仅门槛亲民、合规透明，而且拥有《信托法》第 15 条最刚性的法律独立性保护。它把保单的复利增值与杠杆和信托的防负债穿透、精细化分配完美结合，为您的家族打造一个任谁也打不穿的财富水密隔舱！')">复制话术</button>
+        </div>
+        <div class="script-text">
+          “陈总，海外信托现在面临严苛的 CRS 申报与穿透风险，但我们境内的保险金信托 2.0，不仅门槛亲民、合规透明，而且拥有《信托法》第 15 条最刚性的法律独立性保护。它把<strong>保单的复利增值与杠杆</strong>和<strong>信托的防负债穿透、精细化分配</strong>完美结合，为您的家族打造一个任谁也打不穿的财富水密隔舱！”
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Bottom Floating Dock -->
+  <nav class="bottom-dock">
+    <div class="dock-item" onclick="scrollToSec('sec-zheng')">
+      <span class="dock-icon">👑</span>
+      <span>郑老师专栏</span>
+    </div>
+    <div class="dock-item" onclick="scrollToSec('sec-accounts')">
+      <span class="dock-icon">📊</span>
+      <span>账户扫盲</span>
+    </div>
+    <div class="dock-item" onclick="scrollToSec('sec-trust')">
+      <span class="dock-icon">⚖️</span>
+      <span>信托穿透</span>
+    </div>
+    <div class="dock-item" onclick="scrollToSec('sec-solutions')">
+      <span class="dock-icon">🏰</span>
+      <span>家办解法</span>
+    </div>
+    <div class="dock-item" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+      <span class="dock-icon">🔝</span>
+      <span>顶部</span>
+    </div>
+  </nav>
+
+  <!-- Slide-out Drawer (TOC) -->
+  <div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+  <div class="drawer" id="drawer">
+    <div class="drawer-header">
+      <span class="drawer-title">📑 研报全景目录</span>
+      <button class="close-btn" onclick="toggleDrawer()">✕</button>
+    </div>
+    <ul class="toc-list">
+      <li><a class="toc-item" href="#sec-zheng" onclick="toggleDrawer()">👑 郑胜雄：CRS促成大单照妖镜</a></li>
+      <li><a class="toc-item" href="#sec-accounts" onclick="toggleDrawer()">📊 OBU / OSU / NRA 离岸账户扫盲</a></li>
+      <li><a class="toc-item" href="#sec-trust" onclick="toggleDrawer()">⚖️ 境外信托 CRS 穿透机理</a></li>
+      <li><a class="toc-item" href="#sec-events" onclick="toggleDrawer()">🚨 新加坡家办与反避税大案</a></li>
+      <li><a class="toc-item" href="#sec-solutions" onclick="toggleDrawer()">🏰 平安家办“三师共诊”破局</a></li>
+    </ul>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast">✅ 话术已复制到剪贴板</div>
+
+  <script>
+    // Reading progress
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
+    });
+
+    // Drawer toggle
+    function toggleDrawer() {
+      const drawer = document.getElementById('drawer');
+      const overlay = document.getElementById('drawer-overlay');
+      if (drawer.classList.contains('open')) {
+        drawer.classList.remove('open');
+        overlay.style.display = 'none';
+      } else {
+        drawer.classList.add('open');
+        overlay.style.display = 'block';
+      }
+    }
+
+    // Scroll to section
+    function scrollToSec(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Font size adjustment
+    let currentFontSize = 15;
+    function adjustFont(delta) {
+      currentFontSize = Math.min(20, Math.max(13, currentFontSize + delta));
+      document.documentElement.style.setProperty('--font-size-base', currentFontSize + 'px');
+    }
+
+    // Copy text with toast
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
