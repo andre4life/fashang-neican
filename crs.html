@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#070a12">
-  <title>CRS全球税务透明化与高客资产配置深度研究报告</title>
+  <title>CRS全球税务透明化与高客资产配置深度研究报告（含十轮头脑风暴全景）</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -20,9 +20,9 @@
       --gold: #fbbf24;
       --brand: #c8974a;
       --brand-gradient: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-      --gold-gradient: linear-gradient(135deg, #fef08a 0%, #d97706 100%);
       --crimson: #ef4444;
       --emerald: #10b981;
+      --purple: #a855f7;
       --text: #f8fafc;
       --text-muted: #94a3b8;
       --text-dim: #64748b;
@@ -56,7 +56,7 @@
     header.mobile-header {
       position: sticky;
       top: 0;
-      background: rgba(7, 10, 18, 0.92);
+      background: rgba(7, 10, 18, 0.94);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--card-border);
@@ -66,16 +66,8 @@
       justify-content: space-between;
       z-index: 90;
     }
-    .header-brand {
-      display: flex;
-      flex-direction: column;
-    }
-    .header-badge {
-      font-size: 10px;
-      font-weight: 800;
-      color: var(--gold);
-      letter-spacing: 0.5px;
-    }
+    .header-brand { display: flex; flex-direction: column; }
+    .header-badge { font-size: 10px; font-weight: 800; color: var(--gold); letter-spacing: 0.5px; }
     .header-title {
       font-family: 'Noto Serif SC', serif;
       font-size: 15px;
@@ -86,11 +78,7 @@
       text-overflow: ellipsis;
       max-width: 220px;
     }
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    .header-actions { display: flex; align-items: center; gap: 6px; }
     .font-btn {
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.15);
@@ -105,55 +93,37 @@
     /* Hero Banner */
     .hero-box {
       padding: 24px 18px 20px;
-      background: radial-gradient(circle at 50% 0%, rgba(200, 151, 74, 0.18) 0%, rgba(7, 10, 18, 0) 70%);
+      background: radial-gradient(circle at 50% 0%, rgba(200, 151, 74, 0.22) 0%, rgba(7, 10, 18, 0) 70%);
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
-    .tag-row {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-    .badge {
-      font-size: 10.5px;
-      font-weight: 800;
-      padding: 2px 8px;
-      border-radius: 4px;
-    }
+    .tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+    .badge { font-size: 10.5px; font-weight: 800; padding: 2px 8px; border-radius: 4px; }
     .badge-gold { background: rgba(245, 158, 11, 0.18); color: var(--gold); border: 1px solid rgba(245, 158, 11, 0.35); }
     .badge-blue { background: rgba(59, 130, 246, 0.18); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.35); }
+    .badge-purple { background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.35); }
     .badge-red { background: rgba(239, 68, 68, 0.18); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.35); }
     
     .hero-title {
       font-family: 'Noto Serif SC', serif;
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 900;
       color: #ffffff;
       line-height: 1.4;
       margin-bottom: 10px;
-      letter-spacing: -0.3px;
     }
-    .hero-desc {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
+    .hero-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
 
     /* Main Container */
-    .container {
-      padding: 16px;
-      max-width: 680px;
-      margin: 0 auto;
-    }
+    .container { padding: 14px; max-width: 680px; margin: 0 auto; }
 
     /* Section Card */
     .section-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 16px;
-      padding: 20px 16px;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      padding: 18px 14px;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     }
     .sec-tag {
       font-size: 11px;
@@ -166,7 +136,7 @@
     }
     .sec-title {
       font-family: 'Noto Serif SC', serif;
-      font-size: 19px;
+      font-size: 18.5px;
       font-weight: 900;
       color: #fff;
       line-height: 1.4;
@@ -175,26 +145,47 @@
       padding-left: 10px;
     }
 
-    /* Zheng Shengxiong Highlight Banner */
-    .zheng-special {
-      background: linear-gradient(135deg, rgba(200, 151, 74, 0.15) 0%, rgba(15, 23, 42, 0.95) 100%);
-      border: 1.5px solid rgba(245, 158, 11, 0.45);
-      position: relative;
+    /* Brainstorming Accordion Card */
+    .bs-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      border-radius: 12px;
+      margin-bottom: 12px;
       overflow: hidden;
+      transition: all 0.2s;
     }
-    .zheng-special::after {
-      content: "👑 郑胜雄导师精讲";
-      position: absolute;
-      right: -24px;
-      top: 14px;
-      background: var(--brand-gradient);
+    .bs-header {
+      padding: 14px;
+      background: rgba(168, 85, 247, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+    .bs-title-box { display: flex; align-items: center; gap: 8px; }
+    .bs-round-badge {
+      background: linear-gradient(135deg, #a855f7, #7c3aed);
       color: #fff;
-      font-size: 9.5px;
-      font-weight: 800;
-      padding: 3px 26px;
-      transform: rotate(45deg);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      font-size: 10.5px;
+      font-weight: 900;
+      padding: 2px 8px;
+      border-radius: 6px;
+      flex-shrink: 0;
     }
+    .bs-name { font-size: 14px; font-weight: 800; color: #fff; }
+    .bs-toggle-icon { color: #a855f7; font-size: 14px; transition: transform 0.2s; }
+    .bs-card.open .bs-toggle-icon { transform: rotate(180deg); }
+    .bs-body {
+      padding: 14px;
+      display: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 13.5px;
+      line-height: 1.8;
+      color: #cbd5e1;
+    }
+    .bs-card.open .bs-body { display: block; }
+    .bs-sub-title { font-size: 13px; font-weight: 800; color: var(--gold); margin: 10px 0 4px; }
+    .bs-highlight { background: rgba(245, 158, 11, 0.1); border-left: 3px solid var(--gold); padding: 8px 10px; border-radius: 0 6px 6px 0; margin: 8px 0; color: #fef08a; font-size: 13px; }
 
     /* Quotes */
     .quote-box {
@@ -207,13 +198,7 @@
       color: #fef08a;
       line-height: 1.75;
     }
-    .quote-author {
-      font-size: 11.5px;
-      font-weight: 700;
-      color: var(--brand);
-      margin-top: 6px;
-      text-align: right;
-    }
+    .quote-author { font-size: 11.5px; font-weight: 700; color: var(--brand); margin-top: 6px; text-align: right; }
 
     /* Step Cards */
     .step-card {
@@ -223,12 +208,7 @@
       padding: 14px;
       margin-bottom: 12px;
     }
-    .step-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
+    .step-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
     .step-num {
       width: 22px;
       height: 22px;
@@ -242,11 +222,7 @@
       justify-content: center;
       flex-shrink: 0;
     }
-    .step-name {
-      font-size: 14.5px;
-      font-weight: 800;
-      color: #fff;
-    }
+    .step-name { font-size: 14px; font-weight: 800; color: #fff; }
 
     /* Comparison Table (Horizontal Scrollable) */
     .table-container {
@@ -256,30 +232,10 @@
       border-radius: 10px;
       border: 1px solid var(--card-border);
     }
-    table {
-      width: 100%;
-      min-width: 500px;
-      border-collapse: collapse;
-      font-size: 12.5px;
-      text-align: left;
-    }
-    th {
-      background: #1e293b;
-      color: #f8fafc;
-      font-weight: 800;
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--card-border);
-      white-space: nowrap;
-    }
-    td {
-      padding: 10px 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      color: #cbd5e1;
-      line-height: 1.6;
-    }
-    tr:nth-child(even) td {
-      background: rgba(255, 255, 255, 0.02);
-    }
+    table { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 12.5px; text-align: left; }
+    th { background: #1e293b; color: #f8fafc; font-weight: 800; padding: 10px 12px; border-bottom: 1px solid var(--card-border); white-space: nowrap; }
+    td { padding: 10px 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #cbd5e1; line-height: 1.6; }
+    tr:nth-child(even) td { background: rgba(255, 255, 255, 0.02); }
 
     /* Script Action Card with Copy Button */
     .script-box {
@@ -288,17 +244,8 @@
       border-radius: 12px;
       padding: 14px;
       margin: 14px 0;
-      position: relative;
     }
-    .script-title {
-      font-size: 13px;
-      font-weight: 800;
-      color: #34d399;
-      margin-bottom: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .script-title { font-size: 13px; font-weight: 800; color: #34d399; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
     .copy-btn {
       background: rgba(16, 185, 129, 0.2);
       border: 1px solid #10b981;
@@ -309,11 +256,7 @@
       border-radius: 6px;
       cursor: pointer;
     }
-    .script-text {
-      font-size: 13.5px;
-      color: #e2e8f0;
-      line-height: 1.75;
-    }
+    .script-text { font-size: 13.5px; color: #e2e8f0; line-height: 1.75; }
 
     /* Toast Notification */
     #toast {
@@ -344,7 +287,7 @@
       border-top: 1px solid var(--card-border);
       display: flex;
       justify-content: space-around;
-      padding: 8px 6px calc(8px + env(safe-area-inset-bottom));
+      padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
       z-index: 90;
     }
     .dock-item {
@@ -352,20 +295,15 @@
       flex-direction: column;
       align-items: center;
       color: var(--text-muted);
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 700;
       cursor: pointer;
       gap: 3px;
-      padding: 4px 8px;
+      padding: 4px 6px;
       border-radius: 8px;
-      transition: all 0.2s;
     }
-    .dock-item.active, .dock-item:active {
-      color: var(--gold);
-    }
-    .dock-icon {
-      font-size: 16px;
-    }
+    .dock-item.active, .dock-item:active { color: var(--gold); }
+    .dock-icon { font-size: 16px; }
 
     /* Slide-out Drawer (TOC) */
     .drawer-overlay {
@@ -381,7 +319,7 @@
       right: 0;
       top: 0;
       bottom: 0;
-      width: 80%;
+      width: 82%;
       max-width: 320px;
       background: #0b1322;
       border-left: 1px solid var(--card-border);
@@ -392,31 +330,12 @@
       flex-direction: column;
       padding: 20px 16px;
     }
-    .drawer.open {
-      transform: translateX(0);
-    }
-    .drawer-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding-bottom: 12px;
-      margin-bottom: 16px;
-    }
+    .drawer.open { transform: translateX(0); }
+    .drawer-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 16px; }
     .drawer-title { font-family: 'Noto Serif SC', serif; font-size: 16px; font-weight: 800; color: #fff; }
     .close-btn { background: none; border: none; color: #94a3b8; font-size: 20px; cursor: pointer; }
     .toc-list { overflow-y: auto; flex: 1; list-style: none; }
-    .toc-item {
-      padding: 10px 12px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #cbd5e1;
-      border-radius: 8px;
-      margin-bottom: 4px;
-      cursor: pointer;
-      display: block;
-      text-decoration: none;
-    }
+    .toc-item { padding: 10px 12px; font-size: 13px; font-weight: 600; color: #cbd5e1; border-radius: 8px; margin-bottom: 4px; display: block; text-decoration: none; }
     .toc-item:active { background: rgba(200, 151, 74, 0.2); color: var(--gold); }
   </style>
 </head>
@@ -428,8 +347,8 @@
   <!-- Mobile Header -->
   <header class="mobile-header">
     <div class="header-brand">
-      <span class="header-badge">🏛️ 金华平安家办 · 法商专报</span>
-      <span class="header-title">CRS全球税务与资产配置研报</span>
+      <span class="header-badge">🏛️ 金华平安家办 · 深度专报</span>
+      <span class="header-title">CRS 时代资产配置与十轮头脑风暴</span>
     </div>
     <div class="header-actions">
       <button class="font-btn" onclick="adjustFont(-1)">A-</button>
@@ -441,55 +360,213 @@
   <!-- Hero Banner -->
   <div class="hero-box">
     <div class="tag-row">
-      <span class="badge badge-gold">🌐 CRS 全球透明化</span>
+      <span class="badge badge-purple">🧠 十轮头脑风暴全景</span>
+      <span class="badge badge-gold">👑 郑胜雄实战精讲</span>
       <span class="badge badge-blue">⚖️ 境外信托穿透</span>
-      <span class="badge badge-red">👑 郑胜雄导师精讲融合</span>
+      <span class="badge badge-red">🚨 反避税追索</span>
     </div>
-    <h1 class="hero-title">CRS 时代高净值资产配置与法商破局深度研报</h1>
-    <p class="hero-desc">从“隐匿避税”到“确权合规”：离岸账户全景扫盲、虚假信托击穿、20% 个税反避税追索与平安家办“三师共诊”实战解法。</p>
+    <h1 class="hero-title">CRS 全球税务透明化、境外信托穿透与高客资产配置研报</h1>
+    <p class="hero-desc">系统性推演十轮头脑风暴成果、全景复盘 CRS 前世今生与离岸账户（OBU/OSU/NRA）、解密虚假信托击穿、20% 个税追缴与平安家办“三师共诊”破局法！</p>
   </div>
 
   <div class="container">
 
-    <!-- Section 1: Zheng Shengxiong Highlights -->
-    <section id="sec-zheng" class="section-card zheng-special">
-      <span class="sec-tag">🌟 特别篇 · 郑胜雄导师核心精讲</span>
-      <h2 class="sec-title">郑胜雄：CRS 是促成大单的“照妖镜与催化剂”</h2>
+    <!-- ================= SECTION 1: 10 ROUNDS OF BRAINSTORMING ================= -->
+    <section id="sec-brainstorm" class="section-card" style="border: 1.5px solid rgba(168, 85, 247, 0.4);">
+      <span class="sec-tag" style="color:#d8b4fe;">🧠 核心重磅 · 研创推演成果</span>
+      <h2 class="sec-title">十轮系统性头脑风暴推演全景与核心结论</h2>
+      <p style="font-size:13px; color:#94a3b8; margin-bottom:14px;">点击下方各轮卡片，即可展开查阅对应的命题推演、法律底层、杀伤力数据与实战解法：</p>
+
+      <!-- Round 1 -->
+      <div class="bs-card open">
+        <div class="bs-header" onclick="toggleCard(this)">
+          <div class="bs-title-box">
+            <span class="bs-round-badge">第 1 轮</span>
+            <span class="bs-name">信息交换底层法律逻辑与自动直报机制</span>
+          </div>
+          <span class="bs-toggle-icon">▼</span>
+        </div>
+        <div class="bs-body">
+          <div class="bs-highlight"><strong>核心结论</strong>：CRS 不是人工去查，而是境外金融机构（银行、券商、保司、信托）每年 9 月通过跨国加密网关，<strong>全自动打包直报中国国家税务总局</strong>。</div>
+          <p><strong>报送三要素</strong>：<br>
+          1. <strong>身份信息</strong>：姓名、护照/身份证号、税收居民国、住址；<br>
+          2. <strong>存量规模</strong>：年末账户总余额、股票证券持仓现价、大额保单现金价值；<br>
+          3. <strong>年度流水</strong>：当年度收到的股息分红、利息所得、退保金、年金给付款与投资变现款。</p>
+        </div>
+      </div>
+
+      <!-- Round 2 -->
+      <div class="bs-card">
+        <div class="bs-header" onclick="toggleCard(this)">
+          <div class="bs-title-box">
+            <span class="bs-round-badge">第 2 轮</span>
+            <span class="bs-name">“离岸群岛不征税”与“全球征税”的错位死穴</span>
+          </div>
+          <span class="bs-toggle-icon">▼</span>
+        </div>
+        <div class="bs-body">
+          <div class="bs-highlight"><strong>核心结论</strong>：开曼/BVI 当地不收税，不等于中国老板不用交税！中国税局按 20% 穿透全额征税。</div>
+          <p><strong>法律底层</strong>：根据《中华人民共和国个人所得税法》第 1 条，在中国境内有住所的个人属于<strong>中国税收居民，就其来源于中国境内和境外的全部所得，依法承担无限纳税义务</strong>。<br>
+          ❌ <strong>富豪误区</strong>：“我把钱留在开曼公司账上，开曼不收税，我就永远不用交税”；<br>
+          ✅ <strong>税总穿透</strong>：新个税法第 8 条赋予税局对无合理商业目的长期不分配的境外利润直接实施反避税纳税调整。</p>
+        </div>
+      </div>
+
+      <!-- Round 3 -->
+      <div class="bs-card">
+        <div class="bs-header" onclick="toggleCard(this)">
+          <div class="bs-title-box">
+            <span class="bs-round-badge">第 3 轮</span>
+            <span class="bs-name">离岸账户体系扫盲（OBU/OSU/DBU/NRA/FT）</span>
+          </div>
+          <span class="bs-toggle-icon">▼</span>
+        </div>
+        <div class="bs-body">
+          <div class="bs-highlight"><strong>核心结论</strong>：OBU/OSU 是标准申报金融实体（Reporting FIs），在消极非金融实体原则下，全部穿透回国。</div>
+          <p>• <strong>OBU (离岸银行单元)</strong>：过去是外贸老板的私房钱小金库，现在银行要求穿透至持股 25% 自然人实控人，自动报送中国税总；<br>
+          • <strong>OSU (离岸证券单元)</strong>：外币股票与基金账户，持仓市值与交易结算流水全额报送；<br>
+          • <strong>NRA (境外机构境内账户)</strong>：受境内反洗钱与外汇管理局直联监控。</p>
+        </div>
+      </div>
+
+      <!-- Round 4 -->
+      <div class="bs-card">
+        <div class="bs-header" onclick="toggleCard(this)">
+          <div class="bs-title-box">
+            <span class="bs-round-badge">第 4 轮</span>
+            <span class="bs-name">境外信托的 CRS 穿透与四维角色全透明</span>
+          </div>
+          <span class="bs-toggle-icon">▼</span>
+        </div>
+        <div class="bs-body">
+          <div class="bs-highlight"><strong>核心结论</strong>：设立海外信托无法阻挡 CRS！信托内部四大主体全链条穿透透明化。</div>
+          <p>1. <strong>委托人 (Settlor)</strong>：无论信托是可撤销还是不可撤销，<strong>全部信托财产价值（年末总现价）100% 关联到委托人名下报送中国</strong>；<br>
+          2. <strong>保护人 (Protector)</strong>：享有撤换受托人权力的保护人被直接认定为实质控制人 100% 申报；<br>
+          3. <strong>受益人 (Beneficiary)</strong>：当年一旦获得分红或分配，必须申报分配金额及身份；<br>
+          4. <strong>受托人 (Trustee)</strong>：信托公司承担首要尽调申报法律责任。</p>
+        </div>
+      </div>
+
+      <!-- Round 5 -->
+      <div class="bs-card">
+        <div class="bs-header" onclick="toggleCard(this)">
+          <div class="bs-title-box">
+            <span class="bs-round-badge">第 5 轮</span>
+            <span class="bs-name">近年重大标志性事件（新加坡家办与CARF并轨）</span>
+          </div>
+          <span class="bs-toggle-icon">▼</span>
+        </div>
+        <div class="bs-body">
+          <div class="bs-highlight"><strong>核心结论</strong>：2024~2026 全球强监管海啸，离岸空壳家办和加密货币通道被连根拔起。</div>
+          <p>• <strong>新加坡 30 亿洗钱案</strong>：MAS 严查资金来源（Source of Wealth），撤销空壳家办税收豁免，私行批量清退封户；<br>
+          • <strong>OECD CARF 并轨</strong>：加密资产报告框架将中心化交易所、USDT 稳定币、非托管钱包全量纳管，“换成虚拟币躲税”彻底失效。</p>
+        </div>
+      </div>
+
+      <!-- Round 6 -->
+      <div class="bs-card">
+        <div class="bs-header" onclick="toggleCard(this)">
+          <div class="bs-title-box">
+            <span class="bs-round-badge">第 6 轮</span>
+            <span class="bs-name">郑胜雄独家战法：CRS 是促成大单的“催化剂”</span>
+          </div>
+          <span class="bs-toggle-icon">▼</span>
+        </div>
+        <div class="bs-body">
+          <div class="bs-highlight"><strong>核心结论</strong>：不要把 CRS 当狼来了！水抽干了，客户在裸奔，急需境内大额保单上岸！</div>
+          <p>• <strong>底层认知逆转</strong>：客户最大的痛点已经从“怎么藏”转变成“已经显形的钱，怎么合法安全地安顿”；<br>
+          • <strong>玻璃房穿透三部曲</strong>：判定 Passive NFE -> 向上穿透 25% 自然人 -> 直报中国税总。</p>
+        </div>
+      </div>
+
+      <!-- Round 7 -->
+      <div class="bs-card">
+        <div class="bs-header" onclick="toggleCard(this)">
+          <div class="bs-title-box">
+            <span class="bs-round-badge">第 7 轮</span>
+            <span class="bs-name">财富裸奔的真实杀伤力测算（毁灭性账本）</span>
+          </div>
+          <span class="bs-toggle-icon">▼</span>
+        </div>
+        <div class="bs-body">
+          <div class="bs-highlight"><strong>核心结论</strong>：隐匿境外收益一旦被查，本金将被吞噬近 60%，且罚款滞纳金为无限连带责任！</div>
+          <p>🧮 <strong>真实账本（1 亿元境外收益隐匿 5 年被查）</strong>：<br>
+          • 补缴 20% 个税：<strong>2000 万元</strong><br>
+          • 日万分之五滞纳金（年化 18.25%，5年累计 91.25%）：<strong>1825 万元</strong><br>
+          • 1 倍税务行政处罚：<strong>2000 万元</strong><br>
+          • <strong>💸 合计被吞噬：5825 万元（无法破产免除的个人无限连带负债！）</strong></p>
+        </div>
+      </div>
+
+      <!-- Round 8 -->
+      <div class="bs-card">
+        <div class="bs-header" onclick="toggleCard(this)">
+          <div class="bs-title-box">
+            <span class="bs-round-badge">第 8 轮</span>
+            <span class="bs-name">海外避税常见骚操作全面排雷</span>
+          </div>
+          <span class="bs-toggle-icon">▼</span>
+        </div>
+        <div class="bs-body">
+          <div class="bs-highlight"><strong>核心结论</strong>：买小国护照、虚假税务居民、海外亲友代持已全部被穿透！</div>
+          <p>• <strong>买岛国护照</strong>：CRS 判定看“经济利益中心与习惯居住地”，一年在大陆住满 183 天依然是中国税收居民；<br>
+          • <strong>亲友代持</strong>：代持人发生意外、婚变、负债，资产立刻被合法侵吞，且涉嫌外汇违规与洗钱。</p>
+        </div>
+      </div>
+
+      <!-- Round 9 -->
+      <div class="bs-card">
+        <div class="bs-header" onclick="toggleCard(this)">
+          <div class="bs-title-box">
+            <span class="bs-round-badge">第 9 轮</span>
+            <span class="bs-name">虚假信托 (Sham Trust) 司法击穿判例</span>
+          </div>
+          <span class="bs-toggle-icon">▼</span>
+        </div>
+        <div class="bs-body">
+          <div class="bs-highlight"><strong>核心结论</strong>：委托人过度保留支配权，信托直接被法院判定为虚假信托击穿！</div>
+          <p><strong>张兰 1.42 亿美元信托击穿案复盘</strong>：张兰设立信托后依然随意从信托专户转账用于个人购房和投资，新加坡法院判定张兰对财产保留绝对控制，信托财产未实现所有权真正剥离，<strong>判决信托无效，1.42 亿美元资产直接被债权人执行扣划！</strong></p>
+        </div>
+      </div>
+
+      <!-- Round 10 -->
+      <div class="bs-card">
+        <div class="bs-header" onclick="toggleCard(this)">
+          <div class="bs-title-box">
+            <span class="bs-round-badge">第 10 轮</span>
+            <span class="bs-name">平安家办“三师共诊”与大额保单水密隔舱</span>
+          </div>
+          <span class="bs-toggle-icon">▼</span>
+        </div>
+        <div class="bs-body">
+          <div class="bs-highlight"><strong>核心结论</strong>：从“违法隐匿”走向“合规顶层架构”，境内大额保单与保险金信托 2.0 是最高性价比神器！</div>
+          <p>• <strong>境内大额保单</strong>：法定免征个税（个税法第4条），特有财产指纹锁隔绝二代婚变，80% 现价质押贷款注资实业；<br>
+          • <strong>保险金信托 2.0</strong>：投保人权属让渡至信托公司，根据信托法第 15 条阻断实业中途负债穿透！</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 2: ZHENG SHENGXIONG SPECIAL ================= -->
+    <section id="sec-zheng" class="section-card" style="background: linear-gradient(135deg, rgba(200, 151, 74, 0.15) 0%, rgba(15, 23, 42, 0.95) 100%); border: 1.5px solid rgba(245, 158, 11, 0.45);">
+      <span class="sec-tag">👑 导师实战特辑</span>
+      <h2 class="sec-title">郑胜雄导师 CRS 精讲与大单营销精髓</h2>
       
       <div class="quote-box">
         “千万不要把 CRS 当成‘狼来了’去恐慌！过去富豪习惯把钱藏在水下，现在 CRS 把水抽干了，客户在裸奔！客户当前最大的焦虑不是‘怎么藏’，而是‘已经显形的钱，怎么通过合法合规的工具安全安顿下来’。这正是大额保单与境内信托的历史性大机会！”
         <div class="quote-author">—— 郑胜雄（国际认证财务顾问师 RFC 导师）</div>
       </div>
 
-      <h3 style="font-size:15px; color:#fff; margin:16px 0 10px;">👑 郑胜雄拆解：离岸空壳公司的“玻璃房穿透三部曲”</h3>
-      
       <div class="step-card">
-        <div class="step-header">
-          <div class="step-num">1</div>
-          <div class="step-name">定性消极非金融实体 (Passive NFE)</div>
-        </div>
-        <p style="font-size:13px; color:#94a3b8;">只要 BVI/开曼公司的收入中，50% 以上是股息、利息、租金等投资收益，银行直接判定为 Passive NFE。</p>
-      </div>
-
-      <div class="step-card">
-        <div class="step-header">
-          <div class="step-num">2</div>
-          <div class="step-name">剥离所有空壳，实质穿透 (Look-Through)</div>
-        </div>
-        <p style="font-size:13px; color:#94a3b8;">无视中间套了 3 层还是 5 层 BVI 壳架构，强制向上追溯持股 25% 以上的自然人实控人。</p>
-      </div>
-
-      <div class="step-card">
-        <div class="step-header">
-          <div class="step-num">3</div>
-          <div class="step-name">直报中国国家税务总局</div>
-        </div>
-        <p style="font-size:13px; color:#94a3b8;">只要实控人是中国税收居民，数据每年 9 月通过自动交换网关直达税局，多层架构如同“在透明玻璃房里换衣服”。</p>
+        <div class="step-name" style="color:var(--gold); margin-bottom:6px;">👑 郑胜雄独家：1 亿元资产“3000万身价+7000万现金流”拆分模型</div>
+        <p style="font-size:13px; color:#cbd5e1;">
+          <strong>1. 3000 万元身价型大额终身寿险（杠杆放大与指定传承）</strong>：撬动数倍终身保额，规避法定继承中的转继承与争产纠纷，实现指定直达传承；<br>
+          <strong>2. 7000 万元稳健现金流与信托底仓（享富养老与防婚变防负债）</strong>：搭建终身年金与保险金信托 2.0，按月给付，为二代生活费装上“指纹锁保险柜”，隔绝婚变与破产！
+        </p>
       </div>
 
       <div class="script-box">
         <div class="script-title">
-          <span>💬 郑老师独家 1 亿元资产配置模型话术</span>
+          <span>💬 郑老师 1 亿元资产配置谈客话术</span>
           <button class="copy-btn" onclick="copyText('李总，一个亿资产我们做水密隔舱拆分：3000万做身价型大额终身寿险，杠杆放大数倍终身保额指定传承，免去转继承纠纷；7000万留在账面做稳健年金与保险金信托2.0，终身源源不断产生现金流，为二代装上特有财产指纹锁！')">复制话术</button>
         </div>
         <div class="script-text">
@@ -498,11 +575,46 @@
       </div>
     </section>
 
-    <!-- Section 2: Account Literacy (OBU / OSU / NRA) -->
+    <!-- ================= SECTION 3: CRS HISTORY & EVOLUTION ================= -->
+    <section id="sec-history" class="section-card">
+      <span class="sec-tag">🌐 历史与监管演进</span>
+      <h2 class="sec-title">CRS 的前世、今生与未来演进全景</h2>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">1</div>
+          <div class="step-name">前世 (1934 ~ 2010)：瑞士保密法终结与美国 FATCA</div>
+        </div>
+        <p style="font-size:13px; color:#94a3b8;">
+          1934 年瑞士确立银行保密法；2008 年瑞银（UBS）帮美籍富豪逃税丑闻曝光，保密神话破灭；2010 年美国出台 FATCA（肥咖法案），开创跨国税务强制申报先河。
+        </p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">2</div>
+          <div class="step-name">今生 (2014 ~ 2024)：OECD CRS 统一标准与中国并轨</div>
+        </div>
+        <p style="font-size:13px; color:#94a3b8;">
+          2014 年 OECD 发布 CRS；2017 年中国出台六部委 14 号令；2018 年中国正式启动首批跨国涉税信息自动交换；2019 年新《个税法》确立第 8 条反避税利刃。
+        </p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">3</div>
+          <div class="step-name">未来 (2025 ~ 2030)：CARF 加密资产并轨与金税四期对碰</div>
+        </div>
+        <p style="font-size:13px; color:#94a3b8;">
+          加密资产报告框架（CARF）将虚拟货币与稳定币全面纳管；金税四期与跨国大数据系统直连，全球无死角资产透明时代全面来临。
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 4: ACCOUNT LITERACY ================= -->
     <section id="sec-accounts" class="section-card">
-      <span class="sec-tag">📖 第二部分 · 离岸金融体系全景扫盲</span>
-      <h2 class="sec-title">OBU、OSU、NRA、FT 跨境账户深度辨析</h2>
-      <p style="font-size:13px; color:#94a3b8; margin-bottom:12px;">许多外贸企业主过去把 OBU 当作离岸小金库，但在 CRS 穿透下，所有离岸账户均已无所遁形：</p>
+      <span class="sec-tag">📊 离岸金融基础设施扫盲</span>
+      <h2 class="sec-title">OBU、OSU、DBU、NRA、FT 跨境账户深度辨析</h2>
 
       <div class="table-container">
         <table>
@@ -516,13 +628,18 @@
           <tbody>
             <tr>
               <td><strong>OBU</strong></td>
-              <td>离岸银行单元 (Offshore Banking Unit)<br>境外银行特设，免营业税与印花税</td>
-              <td>❌ <strong>完全透明</strong><br>以离岸公司开户直接穿透至 25% 自然人实控人报回中国</td>
+              <td>离岸银行单元 (Offshore Banking Unit)<br>境外银行特设，免当地营业税与印花税</td>
+              <td>❌ <strong>完全透明</strong><br>以 BVI 等空壳开户直接穿透至背后 25% 自然人实控人报回中国</td>
             </tr>
             <tr>
               <td><strong>OSU</strong></td>
               <td>离岸证券单元 (Offshore Securities Unit)<br>境外券商特设，外币股票与衍生品</td>
               <td>❌ <strong>完全透明</strong><br>属于托管与投资实体，持仓市值与交易收益全额报送</td>
+            </tr>
+            <tr>
+              <td><strong>DBU</strong></td>
+              <td>在岸金融业务分行 (Domestic Banking Unit)<br>所在国本地银行部门，服务本地居民</td>
+              <td>非居民开户按税收居民身份报送</td>
             </tr>
             <tr>
               <td><strong>NRA</strong></td>
@@ -531,7 +648,7 @@
             </tr>
             <tr>
               <td><strong>FT 账户</strong></td>
-              <td>自贸区自由贸易账户体系 (FTE/FTN等)<br>中国自贸港本外币一体化账户</td>
+              <td>自贸区自由贸易账户 (FTE/FTN 等)<br>中国自贸港本外币一体化账户</td>
               <td>⚠️ <strong>政策红利通道但绝非避税港</strong><br>严格实名穿透，涉税数据直通监管中枢</td>
             </tr>
           </tbody>
@@ -539,66 +656,10 @@
       </div>
     </section>
 
-    <!-- Section 3: Offshore Trust Piercing -->
-    <section id="sec-trust" class="section-card">
-      <span class="sec-tag">⚖️ 第三部分 · 境外信托穿透机理</span>
-      <h2 class="sec-title">境外信托为什么不再是“避税避债保险箱”？</h2>
-      
-      <div class="step-card">
-        <div class="step-header">
-          <div class="step-num">1</div>
-          <div class="step-name">委托人 (Settlor)：100% 无条件全额申报</div>
-        </div>
-        <p style="font-size:13px; color:#94a3b8;">无论信托是可撤销还是不可撤销，只要委托人是中国税收居民，全部信托财产价值（年末总现价）直接关联到委托人名下报送中国税总。</p>
-      </div>
-
-      <div class="step-card">
-        <div class="step-header">
-          <div class="step-num">2</div>
-          <div class="step-name">保护人 (Protector)：实质控制权人 100% 申报</div>
-        </div>
-        <p style="font-size:13px; color:#94a3b8;">享有撤换受托人、否决分配等权力的保护人，在 CRS 下被直接认定为有效控制人（Controlling Person）报送。</p>
-      </div>
-
-      <div class="step-card">
-        <div class="step-header">
-          <div class="step-num">3</div>
-          <div class="step-name">受益人 (Beneficiary)：分配当年即全额申报</div>
-        </div>
-        <p style="font-size:13px; color:#94a3b8;">全权委托受益人一旦在当年获得一笔分红、生活费或资产过户，当年必须全额申报其分配金额及身份信息。</p>
-      </div>
-
-      <div class="quote-box" style="border-left-color:var(--crimson); color:#fca5a5; background:rgba(239, 68, 68, 0.08);">
-        <strong>⚠️ 张兰虚假信托 (Sham Trust) 司法判例警示：</strong><br>
-        张兰在设立离岸信托后依然随意从信托账户转账用于个人购房和投资。新加坡法院判定张兰保留了绝对支配权，信托被定性为“虚假信托”，<strong>1.42 亿美元信托财产直接被法院扣划执行</strong>。
-      </div>
-    </section>
-
-    <!-- Section 4: Recent Big Events (2024-2026) -->
-    <section id="sec-events" class="section-card">
-      <span class="sec-tag">🚨 第四部分 · 近年全球监管重大事件</span>
-      <h2 class="sec-title">新加坡家办清洗、CARF 并轨与反避税追税</h2>
-
-      <div class="step-card" style="border-left: 3px solid var(--crimson);">
-        <div class="step-name" style="color:#f87171; margin-bottom:4px;">1. 新加坡 30 亿洗钱案引发单一家办大清洗</div>
-        <p style="font-size:13px; color:#cbd5e1;">MAS 彻底收紧家办审批，倒查资金来源；无实质业务的“空壳家办”批量被撤销税务豁免，大量离岸客户被私行限期清退封户。</p>
-      </div>
-
-      <div class="step-card" style="border-left: 3px solid var(--gold);">
-        <div class="step-name" style="color:var(--gold); margin-bottom:4px;">2. CARF 加密资产框架与 CRS 2.0 正式并轨</div>
-        <p style="font-size:13px; color:#cbd5e1;">将虚拟货币交易所、USDT 稳定币、非托管钱包全量纳管，加密资产账户与法币出入金全面纳入跨国交换，“换成虚拟币逃税”彻底失效。</p>
-      </div>
-
-      <div class="step-card" style="border-left: 3px solid var(--emerald);">
-        <div class="step-name" style="color:#34d399; margin-bottom:4px;">3. 中国税总依据新《个税法》第 8 条穿透追缴 20% 个税</div>
-        <p style="font-size:13px; color:#cbd5e1;">对富豪设在 BVI/开曼等低税地的控股壳公司，无合理商业理由长期不分红的，税局直接穿透核查，<strong>按 20% 追缴股息红利个税，并加收按日万分之五的滞纳金（年化 18.25%）</strong>。</p>
-      </div>
-    </section>
-
-    <!-- Section 5: Solutions (Ping An Family Office) -->
+    <!-- ================= SECTION 5: SOLUTIONS ================= -->
     <section id="sec-solutions" class="section-card">
-      <span class="sec-tag">🏰 第五部分 · 平安家办合规破局路径</span>
-      <h2 class="sec-title">“三师共诊”与大额保单特有财产水密隔舱</h2>
+      <span class="sec-tag">🏰 实战破局方案</span>
+      <h2 class="sec-title">平安家办“三师共诊”与特有财产水密隔舱</h2>
 
       <div class="step-card">
         <div class="step-name" style="color:var(--gold);">💡 武器一：境内大额保单（民法典 1063 条特有财产指纹锁）</div>
@@ -629,25 +690,25 @@
 
   <!-- Bottom Floating Dock -->
   <nav class="bottom-dock">
+    <div class="dock-item" onclick="scrollToSec('sec-brainstorm')">
+      <span class="dock-icon">🧠</span>
+      <span>十轮风暴</span>
+    </div>
     <div class="dock-item" onclick="scrollToSec('sec-zheng')">
       <span class="dock-icon">👑</span>
-      <span>郑老师专栏</span>
+      <span>郑胜雄专栏</span>
+    </div>
+    <div class="dock-item" onclick="scrollToSec('sec-history')">
+      <span class="dock-icon">🌐</span>
+      <span>前世今生</span>
     </div>
     <div class="dock-item" onclick="scrollToSec('sec-accounts')">
       <span class="dock-icon">📊</span>
       <span>账户扫盲</span>
     </div>
-    <div class="dock-item" onclick="scrollToSec('sec-trust')">
-      <span class="dock-icon">⚖️</span>
-      <span>信托穿透</span>
-    </div>
     <div class="dock-item" onclick="scrollToSec('sec-solutions')">
       <span class="dock-icon">🏰</span>
       <span>家办解法</span>
-    </div>
-    <div class="dock-item" onclick="window.scrollTo({top:0, behavior:'smooth'})">
-      <span class="dock-icon">🔝</span>
-      <span>顶部</span>
     </div>
   </nav>
 
@@ -659,11 +720,11 @@
       <button class="close-btn" onclick="toggleDrawer()">✕</button>
     </div>
     <ul class="toc-list">
-      <li><a class="toc-item" href="#sec-zheng" onclick="toggleDrawer()">👑 郑胜雄：CRS促成大单照妖镜</a></li>
+      <li><a class="toc-item" href="#sec-brainstorm" onclick="toggleDrawer()">🧠 十轮系统性头脑风暴推演全景</a></li>
+      <li><a class="toc-item" href="#sec-zheng" onclick="toggleDrawer()">👑 郑胜雄导师 CRS 精讲与大单营销</a></li>
+      <li><a class="toc-item" href="#sec-history" onclick="toggleDrawer()">🌐 CRS 的前世、今生与未来演进</a></li>
       <li><a class="toc-item" href="#sec-accounts" onclick="toggleDrawer()">📊 OBU / OSU / NRA 离岸账户扫盲</a></li>
-      <li><a class="toc-item" href="#sec-trust" onclick="toggleDrawer()">⚖️ 境外信托 CRS 穿透机理</a></li>
-      <li><a class="toc-item" href="#sec-events" onclick="toggleDrawer()">🚨 新加坡家办与反避税大案</a></li>
-      <li><a class="toc-item" href="#sec-solutions" onclick="toggleDrawer()">🏰 平安家办“三师共诊”破局</a></li>
+      <li><a class="toc-item" href="#sec-solutions" onclick="toggleDrawer()">🏰 平安家办“三师共诊”与保单解法</a></li>
     </ul>
   </div>
 
@@ -690,6 +751,12 @@
         drawer.classList.add('open');
         overlay.style.display = 'block';
       }
+    }
+
+    // Toggle Accordion Card
+    function toggleCard(header) {
+      const card = header.parentElement;
+      card.classList.toggle('open');
     }
 
     // Scroll to section
