@@ -1,0 +1,609 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#070a12">
+  <title>2026年8月深圳行·高客接待与需求备忘录</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #070a12;
+      --card-bg: #0f172a;
+      --card-border: rgba(96, 165, 250, 0.16);
+      --primary: #3b82f6;
+      --gold: #fbbf24;
+      --brand: #c8974a;
+      --brand-gradient: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+      --crimson: #ef4444;
+      --emerald: #10b981;
+      --purple: #a855f7;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-size-base: 15px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 'Noto Sans SC', sans-serif;
+      font-size: var(--font-size-base);
+      line-height: 1.8;
+      padding-bottom: 90px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Reading Progress Bar */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--brand), var(--gold));
+      width: 0%;
+      z-index: 100;
+      transition: width 0.1s ease-out;
+    }
+
+    /* Mobile Header */
+    header.mobile-header {
+      position: sticky;
+      top: 0;
+      background: rgba(7, 10, 18, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 90;
+    }
+    .header-brand { display: flex; flex-direction: column; }
+    .header-badge { font-size: 10px; font-weight: 800; color: var(--gold); letter-spacing: 0.5px; }
+    .header-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 15px;
+      font-weight: 900;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 220px;
+    }
+    .header-actions { display: flex; align-items: center; gap: 6px; }
+    .font-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #cbd5e1;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Hero Banner */
+    .hero-box {
+      padding: 24px 18px 20px;
+      background: radial-gradient(circle at 50% 0%, rgba(200, 151, 74, 0.22) 0%, rgba(7, 10, 18, 0) 70%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+    .badge { font-size: 10.5px; font-weight: 800; padding: 2px 8px; border-radius: 4px; }
+    .badge-gold { background: rgba(245, 158, 11, 0.18); color: var(--gold); border: 1px solid rgba(245, 158, 11, 0.35); }
+    .badge-blue { background: rgba(59, 130, 246, 0.18); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.35); }
+    .badge-purple { background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.35); }
+    .badge-green { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.35); }
+    
+    .hero-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .hero-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.7; }
+
+    /* Main Container */
+    .container { padding: 14px; max-width: 680px; margin: 0 auto; }
+
+    /* Section Card */
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 18px 14px;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+    .sec-tag {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .sec-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 17.5px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.4;
+      margin-bottom: 14px;
+      border-left: 4px solid var(--brand);
+      padding-left: 10px;
+    }
+
+    /* Accordion Card (Room Breakdown) */
+    .bs-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+    .bs-header {
+      padding: 14px;
+      background: rgba(245, 158, 11, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+    .bs-title-box { display: flex; align-items: center; gap: 8px; }
+    .bs-round-badge {
+      background: var(--brand-gradient);
+      color: #fff;
+      font-size: 10.5px;
+      font-weight: 900;
+      padding: 2px 8px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .bs-name { font-size: 14.5px; font-weight: 800; color: #fff; }
+    .bs-toggle-icon { color: var(--gold); font-size: 13px; transition: transform 0.2s; }
+    .bs-card.open .bs-toggle-icon { transform: rotate(180deg); }
+    .bs-body {
+      padding: 14px;
+      display: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 13.5px;
+      line-height: 1.8;
+      color: #cbd5e1;
+    }
+    .bs-card.open .bs-body { display: block; }
+    
+    .client-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .client-names {
+      font-size: 16px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .demand-box {
+      background: rgba(245, 158, 11, 0.08);
+      border-left: 3px solid var(--gold);
+      padding: 10px 12px;
+      border-radius: 0 8px 8px 0;
+      margin-top: 8px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #fef08a;
+    }
+
+    /* Timeline step */
+    .flight-step {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+    .flight-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .flight-desc { font-size: 12.5px; color: #94a3b8; line-height: 1.6; }
+    .alert-text { color: #f87171; font-weight: 700; }
+
+    /* Script Action Card with Copy Button */
+    .script-box {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 12px;
+      padding: 14px;
+      margin: 14px 0;
+    }
+    .script-title { font-size: 13px; font-weight: 800; color: #34d399; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+    .copy-btn {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid #10b981;
+      color: #a7f3d0;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .script-text { font-size: 13px; color: #e2e8f0; line-height: 1.75; }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(16, 185, 129, 0.95);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      z-index: 1000;
+      display: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    /* Bottom Floating Dock */
+    nav.bottom-dock {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 23, 42, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
+      z-index: 90;
+    }
+    .dock-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      gap: 3px;
+      padding: 4px 6px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .dock-item.active, .dock-item:active { color: var(--gold); }
+    .dock-icon { font-size: 16px; }
+
+    /* Slide-out Drawer (TOC) */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      display: none;
+    }
+    .drawer {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 82%;
+      max-width: 320px;
+      background: #0b1322;
+      border-left: 1px solid var(--card-border);
+      z-index: 201;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      padding: 20px 16px;
+    }
+    .drawer.open { transform: translateX(0); }
+    .drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .drawer-title { font-size: 16px; font-weight: 900; color: #fff; }
+    .drawer-close { font-size: 20px; color: var(--text-muted); cursor: pointer; }
+    .drawer-list { list-style: none; overflow-y: auto; flex: 1; }
+    .drawer-link { display: block; padding: 10px 12px; font-size: 13.5px; color: #cbd5e1; border-radius: 8px; text-decoration: none; margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+
+  <div id="progress-bar"></div>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="header-brand">
+      <span class="header-badge">胡嫣区部 · 家族办公室</span>
+      <span class="header-title">8月深圳行高客接待备忘录</span>
+    </div>
+    <div class="header-actions">
+      <button class="font-btn" onclick="adjustFontSize(-1)">A-</button>
+      <button class="font-btn" onclick="adjustFontSize(1)">A+</button>
+      <button class="font-btn" onclick="toggleDrawer()">📑 目录</button>
+    </div>
+  </header>
+
+  <!-- Hero Box -->
+  <div class="hero-box">
+    <div class="tag-row">
+      <span class="badge badge-gold">深圳行接待</span>
+      <span class="badge badge-blue">4间标间</span>
+      <span class="badge badge-purple">共8人</span>
+      <span class="badge badge-green">诉求已提炼</span>
+    </div>
+    <h1 class="hero-title">2026年8月深圳行·高客接待与需求备忘录</h1>
+    <p class="hero-desc">
+      📅 行程：2026-08-26 至 08-28/29 · 杭州 ⇄ 深圳<br>
+      👥 构成：7位核心高客/准高才 + 1位专职助理王蓉
+    </p>
+  </div>
+
+  <main class="container">
+
+    <!-- Section 1: Room & Demands -->
+    <section id="sec-rooms" class="section-card">
+      <span class="sec-tag">Module 01 · 客户画像与诉求</span>
+      <h2 class="sec-title">4 间标间同住安排与深层诉求提炼</h2>
+
+      <!-- Room 1 -->
+      <div class="bs-card open">
+        <div class="bs-header" onclick="toggleAccordion(this)">
+          <div class="bs-title-box">
+            <span class="bs-round-badge">标间 1</span>
+            <span class="bs-name">盛瑛 & 盛瑜</span>
+          </div>
+          <span class="bs-toggle-icon">▼</span>
+        </div>
+        <div class="bs-body">
+          <div class="client-tag">💰 688万+核心超高客</div>
+          <div class="client-names">盛瑛 · 盛瑜</div>
+          <div class="demand-box">
+            💡 <strong>需求备忘：</strong>两位客户已是 <strong>688万级存量核心高客</strong>，属于压舱石级核心客户，全程做好高规格礼遇接待与深度客情维系。
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 2 -->
+      <div class="bs-card open">
+        <div class="bs-header" onclick="toggleAccordion(this)">
+          <div class="bs-title-box">
+            <span class="bs-round-badge">标间 2</span>
+            <span class="bs-name">钱斯娜 & 王文禹希</span>
+          </div>
+          <span class="bs-toggle-icon">▼</span>
+        </div>
+        <div class="bs-body">
+          <div class="client-tag">💼 核心大客户 + 🎓 海归准高才</div>
+          <div class="client-names">钱斯娜 · 王文禹希</div>
+          <div class="demand-box">
+            💡 <strong>需求备忘：</strong><br>
+            • <strong>钱女士</strong>：核心大客户，长期稳固信任关系维护；<br>
+            • <strong>王女士</strong>：海归硕士准高才，<strong>其父母家庭具备家族办公室资产配置实力与需求</strong>，行程中可结合高才招募与家办二代赋能进行深度交流。
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 3 -->
+      <div class="bs-card open">
+        <div class="bs-header" onclick="toggleAccordion(this)">
+          <div class="bs-title-box">
+            <span class="bs-round-badge">标间 3</span>
+            <span class="bs-name">邵群霞 & 吴雨奇</span>
+          </div>
+          <span class="bs-toggle-icon">▼</span>
+        </div>
+        <div class="bs-body">
+          <div class="client-tag">👩‍👧 高客母女档 · 居家养老+细胞健康</div>
+          <div class="client-names">邵群霞 (母) · 吴雨奇 (女)</div>
+          <div class="demand-box">
+            💡 <strong>需求备忘：</strong><br>
+            • <strong>邵姐姐（母亲）</strong>：已配置<strong>平安居家养老 V1+ 权益</strong>的核心老客户；<br>
+            • <strong>吴女士（女儿）</strong>：本月新签居家客户，自身创富能力强，<strong>高度了解并关注细胞医疗健康与家族办公室</strong>。
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 4 -->
+      <div class="bs-card open">
+        <div class="bs-header" onclick="toggleAccordion(this)">
+          <div class="bs-title-box">
+            <span class="bs-round-badge">标间 4</span>
+            <span class="bs-name">虞娟英 & 王蓉 (助理)</span>
+          </div>
+          <span class="bs-toggle-icon">▼</span>
+        </div>
+        <div class="bs-body">
+          <div class="client-tag">🌟 重量级高客 + 🤝 专人专岗陪同</div>
+          <div class="client-names">虞娟英 · 王蓉 (助理)</div>
+          <div class="demand-box">
+            💡 <strong>需求备忘：</strong><br>
+            • <strong>虞女士</strong>：多年核心承保高客，极少参会。年初品酒会后<strong>对“信托架构、家办财富管理、细胞医疗”表现出强烈兴趣</strong>。因先生无暇同行，特安排助理王蓉全程同住陪同照应；<br>
+            • <strong>王蓉（助理）</strong>：专职协助胡嫣经理全程做好虞女士一对一照应及整团会务服务。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Flights Logistics -->
+    <section id="sec-flights" class="section-card">
+      <span class="sec-tag">Module 02 · 航班与行程异动</span>
+      <h2 class="sec-title">航班时刻表与关键分流节点</h2>
+
+      <div class="flight-step">
+        <div class="flight-title">🛫 去程先行踩点：王蓉 (助理)</div>
+        <div class="flight-desc">08-26 周三 06:50 杭州-深圳 (NS8383) 提前抵达，做好现场筹备与接机准备。</div>
+      </div>
+
+      <div class="flight-step">
+        <div class="flight-title">🛫 去程主团抵深：</div>
+        <div class="flight-desc">
+          • 08:55-11:15 (JD5113 萧山T3) 钱斯娜、王文禹希<br>
+          • 10:05-12:20 (GJ8965) 邵群霞、吴雨奇、虞娟英<br>
+          （盛瑛、盛瑜航班待同步确认）
+        </div>
+      </div>
+
+      <div class="flight-step" style="border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.04);">
+        <div class="flight-title" style="color: #f87171;">🛬 返程分流与送机提醒：</div>
+        <div class="flight-desc">
+          • <span class="alert-text">提前返杭</span>：<strong>虞娟英</strong> 08-28 14:30-16:30 (MF8388 下午航班，需安排中午送机)<br>
+          • <span class="alert-text">广州出差</span>：<strong>吴雨奇</strong> 29号转广州出差，28号不随团回杭 (只买去程)<br>
+          • <span class="alert-text">待定</span>：<strong>邵群霞</strong> (视行程情况定回程，需助理跟进票务)<br>
+          • 正常夜航返杭：钱斯娜、王文禹希 (GJ8738 22:30)、王蓉 (S8346 22:35)
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Focus & Action -->
+    <section id="sec-action" class="section-card">
+      <span class="sec-tag">Module 03 · 促成与服务要点</span>
+      <h2 class="sec-title">现场参访与家办对接建议</h2>
+
+      <div class="script-box">
+        <div class="script-title">
+          <span>🧬 场景一：细胞医疗与居家养老生态参访</span>
+          <button class="copy-btn" onclick="copyText('script-1')">一键复制</button>
+        </div>
+        <div class="script-text" id="script-1">
+          重点对接客户：虞娟英、邵群霞、吴雨奇。<br>
+          在参观平安医疗生态与科技展厅时，重点安排健康管理专家对“细胞抗衰/医疗”与“居家养老服务体系”进行定制化答疑。
+        </div>
+      </div>
+
+      <div class="script-box">
+        <div class="script-title">
+          <span>🏛️ 场景二：家族办公室与信托架构交流</span>
+          <button class="copy-btn" onclick="copyText('script-2')">一键复制</button>
+        </div>
+        <div class="script-text" id="script-2">
+          重点对接客户：虞娟英（品酒会重点意向客）、王文禹希（海归二代，家庭有家办配置需求）。<br>
+          安排金华家办/信托法商专家进行一对一轻量交流，解答资产隔离与代际传承架构。
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Slide-out Drawer (TOC) -->
+  <div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+  <div class="drawer" id="drawer">
+    <div class="drawer-header">
+      <span class="drawer-title">📑 备忘录导览</span>
+      <span class="drawer-close" onclick="toggleDrawer()">✕</span>
+    </div>
+    <ul class="drawer-list">
+      <li><a href="#sec-rooms" class="drawer-link" onclick="toggleDrawer()">🏨 4间标间与诉求提炼</a></li>
+      <li><a href="#sec-flights" class="drawer-link" onclick="toggleDrawer()">✈️ 航班时刻与异动分流</a></li>
+      <li><a href="#sec-action" class="drawer-link" onclick="toggleDrawer()">💡 参访对接与法商建议</a></li>
+    </ul>
+  </div>
+
+  <div id="toast">✅ 内容已复制到剪贴板</div>
+
+  <!-- Bottom Floating Dock -->
+  <nav class="bottom-dock">
+    <a href="#sec-rooms" class="dock-item">
+      <span class="dock-icon">🏨</span>
+      <span>标间诉求</span>
+    </a>
+    <a href="#sec-flights" class="dock-item">
+      <span class="dock-icon">✈️</span>
+      <span>航班时刻</span>
+    </a>
+    <a href="#sec-action" class="dock-item">
+      <span class="dock-icon">💡</span>
+      <span>参访对接</span>
+    </a>
+    <a href="#" class="dock-item" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+      <span class="dock-icon">🔝</span>
+      <span>置顶</span>
+    </a>
+  </nav>
+
+  <script>
+    // Reading Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
+    });
+
+    // Font Size Adjuster
+    let baseFontSize = 15;
+    function adjustFontSize(delta) {
+      baseFontSize = Math.max(13, Math.min(18, baseFontSize + delta));
+      document.documentElement.style.setProperty('--font-size-base', baseFontSize + 'px');
+      showToast('字体大小已调整为 ' + baseFontSize + 'px');
+    }
+
+    // Accordion Toggle
+    function toggleAccordion(header) {
+      const card = header.parentElement;
+      card.classList.toggle('open');
+    }
+
+    // Drawer Toggle
+    function toggleDrawer() {
+      const drawer = document.getElementById('drawer');
+      const overlay = document.getElementById('drawer-overlay');
+      const isOpen = drawer.classList.contains('open');
+      if (isOpen) {
+        drawer.classList.remove('open');
+        overlay.style.display = 'none';
+      } else {
+        drawer.classList.add('open');
+        overlay.style.display = 'block';
+      }
+    }
+
+    // Copy to Clipboard
+    function copyText(elementId) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('✅ 内容已成功复制到剪贴板');
+      }).catch(() => {
+        showToast('复制失败，请手动选择复制');
+      });
+    }
+
+    // Toast Notification
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.style.display = 'block';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
