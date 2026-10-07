@@ -2,9 +2,11 @@
 """从 data.json 自动生成 archive.html"""
 import json, os
 
-DATA = r"D:\WorkBuddy输出\法商知识内参\output\data.json"
-OUT = r"D:\WorkBuddy输出\法商知识内参\output\archive.html"
-INDEX = r"D:\WorkBuddy输出\法商知识内参\output\index.html"
+# 用脚本所在目录定位，保证 Windows 本地与 GitHub Actions(ubuntu) 都能跑
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA = os.path.join(SCRIPT_DIR, "data.json")
+OUT = os.path.join(SCRIPT_DIR, "archive.html")
+INDEX = os.path.join(SCRIPT_DIR, "index.html")
 
 with open(DATA, encoding="utf-8") as f:
     records = json.load(f)
