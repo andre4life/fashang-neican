@@ -1,0 +1,331 @@
+# -*- coding: utf-8 -*-
+"""生成 2026-10-09 法商小知识卡片"""
+import json, os, shutil, re
+
+BASE = os.path.dirname(os.path.abspath(__file__))
+DATE = "2026-10-09"
+TOPIC = "「房子给了弟弟，我照顾了爸妈十年」——嫁出去的女儿，到底有没有继承权？"
+
+SEC1 = """<b>一、一句话的核心：继承权男女平等</b><br>
+《民法典》第 1126 条只有六个字：「继承权男女平等。」<br>
+六个字，却把「嫁出去的女儿，泼出去的水」这句老话挡在了法律门外。这条是《民法典》继承编「法定继承」章的第 1 条，位置就在法定继承规则的最前面——它是一条<b>原则性条款</b>，后面的第 1127 条（谁有份）、第 1130 条（分多少），都建立在它之上。<br>
+配套的还有《妇女权益保障法》（2022 年 10 月 30 日修订，2023 年 1 月 1 日起施行）第 58 条：「妇女享有与男子平等的继承权。妇女依法行使继承权，不受歧视。丧偶妇女有权依法处分继承的财产，任何组织和个人不得干涉。」<br><br>
+
+<b>二、谁在第一顺序？「子女」从来不分男女</b><br>
+《民法典》第 1127 条：「遗产按照下列顺序继承：（一）第一顺序：配偶、子女、父母；（二）第二顺序：兄弟姐妹、祖父母、外祖父母。继承开始后，由第一顺序继承人继承，第二顺序继承人不继承；没有第一顺序继承人继承的，由第二顺序继承人继承。本编所称子女，包括婚生子女、非婚生子女、养子女和有扶养关系的继子女。……」<br>
+注意那两个字：「<span class="highlight">子女</span>」——法律里从来不分「儿子」和「女儿」。已出嫁的女儿、常年在外打工的女儿、招赘的女儿，都在第一顺序里。<br>
+《民法典》第 1130 条第 1 款接着定：「同一顺序继承人继承遗产的份额，<b>一般应当均等</b>。」<br><br>
+
+<b>三、「一般均等」不是「一律均等」——第 1130 条的三档差别</b><br>
+第 1130 条一共五款，是一套完整的分配规则：<br>
+· 第 1 款：同一顺序，份额<b>一般应当均等</b>；<br>
+· 第 2 款：对生活有特殊困难又缺乏劳动能力的继承人，<span class="highlight">应当予以照顾</span>；<br>
+· 第 3 款：对尽了主要扶养义务或者与被继承人共同生活的继承人，<span class="highlight">可以多分</span>；<br>
+· 第 4 款：有扶养能力和扶养条件却不尽扶养义务的，<span class="highlight">应当不分或者少分</span>；<br>
+· 第 5 款：继承人协商同意的，也可以不均等。<br>
+「应当」和「可以」是有区别的：第 2、4 款是硬要求，第 3 款是裁量空间。谁在病床前伺候了十年、谁十年没露过面，第 3、4 款就是给这件事留的位置。<br>
+配套的《继承编解释（一）》（法释〔2020〕23 号）把「尽义务」和「不尽义务」都写细了：<b>第 19 条</b>——对被继承人生活提供了主要经济来源，或者在劳务等方面给予了主要扶助的，应当认定其尽了主要赡养义务或主要扶养义务；<b>第 23 条</b>——有扶养能力和扶养条件、虽然与被继承人共同生活，但对需要扶养的被继承人不尽扶养义务的，分配遗产时，可以少分或者不分；<b>第 22 条</b>——继承人有扶养能力和条件、也愿意尽义务，但被继承人因有固定收入和劳动能力明确表示不要求其扶养的，分配遗产时一般不因这个影响其继承份额。<br><br>
+
+<b>四、不给遗产 ≠ 不用赡养；不赡养 ≠ 丧失继承权</b><br>
+这两句最容易搞混，必须分开记。<br>
+第一句：《老年人权益保障法》第 19 条——「赡养人不得以放弃继承权或者其他理由，拒绝履行赡养义务。赡养人不履行赡养义务，老年人有要求赡养人付给赡养费等权利。赡养人不得要求老年人承担力不能及的劳动。」《民法典》第 1067 条第 2 款——成年子女不履行赡养义务的，缺乏劳动能力或者生活困难的父母，有要求成年子女给付赡养费的权利。所以「父母说遗产不分给我，我就不养了」，法律上不成立。<br>
+第二句：<b>不尽扶养义务，后果是「少分或不分」（第 1130 条第 4 款），不是「丧失继承权」</b>。丧失继承权是另一条——第 1125 条第 1 款第（三）项：「遗弃被继承人，或者虐待被继承人情节严重」。两者门槛完全不同：偶尔少看望是第 1130 条的少分问题，遗弃、虐待情节严重才触及第 1125 条。这两条经常被混为一谈，一旦说错，结论就全反了。<br><br>
+
+<b>五、遗嘱能改变结果吗？能，但有边界</b><br>
+《民法典》第 1123 条：继承开始后，按照法定继承办理；有遗嘱的，按照遗嘱继承或者遗赠办理；有遗赠扶养协议的，按照协议办理。第 1133 条：自然人可以依照本法规定立遗嘱处分个人财产……可以立遗嘱将个人财产指定由法定继承人中的一人或者数人继承。<br>
+所以严格说，答案是两句：<span class="highlight">没有遗嘱时，女儿与儿子权利完全平等；父母立了合法有效的遗嘱，可以改变分配</span>。但遗嘱自由有边界——第 1141 条：遗嘱应当为<b>缺乏劳动能力又没有生活来源</b>的继承人保留必要的遗产份额（落地规则见《继承编解释（一）》第 25 条）。另外，处分了不属于自己的财产（比如整套夫妻共同房产），依第 1153 条先析产、依《继承编解释（一）》第 26 条该部分遗嘱无效。<br><br>
+
+<b>六、农村出嫁女：法律专门补了两道闸</b><br>
+《妇女权益保障法》第 55 条：妇女在农村集体经济组织成员身份确认、土地承包经营、集体经济组织收益分配、土地征收补偿安置或者征用补偿以及宅基地使用等方面，享有与男子平等的权利；申请农村土地承包经营权、宅基地使用权等不动产登记，应当在不动产登记簿和权属证书上将享有权利的妇女等家庭成员<b>全部列明</b>；征收补偿安置或者征用补偿协议应当将享有相关权益的妇女列入，并记载权益内容。<br>
+第 56 条：村民自治章程、村规民约，村民会议、村民代表会议的决定以及其他涉及村民利益事项的决定，<span class="highlight">不得以妇女未婚、结婚、离婚、丧偶、户无男性等为由，侵害妇女在农村集体经济组织中的各项权益</span>。<br>
+再补两条：《民法典》第 1157 条——「夫妻一方死亡后另一方再婚的，有权处分所继承的财产，任何组织或者个人不得干涉」；《继承编解释（一）》第 2 条——承包人死亡时尚未取得承包收益的，可以将死者生前对承包所投入的资金和所付出的劳动及其增值和孳息，由发包单位或者接续承包合同的人合理折价、补偿，其价额<b>作为遗产</b>。承包「地」的事另说，承包「收益」是可以进遗产的。"""
+
+SEC2 = """<b>场景一：「房子和补偿款都给了弟弟，我是嫁出去的人」</b><br>
+这是最典型的冲突：父母去世，哥哥或弟弟拿「村里的规矩」「嫁出去的女儿不参与」当理由，把房产、拆迁补偿款全部留下。<br>
+法律上怎么处理：<br>
+① 首先，村规民约、村民会议决定不能对抗法律。依《妇女权益保障法》第 56 条，以「结婚、户无男性」为由剥夺妇女集体经济组织权益的决定，本身就违法；第 55 条还要求把享有权利的妇女在权属证书上「全部列明」。<br>
+② 其次，父母留下的房产、存款、补偿款，按第 1153 条（先析产）→ 第 1127 条（第一顺序）→ 第 1130 条（一般均等）走一遍，女儿与儿子同权。<br>
+③ 第三，如果父母确实立了合法有效的遗嘱、明确把财产给儿子，那要尊重遗嘱（第 1123、1133 条）；但如果遗嘱处分的其实是夫妻共同财产里属于母亲的那一半，那部分依第 1153 条与《继承编解释（一）》第 26 条无效。<br><br>
+
+<b>场景二：「我照顾了爸妈十年，弟弟一年回来一次」——怎么落到份额上</b><br>
+不是「我照顾得多就该多分」这么简单，而是要走第 1130 条第 3、4 款 + 《继承编解释（一）》第 19、23 条：<br>
+· 你提供主要经济来源，或者主要在劳务上扶助（陪护、送医、日常照料）→ 认定「尽了主要扶养义务」→ <b>可以多分</b>；<br>
+· 弟弟有扶养能力和条件却不尽义务 → <b>应当不分或者少分</b>；<br>
+· 弟弟虽然与父母同住，但对需要扶养的父母不尽义务 → 依解释（一）第 23 条，同样<b>可以少分或者不分</b>。<br>
+注意：「共同生活」本身不等于尽了义务，解释（一）第 23 条专门堵的就是「住在一起却不照顾」这种情形。<br><br>
+
+<b>场景三：女儿要怎么证明「我尽了义务」——证据清单</b><br>
+法院看的是证据，不是委屈。可以固定这几类：<br>
+① <b>钱</b>——转账记录、汇款凭证、代缴医药费或护工费的票据（备注写明用途更好）；<br>
+② <b>人</b>——住院陪护记录、护工合同、社区或村委会出具的照料证明；<br>
+③ <b>时间</b>——探视记录、往返车票、微信聊天与视频通话记录；<br>
+④ <b>事</b>——丧事操办的相关凭证、亲属证言；<br>
+⑤ <b>底账</b>——先把「继承人清单」和「财产清单」列全（配偶、子女含各类子女、父母，一个都不能漏；房产、存款、理财、股权、车辆、保单）。<br>
+⚠️ 反面提醒：如果有继承人有「故意隐匿、侵吞或者争抢遗产」的行为，依《继承编解释（一）》第 43 条，法院可以<b>酌情减少</b>其应继承的遗产——藏钱藏房，不一定藏得住。<br><br>
+
+<b>场景四：父母想「都给儿子」，又想「别让女儿寒心」——三条合规路径</b><br>
+① <b>遗嘱（第 1133 条）</b>：可以指定由一人或数人继承，但要注意形式要件（第 1134—1139 条）、见证人资格（第 1140 条），并为缺乏劳动能力又没有生活来源的继承人留出必留份（第 1141 条）。<br>
+② <b>遗赠扶养协议（第 1158 条）</b>：谁承担生养死葬的义务，谁享有受遗赠的权利——这条的效力顺序还在遗嘱之前（第 1123 条）。「谁照顾我，我就把什么留给他」，用协议写下来，比临终交代更靠得住。<br>
+③ <b>保单（《保险法》第 39—42 条）</b>：父母作为被保险人，直接指定受益人及其受益份额。这是唯一一种「不需要走继承程序、不需要所有人签字、也不进入法定继承分割」的分配方式。<br>
+但要提醒：把受益人只写一个人、其他人一分不给，法律上通常有效（保险金不属遗产），但从家庭关系看往往是另一种隐患。更稳妥的做法是<b>用保单把「钱」分清楚，用遗嘱把「物」安排明白，两者配合</b>。<br><br>
+
+<b>场景五：为什么保单是「绕开争产」的那条路</b><br>
+· 《保险法》第 39 条：人身保险的受益人由被保险人或者投保人指定；投保人指定受益人时须经被保险人同意。<br>
+· 第 40 条：可以指定一人或者数人为受益人，并可以确定<b>受益顺序和受益份额</b>；未确定受益份额的，受益人按照相等份额享有受益权。<br>
+· 第 41 条：变更受益人应当书面通知保险人，由保险人在保险单或者其他保险凭证上批注或者附贴批单。<br>
+· 第 42 条：只有在三种情形下保险金才<b>作为被保险人的遗产</b>——①没有指定受益人，或者受益人指定不明无法确定；②受益人先于被保险人死亡，没有其他受益人；③受益人依法丧失受益权或者放弃受益权，没有其他受益人。<br>
+<span class="highlight">指定了明确受益人、又不落入第 42 条三种情形的身故保险金，不进遗产</span>——不走法定继承、不需要全体继承人签字、不受村规民约影响，也不参与第 1153 条的先析产。父母想让女儿「确定拿到一笔钱」，最直接的办法就是在保单上写下她的名字。<br>
+还有一层实务价值：女儿已经出嫁的，身故保险金是给付给<b>受益人本人</b>的，由她本人领取、本人支配，不会先变成一笔「全家一起分」的遗产。这与房产、存款要走的那套程序，完全是两回事。<br>
+⚠️ 但要注意反向检查：<span class="highlight">受益人栏写的是名字还是「法定」？名字写对了吗？人还在吗？有没有丧失或放弃受益权？</span>——这几问对应的正是第 42 条那三种会让保险金「掉回遗产」的情形。"""
+
+SEC3 = """⚠️ <b>「出嫁了就没份」是习俗，不是法律。</b>《民法典》第 1126 条只有六个字「继承权男女平等」；《妇女权益保障法》第 58 条进一步写明「妇女享有与男子平等的继承权。妇女依法行使继承权，不受歧视」。村规民约、家族规矩都不能对抗法律。<br>
+⚠️ <b>别把「不尽赡养」和「丧失继承权」混为一谈。</b>不尽扶养义务的后果是第 1130 条第 4 款的「应当不分或者少分」；丧失继承权是第 1125 条第 1 款第（三）项的「遗弃被继承人，或者虐待被继承人情节严重」。两者门槛完全不同，说错了结论就反了。<br>
+⚠️ <b>「我照顾得多」要靠证据说话。</b>第 1130 条第 3 款是「可以多分」而非「应当多分」，裁量空间在法院手里；证据不足，十年陪护也可能只换来一句「酌情考虑」。转账记录、陪护记录、村委会证明，越早留越好。<br>
+⚠️ <b>遗嘱不是万能钥匙，也有边界。</b>依第 1141 条必须为缺乏劳动能力又没有生活来源的继承人保留必要份额（解释（一）第 25 条）；处分了他人财产的部分无效（解释（一）第 26 条）；形式要件、见证人资格（第 1134—1140 条）缺一项都可能整份作废。<br>
+⚠️ <b>「先签放弃声明，我就配合过户」——这是最贵的签字。</b>依《民法典》第 1124 条，遗产处理前、以书面形式作出的放弃即为有效；事后再想反悔，要由法院根据具体理由决定是否承认。用「配合」换「放弃」，往往换掉的是全部份额。<br>
+⚠️ <b>保险金不进遗产，但有三个「漏口」。</b>第 42 条那三种情形（未指定或指定不明、受益人先于被保险人死亡且无其他受益人、受益人丧失或放弃受益权且无其他受益人）一旦命中，保险金就变成遗产，重新走「先还债、再继承」那一套（第 1159 条）。买的时候写清楚，之后定期回头看，才算真的安排好。<br>
+✅ <b>动作一：先列「继承人清单」。</b>配偶、子女（含婚生子女、非婚生子女、养子女、有扶养关系的继子女）、父母——一个都不能漏；有人已故的，再判断是否涉及代位继承（第 1128 条）或转继承（第 1152 条）。<br>
+✅ <b>动作二：把「谁尽了义务」变成证据。</b>转账备注写清用途、陪护记录留档、村委会或社区出具照料证明，别等到开庭才想起找证人。<br>
+✅ <b>动作三：想让分配「说清楚」，就用能说清楚的工具。</b>房子、股权这类「物」，用遗嘱（第 1133 条）和遗赠扶养协议（第 1158 条）安排；现金这类「钱」，用保单（《保险法》第 39—42 条）指定受益人及份额。<span class="highlight">物走遗嘱、钱走保单，两条腿走路，才不留下「谁也说服不了谁」的空白。</span><br>
+✅ <b>动作四：定期回头检查受益人。</b>结婚、离婚、生子、亲人离世，任何一个变化都可能让原来写好的受益人安排失效——《保险法》第 41 条的变更登记，花的是几分钟，省下的是几年官司。"""
+
+SUMMARY = "「嫁出去的女儿，泼出去的水」是习俗，不是法律。《民法典》第 1126 条只有六个字：<b>继承权男女平等</b>；第 1127 条把「子女」写进第一顺序，不分男女、不分婚生与非婚生；第 1130 条定的是「一般应当均等」，再按「应当照顾／可以多分／应当不分或少分」三档微调——尽了主要扶养义务的可以多分（配套《继承编解释（一）》第 19、23 条），有能力和条件却不尽义务的应当不分或者少分。两处最容易说错的地方：<b>不尽赡养 ≠ 丧失继承权</b>（丧失继承权是第 1125 条第 1 款第（三）项的遗弃、虐待情节严重，不尽义务只是第 1130 条的少分不分）；<b>不给遗产 ≠ 不用赡养</b>（《老年人权益保障法》第 19 条、《民法典》第 1067 条）。遗嘱确实能改变分配（第 1123、1133 条），但受必留份（第 1141 条）和「不得处分他人财产」（第 1153 条、解释（一）第 26 条）双重限制。农村出嫁女另有两道闸：《妇女权益保障法》（2022 年修订、2023 年 1 月 1 日施行）第 55 条（成员身份、土地承包、收益分配、征收补偿、宅基地使用与男子平等，权属证书应列明妇女）、第 56 条（村规民约不得以未婚、结婚、离婚、丧偶、户无男性为由侵害妇女权益）、第 58 条（继承权不受歧视）。<span class=\"highlight\">保险的价值在于「确定性」</span>——《保险法》第 39、40、41 条允许指定受益人及受益份额，第 42 条只有三种情形保险金才作为遗产；<span class=\"highlight\">指定明确受益人、又不落入第 42 条三种情形的身故保险金不进遗产</span>，不走法定继承、不需全体继承人签字、不受村规民约影响。房子这类「物」用遗嘱安排，现金这类「钱」用保单安排——物走遗嘱、钱走保单，两件事本来就该一起做。"
+
+TPL = """<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>法商小知识 - __DATE__</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .card {
+            width: 375px;
+            background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+        }
+        .header {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            padding: 24px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .tag {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 4px;
+            margin-bottom: 4px;
+        }
+        .subtitle {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 1px;
+        }
+        .content {
+            padding: 24px 20px;
+        }
+        .topic {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e8e8e8;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .section-title::before {
+            content: "";
+            width: 4px;
+            height: 16px;
+            background: linear-gradient(180deg, #c9a96e 0%, #8b7355 100%);
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            padding-left: 14px;
+        }
+        .highlight {
+            color: #c9a96e;
+            font-weight: 500;
+        }
+        .summary {
+            background: rgba(201, 169, 110, 0.1);
+            border-left: 3px solid #c9a96e;
+            padding: 16px;
+            margin-top: 24px;
+            border-radius: 0 8px 8px 0;
+        }
+        .summary-title {
+            font-size: 12px;
+            color: #c9a96e;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .summary-content {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+        .archive-banner {
+            display: flex; align-items: center; gap: 8px;
+            background: rgba(201,169,110,0.15);
+            border-left: 4px solid #c9a96e;
+            padding: 10px 20px; margin: 0 20px; border-radius: 0 8px 8px 0;
+        }
+        .archive-banner .ab-icon { font-size: 18px; }
+        .archive-banner .ab-text { font-size: 12px; color: #c9a96e; font-weight: 600; }
+        .archive-banner .ab-link { font-size: 12px; color: #c9a96e; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+        .archive-banner .ab-link:hover { color: #fff; }
+        .disclaimer {
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.3);
+            padding: 12px 20px;
+            line-height: 1.5;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        @media print {
+            body {
+                background: #0a0a0a;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <div class="tag">JUST INTERNAL INFORMATION</div>
+            <div class="title">每日一条法商小知识</div>
+        </div>
+
+        <div class="content">
+            <div class="archive-banner">
+                <span class="ab-icon">📋</span>
+                <span class="ab-text">往期回顾</span>
+                <a class="ab-link" href="archive.html">点击查看全部历史 →</a>
+            </div>
+<div class="topic">__TOPIC__</div>
+
+            <div class="section">
+                <div class="section-title">法条要点</div>
+                <div class="section-content">__SEC1__</div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">实务场景</div>
+                <div class="section-content">__SEC2__</div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">风险提示</div>
+                <div class="section-content">__SEC3__</div>
+            </div>
+
+<div class="summary">
+                <div class="summary-title">核心要点</div>
+                <div class="summary-content">__SUMMARY__</div>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            声明：本资讯内容仅供内部学习交流参考，不构成任何法律建议或投资建议。所涉观点或点评如非事实陈述，均为知识分享，不代表任何机构立场。任何决策请基于个人独立判断，并谨慎考虑自身实际情况。
+            <br><br><a href="archive.html" style="color:rgba(255,255,255,0.2);text-decoration:none;font-size:10px;">历史回顾 →</a>
+        </div>
+    </div>
+</body>
+</html>
+"""
+
+html = (TPL.replace("__DATE__", DATE)
+           .replace("__TOPIC__", TOPIC)
+           .replace("__SEC1__", SEC1)
+           .replace("__SEC2__", SEC2)
+           .replace("__SEC3__", SEC3)
+           .replace("__SUMMARY__", SUMMARY))
+
+card = os.path.join(BASE, "fs_%s.html" % DATE)
+with open(card, "w", encoding="utf-8") as f:
+    f.write(html)
+print("written:", card, len(html))
+
+# index.html = 当日卡片逐字节复制
+shutil.copyfile(card, os.path.join(BASE, "index.html"))
+print("index.html copied from", os.path.basename(card))
+
+# data.json 追加（同日去重）
+dp = os.path.join(BASE, "data.json")
+with open(dp, encoding="utf-8") as f:
+    data = json.load(f)
+before = len(data)
+data = [d for d in data if d.get("date") != DATE]
+data.append({"date": DATE, "topic": TOPIC, "summary": SUMMARY,
+             "file": "fs_%s.html" % DATE})
+data.sort(key=lambda x: x["date"])
+with open(dp, "w", encoding="utf-8") as f:
+    json.dump(data, f, ensure_ascii=False, indent=2)
+print("data.json:", before, "->", len(data))
+
+# 校验：正文与 summary 剥离标签后不得出现 ASCII 双引号
+for label, s in (("SEC1", SEC1), ("SEC2", SEC2), ("SEC3", SEC3), ("SUMMARY", SUMMARY)):
+    plain = re.sub(r"<[^>]+>", "", s)
+    assert '"' not in plain, "ASCII quote found in " + label
+assert '"' not in TOPIC, "ASCII quote found in TOPIC"
+print("quote-check OK")
+
+# 复读校验 JSON 可解析
+with open(dp, encoding="utf-8") as f:
+    chk = json.load(f)
+assert chk[-1]["date"] == DATE
+assert len([d for d in chk if d["date"] == DATE]) == 1
+print("json re-read OK, last =", chk[-1]["date"], "total =", len(chk))
+
+# content_bank.json 回填（脚本抽取，不手抄）
+bp = os.path.join(BASE, "content_bank.json")
+with open(bp, encoding="utf-8") as f:
+    bank = json.load(f)
+bank = [b for b in bank if b.get("topic") != TOPIC]
+bank.append({"topic": TOPIC, "law_points": SEC1, "practice_scene": SEC2,
+             "risk_alert": SEC3, "summary": SUMMARY})
+with open(bp, "w", encoding="utf-8") as f:
+    json.dump(bank, f, ensure_ascii=False, indent=2)
+print("content_bank.json ->", len(bank))
+
+# 校验 index.html 与当日卡片逐字节一致
+with open(card, encoding="utf-8") as f1, open(os.path.join(BASE, "index.html"), encoding="utf-8") as f2:
+    assert f1.read() == f2.read(), "index.html != card"
+print("index == card OK")
