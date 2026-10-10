@@ -125,7 +125,7 @@ def generate(date_str):
         data.append({
             "date": date_str,
             "topic": topic_data["topic"],
-            "summary": topic_data["summary"].replace('<span class="highlight">', '').replace('</span>', ''),
+            "summary": re.sub(r'<[^>]+>', '', topic_data["summary"]),
             "file": f"fs_{date_str}.html"
         })
         save_data_json(data)
