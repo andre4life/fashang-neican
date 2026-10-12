@@ -1,0 +1,333 @@
+# -*- coding: utf-8 -*-
+"""生成 2026-10-12 法商小知识卡片"""
+import json, os, shutil, re
+
+BASE = os.path.dirname(os.path.abspath(__file__))
+DATE = "2026-10-12"
+TOPIC = "离婚了，他欠的钱还要我一起还吗？——《民法典》第 1089 条，和「夫妻共同债务」的两道关"
+
+SEC1 = """<b>一、先分清两个问题：是不是共同债务、离婚时怎么还</b><br>
+这是本话题最容易张冠李戴的地方，两条条文各管一段：<br>
+· <b>《民法典》第 1064 条</b>——管「<b>是不是</b>夫妻共同债务」。<br>
+· <b>《民法典》第 1089 条</b>——管「离婚时共同债务<b>怎么还</b>」。<br>
+<span class="highlight">第 1089 条的前提是「已经认定为夫妻共同债务」。</span>一笔债到底算谁的，回到第 1064 条；确认是共同债务之后，才轮到第 1089 条安排怎么清偿。<br><br>
+
+<b>二、第 1064 条：三条通道 + 一条举证规则</b><br>
+「夫妻双方共同签名或者夫妻一方事后追认等共同意思表示所负的债务，以及夫妻一方在婚姻关系存续期间以个人名义为家庭日常生活需要所负的债务，属于夫妻共同债务。<br>
+夫妻一方在婚姻关系存续期间以个人名义超出家庭日常生活需要所负的债务，不属于夫妻共同债务；但是，债权人能够证明该债务用于夫妻共同生活、共同生产经营或者基于夫妻双方共同意思表示的除外。」<br>
+· <b>通道一（共债共签）</b>：双方共同签名，或者一方事后追认。<br>
+· <b>通道二（家庭日常生活需要）</b>：一方以个人名义为家庭日常生活需要所负的债务。<br>
+· <b>通道三（债权人举证）</b>：一方以个人名义<b>超出</b>家庭日常生活需要的大额债务，<span class="highlight">原则上不是共同债务，举证责任在债权人</span>——要由债权人证明「用于夫妻共同生活、共同生产经营或者基于双方共同意思表示」。<br><br>
+
+<b>三、第 1089 条：三层清偿顺序</b><br>
+「离婚时，夫妻共同债务应当共同偿还。共同财产不足清偿或者财产归各自所有的，由双方协议清偿；协议不成的，由人民法院判决。」<br>
+拆开就是三步：<b>第一步</b>——共同债务，共同偿还；<b>第二步</b>——共同财产不足清偿，或者财产归各自所有的，由双方<b>协议</b>清偿；<b>第三步</b>——协议不成的，由人民法院<b>判决</b>。<br>
+注意：这条解决的是<b>内部</b>怎么分担，不改变「对债权人要一起还」这个<b>对外</b>的结论。<br><br>
+
+<b>四、婚姻家庭编解释（一）的四个关键条文</b><br>
+· <b>第 33 条</b>：债权人就一方<b>婚前</b>所负个人债务向债务人的配偶主张权利的，人民法院不予支持；但债权人能够证明所负债务<b>用于婚后家庭共同生活</b>的除外。<br>
+· <b>第 34 条</b>：夫妻一方与第三人<b>串通，虚构债务</b>，第三人主张该债务为夫妻共同债务的，人民法院不予支持。夫妻一方在从事<b>赌博、吸毒等违法犯罪活动</b>中所负债务，第三人主张该债务为夫妻共同债务的，人民法院不予支持。<br>
+· <b>第 35 条</b>：当事人的离婚协议或者人民法院生效判决、裁定、调解书<b>已经对夫妻财产分割问题作出处理的，债权人仍有权就夫妻共同债务向男女双方主张权利</b>。一方就夫妻共同债务承担清偿责任后，主张由另一方按照离婚协议或者人民法院的法律文书承担相应债务的，人民法院应予支持。<br>
+· <b>第 36 条</b>：夫或者妻一方<b>死亡</b>的，生存一方应当对婚姻关系存续期间的夫妻共同债务承担清偿责任。<br>
+· <b>第 37 条</b>：民法典第 1065 条第 3 款所称「相对人知道该约定的」，夫妻一方对此<b>负有举证责任</b>。<br><br>
+
+<b>五、第 1065 条：婚内财产约定，能不能挡住债务</b><br>
+「男女双方可以约定婚姻关系存续期间所得的财产以及婚前财产归各自所有、共同所有或者部分各自所有、部分共同所有。约定应当采用<b>书面形式</b>。……夫妻对婚姻关系存续期间所得的财产约定归各自所有，夫或者妻一方对外所负的债务，<b>相对人知道该约定的</b>，以夫或者妻一方的个人财产清偿。」<br>
+<span class="highlight">关键词是「相对人知道」——而且举证责任在夫妻一方（解释（一）第 37 条）。</span>想靠一纸婚内财产协议对抗债权人，先得证明债权人当时就知道这份约定。签了协议没通知债权人，对外基本挡不住。<br><br>
+
+<b>六、第 1087 条：分割财产时的照顾原则（与第 1089 条并行）</b><br>
+「离婚时，夫妻的共同财产由双方协议处理；协议不成的，由人民法院根据财产的具体情况，照顾子女、女方和无过错方权益的原则判决。」<br>
+第 1087 条解决<b>财产怎么分</b>，第 1089 条解决<b>共同债务怎么还</b>——两条不是二选一，离婚时通常要一起处理。"""
+
+SEC2 = """<b>场景一：他做生意借的 50 万，我没签字也没用过</b><br>
+50 万明显超出家庭日常生活需要，落在<b>第 1064 条第 2 款</b>：原则上<b>不是</b>夫妻共同债务。<br>
+债权人若要求配偶一起还，必须举证证明这笔钱「用于夫妻共同生活、共同生产经营或者基于双方共同意思表示」——比如钱打进了共同经营的公司账户、用于共同购置房产、或者配偶曾在借条上签字、事后微信里追认过。<br>
+<span class="highlight">举证不能，后果由债权人承担。</span>这是「共债共签」规则对未举债配偶最直接的保护。<br><br>
+
+<b>场景二：「假离婚」把房子给她、债留给他</b><br>
+离婚协议里把房产、存款全归一方，债务全留给另一方，随后两人仍住在一起——这种安排在债权人面前<b>不生效</b>。<br>
+依<b>解释（一）第 35 条</b>，离婚协议或生效裁判已对财产分割作出处理的，<b>债权人仍有权就夫妻共同债务向男女双方主张权利</b>。也就是说：对外，债权人可以找任何一方要；对内，替对方多还了的一方，可以再按离婚协议或裁判文书向另一方追偿。<br>
+<span class="highlight">「离婚协议写谁还」只是内部约定，挡不住债权人。</span>再配合《民法典》第 538—540 条（债权人撤销权）一起看，无偿或明显不合理低价处分财产逃避债务的，债权人还可以请求撤销。<br><br>
+
+<b>场景三：他赌博、吸毒欠下的钱</b><br>
+<b>解释（一）第 34 条第 2 款</b>写得很直白：夫妻一方在从事<b>赌博、吸毒等违法犯罪活动</b>中所负债务，第三人主张为夫妻共同债务的，人民法院不予支持。<br>
+但要注意区分：<span class="highlight">赌债不是共同债务，不等于赌资的来源不受追索</span>——如果他拿夫妻共同财产去还赌债、或者为赌债提供了夫妻共同财产的担保，这部分损失的追回是另一个问题。<br><br>
+
+<b>场景四：婚前他就欠着的钱</b><br>
+依<b>解释（一）第 33 条</b>，债权人就一方<b>婚前</b>个人债务向配偶主张的，法院不予支持；除非债权人能证明这笔钱<b>用于婚后家庭共同生活</b>（比如婚前借款买的房子，婚后两人共同居住使用）。<br>
+婚前债务原则上跟着个人走，这是「谁欠的谁还」的基本逻辑。<br><br>
+
+<b>场景五：离婚协议写了「各自债务各自还」</b><br>
+这句话<b>对内有效、对外无效</b>。对内：双方按约定分担，一方多还的可以向另一方追偿（解释（一）第 35 条第 2 款）。对外：债权人不受这份协议约束，仍可向任何一方主张共同债务（第 35 条第 1 款）。<br>
+所以「各自还」的条款不是免责工具，只是把内部追偿的路径写清楚了。<br><br>
+
+<b>场景六：他去世了，债主找上门</b><br>
+<b>解释（一）第 36 条</b>：夫或者妻一方死亡的，<b>生存一方应当对婚姻关系存续期间的夫妻共同债务承担清偿责任</b>。<br>
+这和继承是两条线：共同债务由生存配偶继续承担；而<b>个人债务</b>则由继承人在<b>所得遗产实际价值</b>范围内清偿（《民法典》第 1161 条限定继承）。<span class="highlight">「共同债务」和「个人债务」在这里的分野，直接决定生存配偶要还多少。</span><br><br>
+
+<b>场景七：钱放在保单里，要不要拿去还债</b><br>
+这是很多家庭最关心的一问，要分两种情况看：<br>
+· <b>身故保险金已指定受益人</b>：依《保险法》第 39—42 条，指定明确的受益人、又不落入第 42 条三种情形的身故保险金，属于受益人的权利，<b>不作为被保险人的遗产</b>。既然不进遗产，就不走「先清偿税款和债务再分割」（《民法典》第 1159 条）这条通道。<span class="highlight">此为基于「保险金不属于遗产」的实务通行口径，非《保险法》条文原文。</span><br>
+· <b>落入第 42 条三种情形</b>（①没有指定受益人，或者指定不明无法确定；②受益人先于被保险人死亡，没有其他受益人；③受益人依法丧失受益权或者放弃受益权，没有其他受益人）：保险金<b>作为被保险人的遗产</b>，按继承规则处理，此时就要先清偿税款和债务。<br>
+另外，<b>以夫妻共同财产投保的保单，其现金价值在实务中通常被认定为夫妻共同财产，离婚时可予分割</b>（此为实务口径，非条文原文），具体处理要结合投保人、被保险人、受益人的设置和保费来源判断。<br><br>
+
+<b>场景八：到底该怎么防</b><br>
+· <b>对外借款留痕</b>：配偶不参与、不使用的借款，不要签字、不要事后追认、不要让钱进共同账户。<br>
+· <b>大额债务看清用途</b>：借款合同写清用途，保留资金流向凭证。<br>
+· <b>婚内财产约定要「让对方知道」</b>：书面约定之外，尽量让债权人知晓并留证，否则对抗不了善意债权人。<br>
+· <b>把确定给付的部分和不确定的部分分开</b>：企业主家庭尤其如此——经营风险留在企业侧，家庭侧的确定性给付用保单的受益人安排固定下来。"""
+
+SEC3 = """⚠️ <b>第 1089 条 ≠ 第 1064 条。</b>前者管「离婚时共同债务怎么还」，后者管「是不是共同债务」。上来就引第 1089 条主张「不该我还」，前提判断就漏了一层。<br>
+⚠️ <b>「我没签字、没用过」不等于一定不是共同债务。</b>还要看是否属于「为家庭日常生活需要」（第 1064 条第 1 款后半段），或者债权人能否证明用于共同生活、共同生产经营。<br>
+⚠️ <b>离婚协议里的「各自债务各自还」对外不生效。</b>解释（一）第 35 条：债权人仍有权就共同债务向男女双方主张。约定只在内部产生追偿效力。<br>
+⚠️ <b>「假离婚」逃债走不通。</b>财产分割、离婚协议对债权人不发生效力；无偿或以明显不合理低价处分财产逃债的，债权人还可依《民法典》第 538—540 条行使撤销权。<br>
+⚠️ <b>赌债、毒债不是共同债务，但要防「洗白」。</b>解释（一）第 34 条第 2 款排除的是「从事赌博、吸毒等违法犯罪活动中所负债务」；如果对方把这类债务包装成正常借贷，举证上要留证据、要辨析资金真实用途。<br>
+⚠️ <b>生存配偶对共同债务要继续还。</b>解释（一）第 36 条。不要把「人走了」等同于「债消了」；与个人债务的限定继承（第 1161 条）要分开看。<br>
+⚠️ <b>婚内财产协议的关键是「债权人知道」。</b>第 1065 条第 3 款 + 解释（一）第 37 条：举证责任在夫妻一方。只签协议、不告知债权人，对外效力很弱。<br>
+⚠️ <b>保险金「不进遗产」有前提。</b>指定受益人明确、且不落入《保险法》第 42 条三种情形，身故保险金才不作为遗产；一旦落入，就按遗产处理、先清偿税款和债务。<br>
+✅ <b>动作一：先定性，再谈分担。</b>拿到一笔债，第一步回到第 1064 条判断是不是共同债务，第二步才用第 1089 条安排清偿，顺序别倒。<br>
+✅ <b>动作二：把「共债共签」当成铁律。</b>对外大额举债，要么双方共签，要么事后书面追认；不打算共同承担的，就别签字、别追认、别让资金进共同账户。<br>
+✅ <b>动作三：离婚时把债务写进协议，并留追偿依据。</b>共同债务的数额、分担方式、追偿路径写清楚——虽然对外不生效，但对内是日后追偿的直接依据。<br>
+✅ <b>动作四：债权人视角也要自保。</b>出借大额款项时要求夫妻共签，或保留「用于夫妻共同生活、共同生产经营」的证据，否则可能被认定为个人债务。<br>
+✅ <b>动作五：家庭侧的确定性安排要提前做。</b>企业主家庭把经营风险与家庭资产做区分：保单指定受益人、明确份额与顺位（《保险法》第 39—41 条），让身故保险金直达受益人。<span class="highlight">债是要还的，但家庭的生活底线可以用合法的方式提前固定下来。</span>"""
+
+SUMMARY = "「离婚了还要不要替他还债」，答案取决于两个问题，先分清再回答。<b>第一个问题：是不是夫妻共同债务？</b>《民法典》第 1064 条给了三条通道——①双方共同签名或者一方事后追认等共同意思表示所负的债务；②一方在婚姻关系存续期间以个人名义为家庭日常生活需要所负的债务；③一方以个人名义<b>超出</b>家庭日常生活需要的大额债务，原则上不是共同债务，除非<b>债权人</b>能证明用于夫妻共同生活、共同生产经营或者基于双方共同意思表示。<b>第二个问题：离婚时怎么还？</b>《民法典》第 1089 条：离婚时夫妻共同债务应当共同偿还；共同财产不足清偿或者财产归各自所有的，由双方协议清偿；协议不成的，由人民法院判决。配套看婚姻家庭编解释（一）四条：<b>第 33 条</b>（婚前个人债务不向配偶主张，除非用于婚后家庭共同生活）、<b>第 34 条</b>（串通虚构的债务、赌博吸毒等违法犯罪活动所负债务，不支持为共同债务）、<b>第 35 条</b>（离婚协议或生效裁判已处理财产分割的，债权人仍有权向男女双方主张；一方清偿后可依约定向另一方追偿）、<b>第 36 条</b>（一方死亡的，生存一方对婚姻关系存续期间的共同债务承担清偿责任）。最需要说清的两条界线：<span class=\"highlight\">离婚协议里的「各自债务各自还」对外不生效，只产生内部追偿效力</span>；<span class=\"highlight\">婚内财产约定要对抗债权人，前提是债权人当时就知道该约定，且举证责任在夫妻一方</span>（第 1065 条第 3 款、解释（一）第 37 条）。保险这一侧：指定受益人的身故保险金原则上不作为被保险人遗产（《保险法》第 39—42 条），因而不走先清偿税款债务的通道；一旦落入第 42 条三种情形，保险金转为遗产，就要先还债再分割。企业主家庭把经营风险与家庭资产分开，是比事后争论更有效的准备。"
+
+TPL = """<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>法商小知识 - __DATE__</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .card {
+            width: 375px;
+            background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+        }
+        .header {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            padding: 24px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .tag {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 4px;
+            margin-bottom: 4px;
+        }
+        .subtitle {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 1px;
+        }
+        .content {
+            padding: 24px 20px;
+        }
+        .topic {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e8e8e8;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .section-title::before {
+            content: "";
+            width: 4px;
+            height: 16px;
+            background: linear-gradient(180deg, #c9a96e 0%, #8b7355 100%);
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            padding-left: 14px;
+        }
+        .highlight {
+            color: #c9a96e;
+            font-weight: 500;
+        }
+        .summary {
+            background: rgba(201, 169, 110, 0.1);
+            border-left: 3px solid #c9a96e;
+            padding: 16px;
+            margin-top: 24px;
+            border-radius: 0 8px 8px 0;
+        }
+        .summary-title {
+            font-size: 12px;
+            color: #c9a96e;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .summary-content {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+        .archive-banner {
+            display: flex; align-items: center; gap: 8px;
+            background: rgba(201,169,110,0.15);
+            border-left: 4px solid #c9a96e;
+            padding: 10px 20px; margin: 0 20px; border-radius: 0 8px 8px 0;
+        }
+        .archive-banner .ab-icon { font-size: 18px; }
+        .archive-banner .ab-text { font-size: 12px; color: #c9a96e; font-weight: 600; }
+        .archive-banner .ab-link { font-size: 12px; color: #c9a96e; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+        .archive-banner .ab-link:hover { color: #fff; }
+        .disclaimer {
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.3);
+            padding: 12px 20px;
+            line-height: 1.5;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        @media print {
+            body {
+                background: #0a0a0a;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <div class="tag">JUST INTERNAL INFORMATION</div>
+            <div class="title">每日一条法商小知识</div>
+        </div>
+
+        <div class="content">
+            <div class="archive-banner">
+                <span class="ab-icon">📋</span>
+                <span class="ab-text">往期回顾</span>
+                <a class="ab-link" href="archive.html">点击查看全部历史 →</a>
+            </div>
+<div class="topic">__TOPIC__</div>
+
+            <div class="section">
+                <div class="section-title">法条要点</div>
+                <div class="section-content">__SEC1__</div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">实务场景</div>
+                <div class="section-content">__SEC2__</div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">风险提示</div>
+                <div class="section-content">__SEC3__</div>
+            </div>
+
+<div class="summary">
+                <div class="summary-title">核心要点</div>
+                <div class="summary-content">__SUMMARY__</div>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            声明：本资讯内容仅供内部学习交流参考，不构成任何法律建议或投资建议。所涉观点或点评如非事实陈述，均为知识分享，不代表任何机构立场。任何决策请基于个人独立判断，并谨慎考虑自身实际情况。
+            <br><br><a href="archive.html" style="color:rgba(255,255,255,0.2);text-decoration:none;font-size:10px;">历史回顾 →</a>
+        </div>
+    </div>
+</body>
+</html>
+"""
+
+html = (TPL.replace("__DATE__", DATE)
+           .replace("__TOPIC__", TOPIC)
+           .replace("__SEC1__", SEC1)
+           .replace("__SEC2__", SEC2)
+           .replace("__SEC3__", SEC3)
+           .replace("__SUMMARY__", SUMMARY))
+
+card = os.path.join(BASE, "fs_%s.html" % DATE)
+with open(card, "w", encoding="utf-8") as f:
+    f.write(html)
+print("written:", card, len(html))
+
+# index.html = 当日卡片逐字节复制
+shutil.copyfile(card, os.path.join(BASE, "index.html"))
+print("index.html copied from", os.path.basename(card))
+
+# data.json 追加（同日去重）
+dp = os.path.join(BASE, "data.json")
+with open(dp, encoding="utf-8") as f:
+    data = json.load(f)
+before = len(data)
+data = [d for d in data if d.get("date") != DATE]
+data.append({"date": DATE, "topic": TOPIC, "summary": SUMMARY,
+             "file": "fs_%s.html" % DATE})
+data.sort(key=lambda x: x["date"])
+with open(dp, "w", encoding="utf-8") as f:
+    json.dump(data, f, ensure_ascii=False, indent=2)
+print("data.json:", before, "->", len(data))
+
+# 校验：正文与 summary 剥离标签后不得出现 ASCII 双引号
+for label, s in (("SEC1", SEC1), ("SEC2", SEC2), ("SEC3", SEC3), ("SUMMARY", SUMMARY)):
+    plain = re.sub(r"<[^>]+>", "", s)
+    assert '"' not in plain, "ASCII quote found in " + label
+assert '"' not in TOPIC, "ASCII quote found in TOPIC"
+print("quote-check OK")
+
+# 复读校验 JSON 可解析
+with open(dp, encoding="utf-8") as f:
+    chk = json.load(f)
+assert chk[-1]["date"] == DATE
+assert len([d for d in chk if d["date"] == DATE]) == 1
+print("json re-read OK, last =", chk[-1]["date"], "total =", len(chk))
+
+# content_bank.json 回填（脚本抽取，不手抄）
+bp = os.path.join(BASE, "content_bank.json")
+with open(bp, encoding="utf-8") as f:
+    bank = json.load(f)
+bank = [b for b in bank if b.get("topic") != TOPIC]
+bank.append({"topic": TOPIC, "law_points": SEC1, "practice_scene": SEC2,
+             "risk_alert": SEC3, "summary": SUMMARY})
+with open(bp, "w", encoding="utf-8") as f:
+    json.dump(bank, f, ensure_ascii=False, indent=2)
+print("content_bank.json ->", len(bank))
+
+# 校验 index.html 与当日卡片逐字节一致
+with open(card, encoding="utf-8") as f1, open(os.path.join(BASE, "index.html"), encoding="utf-8") as f2:
+    assert f1.read() == f2.read(), "index.html != card"
+print("index == card OK")
