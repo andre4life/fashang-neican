@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>法商小知识 - 2026-10-26</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .card {
+            width: 375px;
+            background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+        }
+        .header {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            padding: 24px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .tag {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 4px;
+            margin-bottom: 4px;
+        }
+        .subtitle {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 1px;
+        }
+        .content {
+            padding: 24px 20px;
+        }
+        .topic {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e8e8e8;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .section-title::before {
+            content: "";
+            width: 4px;
+            height: 16px;
+            background: linear-gradient(180deg, #c9a96e 0%, #8b7355 100%);
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            padding-left: 14px;
+        }
+        .highlight {
+            color: #c9a96e;
+            font-weight: 500;
+        }
+        .summary {
+            background: rgba(201, 169, 110, 0.1);
+            border-left: 3px solid #c9a96e;
+            padding: 16px;
+            margin-top: 24px;
+            border-radius: 0 8px 8px 0;
+        }
+        .summary-title {
+            font-size: 12px;
+            color: #c9a96e;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .summary-content {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+        .archive-banner {
+            display: flex; align-items: center; gap: 8px;
+            background: rgba(201,169,110,0.15);
+            border-left: 4px solid #c9a96e;
+            padding: 10px 20px; margin: 0 20px; border-radius: 0 8px 8px 0;
+        }
+        .archive-banner .ab-icon { font-size: 18px; }
+        .archive-banner .ab-text { font-size: 12px; color: #c9a96e; font-weight: 600; }
+        .archive-banner .ab-link { font-size: 12px; color: #c9a96e; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+        .archive-banner .ab-link:hover { color: #fff; }
+        .disclaimer {
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.3);
+            padding: 12px 20px;
+            line-height: 1.5;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        @media print {
+            body {
+                background: #0a0a0a;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <div class="tag">JUST INTERNAL INFORMATION</div>
+            <div class="title">每日一条法商小知识</div>
+        </div>
+        
+        <div class="content">
+            <div class="archive-banner">
+                <span class="ab-icon">📋</span>
+                <span class="ab-text">往期回顾</span>
+                <a class="ab-link" href="archive.html">点击查看全部历史 →</a>
+            </div>
+            <div class="topic">诉讼时效——欠了你的钱，过几年就不用还了？</div>
+            
+            <div class="section">
+                <div class="section-title">法条要点</div>
+                <div class="section-content">《民法典》第188条：向人民法院请求保护民事权利的<span class="highlight">诉讼时效为3年</span>。从知道或应当知道权利受损害+义务人之日起算。<br><br>第195条：诉讼时效<span class="highlight">中断</span>的情形——提起诉讼/申请仲裁、权利人主张权利、义务人同意履行——中断后重新计算3年。<br><br>第192条：诉讼时效届满后，义务人<span class="highlight">可以提出不履行义务的抗辩</span>。但如果义务人同意履行或已经自愿履行，就不能再以时效届满为由抗辩。<br><br>第193条：法院<span class="highlight">不能主动适用</span>诉讼时效规定——必须由当事人自己提。</div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">实务场景</div>
+                <div class="section-content">张先生借给朋友50万，口头约定一年后还。到期后朋友一直拖着，张先生碍于面子没催。过了4年，朋友说'过时效了，不用还了'。<br><br>张先生急了去起诉——法院说：你没有证据证明这4年里催过款，诉讼时效3年已过，对方提出了时效抗辩，驳回。<br><br>但如果张先生每年发一条微信催款，哪怕朋友不回——这就算'主张权利'，时效中断重新算。</div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">风险提示</div>
+                <div class="section-content">诉讼时效三要诀：<br>① <span class="highlight">别拖</span>——权利受损后尽快行动，3年不短但很容易'不知不觉就过了'。<br>② <span class="highlight">留痕</span>——每次催款留证据（微信截图、短信、邮件、快递单），这是时效中断的铁证。<br>③ <span class="highlight">不碍于面子</span>——朋友借钱到期不还，不催不是大度，是放弃自己的法律权利。</div>
+            </div>
+            
+            <div class="summary">
+                <div class="summary-title">核心要点</div>
+                <div class="summary-content">权利会过期——民事诉讼时效3年。借钱给别人记得每年催一次留痕，不然3年后对方说'过时效了'，你告都告不赢。面子不值50万。</div>
+            </div>
+        </div>
+        
+        <div class="disclaimer">
+            声明：本资讯内容仅供内部学习交流参考，不构成任何法律建议或投资建议。所涉观点或点评如非事实陈述，均为知识分享，不代表任何机构立场。任何决策请基于个人独立判断，并谨慎考虑自身实际情况。
+            <br><br><a href="archive.html" style="color:rgba(255,255,255,0.2);text-decoration:none;font-size:10px;">历史回顾 →</a>
+        </div>
+    </div>
+</body>
+</html>

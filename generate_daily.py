@@ -5,7 +5,7 @@
 不传日期则自动生成今天的。
 如果今天的文件已存在→跳过。
 """
-import sys, os, json, html
+import sys, os, json, html, re
 from datetime import datetime, date
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
