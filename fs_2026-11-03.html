@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>法商小知识 - 2026-11-03</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .card {
+            width: 375px;
+            background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+        }
+        .header {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            padding: 24px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .tag {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 4px;
+            margin-bottom: 4px;
+        }
+        .subtitle {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 1px;
+        }
+        .content {
+            padding: 24px 20px;
+        }
+        .topic {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e8e8e8;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .section-title::before {
+            content: "";
+            width: 4px;
+            height: 16px;
+            background: linear-gradient(180deg, #c9a96e 0%, #8b7355 100%);
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            padding-left: 14px;
+        }
+        .highlight {
+            color: #c9a96e;
+            font-weight: 500;
+        }
+        .summary {
+            background: rgba(201, 169, 110, 0.1);
+            border-left: 3px solid #c9a96e;
+            padding: 16px;
+            margin-top: 24px;
+            border-radius: 0 8px 8px 0;
+        }
+        .summary-title {
+            font-size: 12px;
+            color: #c9a96e;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .summary-content {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+        .archive-banner {
+            display: flex; align-items: center; gap: 8px;
+            background: rgba(201,169,110,0.15);
+            border-left: 4px solid #c9a96e;
+            padding: 10px 20px; margin: 0 20px; border-radius: 0 8px 8px 0;
+        }
+        .archive-banner .ab-icon { font-size: 18px; }
+        .archive-banner .ab-text { font-size: 12px; color: #c9a96e; font-weight: 600; }
+        .archive-banner .ab-link { font-size: 12px; color: #c9a96e; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+        .archive-banner .ab-link:hover { color: #fff; }
+        .disclaimer {
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.3);
+            padding: 12px 20px;
+            line-height: 1.5;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        @media print {
+            body {
+                background: #0a0a0a;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <div class="tag">JUST INTERNAL INFORMATION</div>
+            <div class="title">每日一条法商小知识</div>
+        </div>
+        
+        <div class="content">
+            <div class="archive-banner">
+                <span class="ab-icon">📋</span>
+                <span class="ab-text">往期回顾</span>
+                <a class="ab-link" href="archive.html">点击查看全部历史 →</a>
+            </div>
+            <div class="topic">三个孩子，保险金就一定平分吗？——保险法第 40 条：份额不写，法律替你分</div>
+            
+            <div class="section">
+                <div class="section-title">法条要点</div>
+                <div class="section-content">《保险法》第39条：人身保险的受益人由<span class="highlight">被保险人或者投保人指定</span>。投保人指定受益人时<span class="highlight">须经被保险人同意</span>。<br><br>第40条：被保险人或者投保人可以指定一人或者数人为受益人。受益人为数人的，被保险人或者投保人可以确定<span class="highlight">受益顺序</span>和<span class="highlight">受益份额</span>；未确定受益份额的，受益人按照<span class="highlight">相等份额</span>享有受益权。<br><br>第41条：变更受益人应<span class="highlight">书面通知</span>保险人，保险人在保单上批注或附贴批单。投保人变更受益人须经被保险人同意。<br><br>第42条：三种情形下保险金<span class="highlight">作为遗产</span>处理——①没有指定受益人，或者指定不明无法确定；②受益人先于被保险人死亡，没有其他受益人；③受益人依法丧失或者放弃受益权，没有其他受益人。<br><br><span class="highlight">版本说明</span>：第42条原文表述为「依照《中华人民共和国继承法》的规定」，该法已于2021年1月1日随《民法典》施行而废止，现行应理解为依照《民法典》继承编。</div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">实务场景</div>
+                <div class="section-content">王先生投保一份寿险，受益人栏填了三个孩子的名字：王大、王二、王三。份额那一栏——空的。<br><br>王先生走后，保险金一百万。王大觉得自己是长子该多分；王先生生前也确实在饭桌上说过「老大条件好，多给老三」。<br><br>结果：<span class="highlight">法律按均等，三人各三分之一</span>。饭桌上那句话，没写进保单，等于没说过。<br><br>第二个坑：王先生写「第一顺序：妻子；第二顺序：三个孩子」，但妻子先于他去世。这时第二顺序的三个孩子顶上，同一顺序内<span class="highlight">仍然均等</span>。<br><br>如果他只写了妻子一个人、没留第二顺序——妻子先走，直接触发第42条第2项，<span class="highlight">保险金变成遗产</span>。老母亲、三个孩子全都要进来走继承程序。</div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">风险提示</div>
+                <div class="section-content">最常见的七个坑：<br>① <span class="highlight">只写名字不写份额</span>——同一顺序内均等，法律替你分<br>② <span class="highlight">只写份额不写顺序</span>——全部视为同一顺序，按份额领<br>③ <span class="highlight">只写第一顺序、不留第二顺序</span>——第一顺序全部先死或放弃，保险金变遗产<br>④ 受益人栏填<span class="highlight">「法定」</span>——保险法里只有「指定」和「未指定」，没有「法定受益人」这个身份。填「法定」属指定不明，实务中多按法定继承人范围处理，但要全部继承人到场、开关系证明和死亡证明<br>⑤ 变更受益人<span class="highlight">只口头说、没书面通知公司</span>——第41条要求书面通知并批注，不办手续不生效<br>⑥ 保险金一旦变遗产——要按《民法典》第1161条在遗产实际价值内<span class="highlight">先清偿被保险人生前债务</span>，剩下的才轮得到分<br>⑦ 受益人与被保险人<span class="highlight">同一事件死亡</span>——第42条第2款推定受益人死亡在先，没有其他受益人的，同样变遗产</div>
+            </div>
+            
+            <div class="summary">
+                <div class="summary-title">核心要点</div>
+                <div class="summary-content">第40条只给了两个按钮：顺序、份额。你不按，法律按「均等」分。想不均等，必须白纸黑字写进保单——口头交代、家庭会议、「大家都知道」，在理赔窗口一文不值。填「法定」不是省事，是把一件简单的事，主动推进继承程序。</div>
+            </div>
+        </div>
+        
+        <div class="disclaimer">
+            声明：本资讯内容仅供内部学习交流参考，不构成任何法律建议或投资建议。所涉观点或点评如非事实陈述，均为知识分享，不代表任何机构立场。任何决策请基于个人独立判断，并谨慎考虑自身实际情况。
+            <br><br><a href="archive.html" style="color:rgba(255,255,255,0.2);text-decoration:none;font-size:10px;">历史回顾 →</a>
+        </div>
+    </div>
+</body>
+</html>
