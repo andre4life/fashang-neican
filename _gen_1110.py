@@ -1,0 +1,62 @@
+# -*- coding: utf-8 -*-
+import re, io, json, os
+
+SRC = 'fs_2026-11-03.html'
+OUT = 'fs_2026-11-10.html'
+DATE = '2026-11-10'
+
+src = io.open(SRC, encoding='utf-8').read()
+head = src[:src.find('<body')]
+
+BODY = u'''<body>
+    <div class="card">
+        <div class="header">
+            <div class="tag">JUST INTERNAL INFORMATION</div>
+            <div class="title">每日一条法商小知识</div>
+        </div>
+        
+        <div class="content">
+            <div class="archive-banner">
+                <span class="ab-icon">📋</span>
+                <span class="ab-text">往期回顾</span>
+                <a class="ab-link" href="archive.html">点击查看全部历史 →</a>
+            </div>
+            <div class="topic">不离婚，也能分家产吗？——《民法典》第1066条：婚内分割共同财产，只开了两道门</div>
+            
+            <div class="section">
+                <div class="section-title">法条要点</div>
+                <div class="section-content">《民法典》第1062条：夫妻在婚姻关系存续期间所得的工资奖金、生产经营投资收益等财产，为<span class="highlight">夫妻共同财产</span>，夫妻对共同财产有<span class="highlight">平等的处理权</span>。<br><br>第1066条（本条的钥匙）：婚姻关系存续期间，有下列情形之一的，夫妻一方可以向人民法院请求分割共同财产：<br>（一）一方有<span class="highlight">隐藏、转移、变卖、毁损、挥霍</span>夫妻共同财产或者<span class="highlight">伪造夫妻共同债务</span>等严重损害夫妻共同财产利益的行为；<br>（二）一方<span class="highlight">负有法定扶养义务的人</span>患重大疾病需要医治，另一方<span class="highlight">不同意支付相关医疗费用</span>。<br><br>《民法典婚姻家庭编解释（一）》（法释〔2020〕22号）第38条：婚姻关系存续期间，<span class="highlight">除民法典第1066条规定情形外，夫妻一方请求分割共同财产的，人民法院不予支持</span>。<br><br>配套条文：第1059条（夫妻有相互扶养的义务）；第1092条（离婚时隐藏转移共同财产可少分不分，离婚后发现可再诉分割）；解释（一）第83条（离婚时未涉及的共同财产，可另行起诉分割）。<br><br>保险口径：《第八次全国法院民事商事审判工作会议（民事部分）纪要》（2016年11月30日）第4条——婚姻关系存续期间以夫妻共同财产投保，投保人和被保险人同为夫妻一方的，离婚时<span class="highlight">保险单现金价值按夫妻共同财产处理</span>；投保人选择继续投保的，应<span class="highlight">支付现金价值的一半</span>给另一方。<span class="highlight">版本说明</span>：该纪要是审判指导文件，不是司法解释，不能直接作为裁判依据引用，但各地法院普遍参照。</div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">实务场景</div>
+                <div class="section-content"><span class="highlight">场景一：钱正在被搬走，但我不想离婚。</span><br>陈先生做建材生意，两年间分十七笔把夫妻共同存款三百八十万转到弟弟账户，另给主播打赏六十多万。妻子不是不想离，是孩子明年高考，她怕这时候闹开。她能不能先保住钱？<br><br>可以。依第1066条第<span class="highlight">1项</span>，她不必先离婚，可直接起诉请求<span class="highlight">婚内分割</span>共同财产。前提是拿得出转账记录、流水、打赏账单——这一项的举证责任在<span class="highlight">主张分割的一方</span>，嘴上说"他肯定转了"没用。<br><br><span class="highlight">场景二：亲人等钱治病，另一半不掏。</span><br>妻子母亲确诊肺癌，靶向药自费，妻子要从共同存款里拿钱，丈夫一句"你妈的病我不出"。<br><br>这里要看清条文的<span class="highlight">主语</span>：第2项说的是"<span class="highlight">一方</span>负有法定扶养义务的人"，即妻子本人对她母亲负有赡养义务，母亲患重大疾病、丈夫不同意支付医疗费——两个条件同时成立，妻子才可请求婚内分割。<br><br>注意一个常见误解：女婿对岳父母<span class="highlight">没有</span>法定赡养义务（第1067条只规定子女对父母），所以不能反过来说"丈夫对岳母负有义务"。<br><br><span class="highlight">场景三：保单里的现金价值。</span><br>丈夫用共同存款给自己买年金，投保人、被保险人都是他，年交五十万。后来他瞒着妻子退保，现金价值转到自己卡上。依《保险法》第15条投保人本可解除合同，第47条保险人三十日内退还现金价值——但<span class="highlight">退保权不等于这笔钱归他</span>。按八民会纪要第4条口径，这笔现金价值是夫妻共同财产；擅自退保取现，还可能落进第1066条第1项的"变卖、转移"。</div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">风险提示</div>
+                <div class="section-content">七个最容易想错的地方：<br>① <span class="highlight">婚内分割是例外，不是常态</span>——解释（一）第38条写得直白：除1066条情形外，法院不予支持。感情不和、吵架、分居、觉得对方会乱花钱，都不够<br>② 第1项有<span class="highlight">"严重损害"门槛</span>——一般消费、投资亏损、经营失败，不算隐藏转移挥霍<br>③ <span class="highlight">举证责任在主张方</span>——银行流水、转账凭证、不动产过户记录、打赏账单，越早固定越好；等到对方把钱洗干净再起诉，赢了也执行不到<br>④ 第2项是<span class="highlight">三个要件同时满足</span>：对方负有法定扶养义务的人 + 患重大疾病 + 另一方不同意支付医疗费用。缺一个都不成立<br>⑤ 第2项的<span class="highlight">主体别搞反</span>——是"一方自己负有扶养义务的人"（自己的父母、子女），不是配偶的父母。配偶本人患病，直接依第1059条要求对方履行扶养义务、支付医疗费，比走分割更直接<br>⑥ 婚内分割出来的财产<span class="highlight">归个人</span>，此后按个人财产处理，不是"先拿一半、离婚再算一次"<br>⑦ <span class="highlight">保单不是私房钱</span>——现金价值在分割时会被翻开；用个人财产投保且资金来源清晰、有书面约定的，才可能争到个人财产。反过来，第1092条还在后面等着：离婚时隐藏转移共同财产的，可以少分或不分</div>
+            </div>
+            
+            <div class="summary">
+                <div class="summary-title">核心要点</div>
+                <div class="summary-content">第1066条给的不是"分家权"，是"止血权"。它只在你眼睁睁看着共同财产被搬走、或者亲人等钱治病而另一半不掏的时候，开一道窄门。想靠它提前把家产分干净，解释（一）第38条一句话堵回去。对做保险的人，这条更该记住的是反面：保单的现金价值从来不是谁的私房钱，投保人写谁、被保险人写谁、保费从哪个账户出，在分割的那一天都会被一笔一笔翻开。婚前财产、父母明确只赠与一方的钱、人身损害赔偿金（第1063条），才是法律真正给你留的格子——把它们和共同财产分开，靠的不是记性，是账户和书面。</div>
+            </div>
+        </div>
+        
+        <div class="disclaimer">
+            声明：本资讯内容仅供内部学习交流参考，不构成任何法律建议或投资建议。所涉观点或点评如非事实陈述，均为知识分享，不代表任何机构立场。任何决策请基于个人独立判断，并谨慎考虑自身实际情况。
+            <br><br><a href="archive.html" style="color:rgba(255,255,255,0.2);text-decoration:none;font-size:10px;">历史回顾 →</a>
+        </div>
+    </div>
+</body>
+</html>
+'''
+
+html = head.replace('<title>法商小知识 - 2026-11-03</title>', '<title>法商小知识 - %s</title>' % DATE) + BODY
+io.open(OUT, 'w', encoding='utf-8').write(html)
+print('written', OUT, len(html))
+
+# 覆盖 index.html（首页始终最新）
+io.open('index.html', 'w', encoding='utf-8').write(html)
+print('index.html updated')
