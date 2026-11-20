@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>法商小知识 - 2026-11-20</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .card {
+            width: 375px;
+            background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+        }
+        .header {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            padding: 24px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .tag {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 4px;
+            margin-bottom: 4px;
+        }
+        .subtitle {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 1px;
+        }
+        .content {
+            padding: 24px 20px;
+        }
+        .topic {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e8e8e8;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .section-title::before {
+            content: "";
+            width: 4px;
+            height: 16px;
+            background: linear-gradient(180deg, #c9a96e 0%, #8b7355 100%);
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            padding-left: 14px;
+        }
+        .highlight {
+            color: #c9a96e;
+            font-weight: 500;
+        }
+        .summary {
+            background: rgba(201, 169, 110, 0.1);
+            border-left: 3px solid #c9a96e;
+            padding: 16px;
+            margin-top: 24px;
+            border-radius: 0 8px 8px 0;
+        }
+        .summary-title {
+            font-size: 12px;
+            color: #c9a96e;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .summary-content {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+        .archive-banner {
+            display: flex; align-items: center; gap: 8px;
+            background: rgba(201,169,110,0.15);
+            border-left: 4px solid #c9a96e;
+            padding: 10px 20px; margin: 0 20px; border-radius: 0 8px 8px 0;
+        }
+        .archive-banner .ab-icon { font-size: 18px; }
+        .archive-banner .ab-text { font-size: 12px; color: #c9a96e; font-weight: 600; }
+        .archive-banner .ab-link { font-size: 12px; color: #c9a96e; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+        .archive-banner .ab-link:hover { color: #fff; }
+        .disclaimer {
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.3);
+            padding: 12px 20px;
+            line-height: 1.5;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        @media print {
+            body {
+                background: #0a0a0a;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <div class="tag">JUST INTERNAL INFORMATION</div>
+            <div class="title">每日一条法商小知识</div>
+        </div>
+        
+        <div class="content">
+            <div class="archive-banner">
+                <span class="ab-icon">📋</span>
+                <span class="ab-text">往期回顾</span>
+                <a class="ab-link" href="archive.html">点击查看全部历史 →</a>
+            </div>
+            <div class="topic">遗嘱没写到的财产、写无效的那部分，最后归了谁？——民法典第 1154 条的五种「回炉」情形</div>
+            
+            <div class="section">
+                <div class="section-title">法条要点</div>
+                <div class="section-content">很多人以为：立了遗嘱，身后事就都安排好了。<b>法律不这么看。</b>《民法典》第 1154 条专门列了五种情形——出现任何一种，<span class="highlight">遗产中的「有关部分」按照法定继承办理</span>。注意是「有关部分」，不是整份遗嘱作废。<br><br><b>《民法典》第 1154 条原文：</b><br>有下列情形之一的，遗产中的有关部分按照法定继承办理：<br>（一）遗嘱继承人放弃继承或者受遗赠人放弃受遗赠；<br>（二）遗嘱继承人丧失继承权或者受遗赠人丧失受遗赠权；<br>（三）遗嘱继承人、受遗赠人先于遗嘱人死亡或者终止；<br>（四）<b>遗嘱无效部分所涉及的遗产</b>；<br>（五）<b>遗嘱未处分的遗产</b>。<br><br>把这五项拆开看，就是三条常见的生活场景：<b>人不来了</b>（放弃、丧失、先走）、<b>写的不算</b>（无效部分）、<b>压根没写</b>（未处分）。<br><br><b>先看第（四）项：遗嘱「无效」长什么样？</b>《民法典》第 1143 条把无效情形写得很具体：<br>· 无民事行为能力人或者限制民事行为能力人所立的遗嘱无效；<br>· 遗嘱必须表示遗嘱人的真实意思，受欺诈、胁迫所立的遗嘱无效；<br>· 伪造的遗嘱无效；<br>· <span class="highlight">遗嘱被篡改的，篡改的内容无效</span>——只无效被篡改的那部分，没被改的部分照旧有效。<br>另外，《继承编解释（一）》<b>第 26 条</b>：遗嘱人以遗嘱处分了国家、集体或者他人财产的，应当认定该部分遗嘱无效。最典型的是<b>夫妻共同财产</b>——一方去世，依《民法典》第 1153 条，遗产分割时应先将共同所有的财产的一半分出为配偶所有，其余才是被继承人的遗产。遗嘱把整套房子写给儿子，超出自己那一半的部分，无效。<br><br><b>再看第（五）项：遗嘱「没写到」的财产。</b>这是实务里最普遍的一种。遗嘱只写了房子，没写存款、没写股权、没写保单、没写后来新买的理财——这些没写到的，全部按法定继承办理。<br><br><b>为什么「无效部分」不直接给遗嘱里那个人，而是回到法定继承？</b>因为法定继承是法律的默认规则，它代表「被继承人没表态时，法律替他做的最合理推定」。遗嘱只在它<b>有效</b>的范围内优先于法定继承——《民法典》第 1123 条的顺序是：有遗赠扶养协议的按协议办理；有遗嘱的按遗嘱继承或者遗赠办理；其余按法定继承办理。三者不是替代关系，是层层兜底。<br><br><b>另外两条容易被忽略的规则：</b><br>· <b>《民法典》第 1142 条</b>：遗嘱人可以撤回、变更自己所立的遗嘱；立遗嘱后，遗嘱人实施与遗嘱内容相反的民事法律行为的，视为对遗嘱相关内容的撤回；立有数份遗嘱，内容相抵触的，<span class="highlight">以最后的遗嘱为准</span>（原《继承法》中「公证遗嘱效力优先」的规则已被民法典删除）。<br>· <b>《民法典》第 1141 条</b>（必留份）：遗嘱应当为缺乏劳动能力又没有生活来源的继承人保留必要的遗产份额。《继承编解释（一）》<b>第 25 条</b>：遗嘱人未保留该份额，遗产处理时应当先为该继承人留下必要的遗产，<b>所剩余的部分才参照遗嘱确定的分配原则处理</b>；继承人是否缺乏劳动能力又没有生活来源，按遗嘱生效时该继承人的具体情况确定。</div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">实务场景</div>
+                <div class="section-content"><b>场景一：遗嘱只写了房子，300 万存款按法定继承分。</b><br>陈老先生立了自书遗嘱：「我名下 XX 小区房产一套，由小儿子陈某继承。」其余未提。陈老先生去世时，除该房产外还有存款 300 万、一辆车。<br>房产按遗嘱归陈某；<span class="highlight">存款 300 万和车属于「遗嘱未处分的遗产」，依第 1154 条第（五）项按法定继承办理</span>，由第一顺序继承人（配偶、子女、父母）按第 1127、1130 条分配。<br>陈某的想法是「爸把房子给我，说明都给我」——这是常见的误解。遗嘱只对它写到的财产发生效力，没写到的一律回炉。<br><br><b>场景二：遗嘱把整套房给儿子，超出配偶那一半的部分无效。</b><br>吴先生与妻子婚后共同购买一套房，登记在吴先生一人名下。吴先生立遗嘱：「该房产全部由儿子吴小某继承。」吴先生去世，妻子仍在世。<br>《民法典》第 1153 条：夫妻共同所有的财产，除有约定外，遗产分割时应当先将共同所有财产的一半分出为配偶所有，其余为被继承人的遗产。<br>所以这套房：一半归妻子（本就不是遗产），另一半才是吴先生的遗产。遗嘱处分了整套，<span class="highlight">对妻子那一半的处分依《继承编解释（一）》第 26 条无效</span>，落入第 1154 条第（四）项，按法定继承办理——由妻子、儿子（假定无其他第一顺序继承人）共同继承那一半。<br>结论：儿子最终拿到的是「父亲那一半中的一半」左右，而不是整套房。「房产证写我一个人的名字」不等于「整套房都是我的」。<br><br><b>场景三：遗嘱里被涂改过的那个数字。</b><br>钱老先生的手写遗嘱原本写「存款 60 万给次女」，后来「60」被改成「20」，笔迹明显不同。<br>《民法典》第 1143 条第 4 款：遗嘱被篡改的，<span class="highlight">篡改的内容无效</span>。注意后果不是整份遗嘱作废——被篡改部分依第 1154 条第（四）项按法定继承办理，其余未被篡改的内容继续有效。<br>同时提示：篡改遗嘱情节严重，还可能触发《民法典》第 1125 条丧失继承权的后果（伪造、篡改、隐匿或者销毁遗嘱，情节严重的丧失继承权）。<br><br><b>场景四：遗嘱指定的继承人先走了。</b><br>王老先生立遗嘱把一套房留给大儿子，两年后大儿子去世，王老先生仍健在。三年后王老先生去世。<br>这套房走第 1154 条第（三）项——遗嘱继承人先于遗嘱人死亡，该部分按法定继承办理。大儿子的孩子<span class="highlight">不能代位继承这套遗嘱房</span>（代位继承只适用于法定继承）。<br><span class="highlight">正确做法是立遗嘱时加一句替补条款</span>：「若大儿子先于本人死亡，该房产由大儿子的子女承受。」一句话的差别，结果完全不同。<br><br><b>场景五：保险金不在遗嘱的射程之内。</b><br>赵先生立遗嘱：「我名下所有财产由长子继承。」同时他有一张终身寿险，<b>保单受益人写的是妻子</b>。<br>赵先生去世后，长子主张保险金也按遗嘱归自己。这个主张不成立。<br>依《保险法》第 42 条的反面解释：只要指定了受益人、且不属于该条三种情形，保险金就<b>不作为遗产</b>，由受益人直接领，<span class="highlight">不进入遗嘱处分范围，也不进入第 1154 条的「回炉」程序</span>。<br>反过来说：如果赵先生当时没写受益人，保险金落入第 42 条第（一）项成为遗产，那才会回到遗嘱/法定继承的轨道上——<b>此时遗嘱里那句「所有财产由长子继承」，就把这笔保险金也一并接管了</b>。填不填受益人，决定了这笔钱听谁的。</div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">风险提示</div>
+                <div class="section-content">⚠️ <b>遗嘱不是「总开关」，是「分片开关」</b>。它只对写到的、有效的财产发生效力；没写到的、写无效的部分，一律回到法定继承（第 1154 条）。别用「我把所有财产留给某某」这种概括表述去替代逐项列明——概括表述在实务中容易因标的不明确产生争议。<br>⚠️ <b>夫妻共同财产只有一半能写进遗嘱</b>。《民法典》第 1153 条先析产、后继承。房产证上只写一个人的名字，不改变共同财产的属性。写错，超出部分依《继承编解释（一）》第 26 条无效。<br>⚠️ <b>「公证遗嘱优先」已是老黄历</b>。第 1142 条第 3 款：立有数份遗嘱，内容相抵触的，以最后的遗嘱为准。手上有多份遗嘱时，先按时间排序，再看最后一份的有效性。<br>⚠️ <b>必留份是硬约束</b>。第 1141 条要求为「缺乏劳动能力又没有生活来源」的继承人保留必要份额，违反的，依解释（一）第 25 条先留足必要遗产，剩余部分才按遗嘱处理。这不是商量，是法定优先。<br>⚠️ <b>形式瑕疵是遗嘱无效的高发区</b>。自书遗嘱须遗嘱人亲笔书写、签名、注明年月日；打印遗嘱须有两个以上见证人在场见证，遗嘱人和见证人在每一页签名并注明年月日。形式不合法，直接无效，内容写得再清楚也没用。<br>⚠️ <b>别把「遗赠」当「遗嘱继承」</b>。《民法典》第 1124 条：受遗赠人应当在知道受遗赠后六十日内作出接受或者放弃的表示；到期没有表示的，<span class="highlight">视为放弃受遗赠</span>。给法定继承人以外的人（如朋友、孙辈、保姆）留财产，是遗赠，60 天的时钟必须有人提醒。<br>✅ <b>动作一：做一份「资产清单 + 遗嘱对照表」</b>。左边列全部资产（房产、存款、股权、理财、保单、车辆、债权），右边标注「遗嘱是否写明」。空白项就是未来的法定继承项。<br>✅ <b>动作二：遗嘱里写替补与兜底条款</b>。既写「若某继承人先于本人死亡，由谁承受」（对应第 1154 条第（三）项），也写「本遗嘱未处分的财产由谁承受」（对应第（五）项）。<br>✅ <b>动作三：保单受益人逐张核对</b>。哪张写了、写的谁、有没有第二顺位、离婚后是否已变更——依《保险法》第 41 条，变更受益人须书面通知保险人，保险人收到通知后应当在保险单或者其他保险凭证上批注或者附贴批单。<span class="highlight">口头说一声不算，没走完这个流程等于没改</span>。<br>✅ <b>动作四：把「遗赠」的 60 天提醒安排出去</b>。给孙辈、朋友、非继承人的安排，提前告诉对方「到时候要在 60 天内作出接受表示」，并留一份书面提示给遗产管理人。</div>
+            </div>
+            
+            <div class="summary">
+                <div class="summary-title">核心要点</div>
+                <div class="summary-content">《民法典》第 1154 条是遗嘱制度的「兜底条款」，列明五种情形下遗产的有关部分<b>按照法定继承办理</b>：①遗嘱继承人或受遗赠人<b>放弃</b>；②遗嘱继承人或受遗赠人<b>丧失</b>继承权/受遗赠权；③遗嘱继承人、受遗赠人<b>先于遗嘱人死亡</b>或者终止；④<b>遗嘱无效部分</b>所涉及的遗产；⑤<b>遗嘱未处分</b>的遗产。三条常见路径对应三件事：人不来了、写的不算、压根没写。遗嘱「无效」的主要情形在<b>第 1143 条</b>（无/限制民事行为能力人所立、受欺诈胁迫、伪造、篡改的部分）；处分他人财产的部分依<b>继承编解释（一）第 26 条</b>无效——最常见的是夫妻共同财产，依<b>第 1153 条</b>须先析出一半给配偶。其余配套：<b>第 1123 条</b>确立「遗赠扶养协议→遗嘱继承/遗赠→法定继承」的层层兜底顺序；<b>第 1142 条</b>确立数份遗嘱以最后的为准（公证遗嘱优先已被删除）；<b>第 1141 条</b>必留份与解释（一）第 25 条的落地规则。保险切入点：依《保险法》第 42 条的反面解释，<b>指定了受益人且不属于该条三种情形的保险金不是遗产</b>，不进入遗嘱处分范围、也不进入第 1154 条的回炉程序；反之若未指定受益人或受益人先走且无其他受益人，保险金即成为遗产，遗嘱里那句概括表述就把它一并接管了。</div>
+            </div>
+        </div>
+        
+        <div class="disclaimer">
+            声明：本资讯内容仅供内部学习交流参考，不构成任何法律建议或投资建议。所涉观点或点评如非事实陈述，均为知识分享，不代表任何机构立场。任何决策请基于个人独立判断，并谨慎考虑自身实际情况。
+            <br><br><a href="archive.html" style="color:rgba(255,255,255,0.2);text-decoration:none;font-size:10px;">历史回顾 →</a>
+        </div>
+    </div>
+</body>
+</html>
